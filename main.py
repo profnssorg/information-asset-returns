@@ -1,8 +1,11 @@
 # Importação de bibliotecas
 
-import input_
-import process
-import output
+import bcb_api
+import cupom
+import noticias
+import grafico
+import testes
+import tabelas
 
 from arch import arch_model
 
@@ -155,5 +158,6 @@ outside('tab:limite_non_di',
         ResultadoGarchDI.conditional_volatility,
         DInP)
 
-
-
+# Tabelas para resultado das análises em termos de noticias nos dias
+a = noticia_para_cada_dia('tab:noticias_par', oc_out_par, noticias_relevantes)
+b = noticia_para_cada_dia('tab:noticias_non', oc_out_non, noticias_relevantes)
