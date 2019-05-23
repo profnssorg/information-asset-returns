@@ -1,4 +1,4 @@
-# Importação de bibliotecas
+# IMPORTACAO DE BIBLIOTECAS
 
 import bcb_api
 import cupom
@@ -7,10 +7,29 @@ import grafico
 import testes
 import tabelas
 
+import os
 from arch import arch_model
 
-# ENTRADA
-# ENTRADA
+# DECLARACAO DE VARIAVEIS
+
+data_inicial = str() # data inicial para a serie temporal que sera coletada
+data_final - str() # data final para a  serie temporal que sera coletada
+
+PTAX = pd.DataFrame() # data frame que contera a serie temporal de cambio (PTAX)
+Selic = pd.DataFrame() # data frame que contera a serie temporal de juros Selic
+DI = pd.DataFrame() # data frame que contera a serie temporal de juros DI
+
+CupomCambialOC = pd.DataFrame() # data frame que contera a serie temporal do cupom cambial de oc1
+CupomCambialDI = pd.DataFrame() # data frame que contera a serie temporal do cupom cambial de di1
+
+#ResultadoGarchOC = # resultado da estimacao do garch para o cupom cambial de oc1
+#ResultadoGarchDI = # resultado da estimacao do garch para o cupom cambial de oc1
+
+OCP = pd.DataFrame() # data frame que contera as series temporais dos limites parametricos para o cupom cambial de oc1
+DIP = pd.DataFrame() # data frame que contera as series temporais dos limites parametricos para o cupom cambial de di1
+OCnP = pd.DataFrame() # data frame que contera as series temporais dos limites nao parametricos para o cupom cambial de oc1
+DInP = pd.DataFrame() # data frame que contera as series temporais dos limites nao parametricos para o cupom cambial de di1
+
 # ENTRADA
 
 # Datas de início e fim para as séries que serão coletadas
@@ -18,8 +37,9 @@ data_inicial = '01/01/2010'
 data_final = '31/12/2018'
 
 # PROCESSAMENTO
-# PROCESSAMENTO
-# PROCESSAMENTO
+
+# Scrapping
+os.system('scrapy crawl g1 -o noticias.json')
 
 # Criação dos DataFrames das variáveis
 PTAX = serie(1, data_inicial, data_final)
@@ -42,8 +62,6 @@ DIP = limitP(ResultadoGarchDI.conditional_volatility)
 OCnP = limitNP(ResultadoGarchOC.conditional_volatility)
 DInP = limitNP(ResultadoGarchDI.conditional_volatility)
 
-# SAIDA
-# SAIDA
 # SAIDA
 
 # Gráficos e estatísticas descritivas das séries base
