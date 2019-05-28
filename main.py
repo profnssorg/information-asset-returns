@@ -1,163 +1,330 @@
-# Importação de bibliotecas
+#
+# IMPORT PACKAGES --------------------------------------------------------------
+#
+# Impoprt (and transform) data
+import os # scrapping - os run command
+import scrapy # scrapping - package
+import numpy as np # api - array used for series and dataframe data structures
+                   # fundamental package for scientific computing
+import pandas as pd # api - series and datagrame data structues & various 
+                    # data structures and data analysis tools
+#
+# Transform data
+from arch import arch_model # garch model
+import statsmodels.tsa.stattools as stat # adf, kpss, shapito white
+import statsmodels.stats.diagnostic as dig #ljung box
+from scipy import stats # confidence interval
+#
+# Output data
+#	Graphs
+from matplotlib import pyplot as plt # graphs
+#
+#----------------------------------------------------------------IMPORT PACKAGES
+#
+#
+# IMPORT MODULES ---------------------------------------------------------------
+#
+from modules import import_process # module for importing and trasnforming data
+from modules import process_output_graphs # muodule for output of graphs
+from modules import process_output_tables # module for output of tables
+#
+#-----------------------------------------------------------------IMPORT MODULES
+#
+#
+# OBJECTS ----------------------------------------------------------------------
+#
+data_inicial = str() # data inicial para a serie temporal que sera coletada
+data_final - str() # data final para a  serie temporal que sera coletada
 
-import bcb_api
-import cupom
-import noticias
-import grafico
-import testes
-import tabelas
+PTAX = pd.DataFrame() # data frame que contera a serie temporal de cambio (PTAX)
+Selic = pd.DataFrame() # data frame que contera a serie temporal de juros Selic
+DI = pd.DataFrame() # data frame que contera a serie temporal de juros DI
 
-from arch import arch_model
+CupomCambialOC = pd.DataFrame() # data frame que contera a serie temporal do cu_
+                                # pom cambial de oc1
+CupomCambialDI = pd.DataFrame() # data frame que contera a serie temporal do cu_
+                                # pom cambial de di1
 
-# ENTRADA
-# ENTRADA
-# ENTRADA
+#ResultadoGarchOC = # resultado da estimacao do garch para o cupom cambial de oc1
+#ResultadoGarchDI = # resultado da estimacao do garch para o cupom cambial de oc1
 
-# Datas de início e fim para as séries que serão coletadas
-data_inicial = '01/01/2010'
-data_final = '31/12/2018'
+OCP = pd.DataFrame() # data frame que contera as series temporais dos limites p_
+                     # arametricos para o cupom cambial de oc1
+DIP = pd.DataFrame() # data frame que contera as series temporais dos limites p_
+                     # arametricos para o cupom cambial de di1
+OCnP = pd.DataFrame() # data frame que contera as series temporais dos limites 
+                      # nao parametricos para o cupom cambial de oc1
+DInP = pd.DataFrame() # data frame que contera as series temporais dos limites
+                      # nao parametricos para o cupom cambial de di1
 
-# PROCESSAMENTO
-# PROCESSAMENTO
-# PROCESSAMENTO
 
-# Criação dos DataFrames das variáveis
+#
+#------------------------------------------------------------------------OBJECTS
+#
+#
+# IMPUT DATA -------------------------------------------------------------------
+#
+# Initial and final date for the api data
+data_inicial = '26/09/2016'
+data_final = '16/05/2019'
+#
+#---------------------------------------------------------------------INPUT DATA
+#
+#
+# PROCESS DATA -----------------------------------------------------------------
+#
+# Scrapping
+os.system('scrapy crawl g1 -o noticias.json')
+# Creates time series objects
 PTAX = serie(1, data_inicial, data_final)
 Selic = serie(11, data_inicial, data_final)
 DI = serie(12, data_inicial, data_final)
-
-# Cálculo do cupom cambial
+#
+# Crates exchange coupon data frame objects
 CupomCambialOC = cupomCambial(Selic, PTAX)
 CupomCambialDI = cupomCambial(DI, PTAX)
-
-# Estimação do GARCH
+#
+# Creates estimted garch objects
 ResultadoGarchOC = arch_model(CupomCambialOC.valor).fit()
 ResultadoGarchDI = arch_model(CupomCambialDI.valor).fit()
-
-# Definição dos limites
-# Análise Paramétrica
+# Creates parametric limits data frame objects
 OCP = limitP(ResultadoGarchOC.conditional_volatility)
 DIP = limitP(ResultadoGarchDI.conditional_volatility)
-# Análise Não Paramétrica
+# Creates pon arametric limits data frame objects
 OCnP = limitNP(ResultadoGarchOC.conditional_volatility)
 DInP = limitNP(ResultadoGarchDI.conditional_volatility)
+# Creates list with relevant news
+noticias_relevantes = transformar(separar_noticias('noticias.json',
+												                           ['incerteza',
+													                          'mercado',
+													                          'economia',
+												                            'd\\u00f3lar',
+										                        		    'selic',
+										                        		    'cdi',
+												                            'c\\u00e2mara',
+                                                    'senado'
+                                                    'stf'
+                                                    'superior tribunal federal'
+                                                    'tcu',
+                                            'tribunal de contas da uni\\u00e3o',
+                                                    'presidente',
+                                                    'presid\\u00eancia']))
 
-# SAIDA
-# SAIDA
-# SAIDA
+os.system('cd latex')
+os.system('xelatex main')
 
-# Gráficos e estatísticas descritivas das séries base
+#
+#-------------------------------------------------------------------PROCESS DATA
+#
+#
+# EXPORT DATA ------------------------------------------------------------------
+#
+#
+#		4_1_2 EXCHANGE COUPON ------------------------------------------
+#
+#
+#				ptax selic di ----------------------------------
+#
 graph(PTAX,
       'PTAX 800',
       'Dollar Exchange Rate',
-      'PTAX',
-      'fig:PTAX')
+      'ptax')
 graph(Selic,
       'Selic',
       'Referential Rate of the Special Settlement and Custody System',
-      'Selic',
-      'fig:Selic')
+      'selic')
 graph(DI,
       'DI',
       'Interbank Deposit Rate',
-      'DI',
-      'fig:DI')
-des('tab:desptaxselicdi',
+      'di')
+des('PTAX 800, Selic and DI',
+    'desptaxselicdi',
     [PTAX, Selic, DI],
     ['PTAX', 'Selic', 'DI'])
-
-# Gráficos e estatísticas descritivas (com testes) das séries de cupom cambial
+#
+#				---------------------------------- ptax selic di
+#
+#
+#				oc di ------------------------------------------
+#
 graph(CupomCambialOC,
       'CupomCambialOC',
       'OC1 Exchange Coupon',
-      'OC1',
-      'fig:oc1')
+      'oc')
 graph(CupomCambialDI,
       'CupomCambialDI',
       'DI1 Exchange Coupon',
-      'DI1',
-      'fig:di1')
-des('tab:desc_oc1_di1',
+      'di')
+des('OC1 and DI1 Exchange Coupons',
+    'desocdi',
     [CupomCambialOC, CupomCambialDI],
     ['OC1 Exchange Coupon', 'DI1 Exchange Coupon'])
-adf('tab:coupon_adf',
+adf('ocdiadf',
     [CupomCambialOC, CupomCambialDI],
     ['OC1 Exchange Coupon', 'DI1 Exchange Coupon'])
-kpss('tab:coupon_kpss',
+kpss('ocdikpss',
     [CupomCambialOC, CupomCambialDI],
     ['OC1 Exchange Coupon', 'DI1 Exchange Coupon'])
-
-# Tabelas e gráficos do GARCH
-ljungShapiro('tab:residuals_white',
+#
+#				------------------------------------------ oc di
+#
+#
+#		------------------------------------------ 4_1_2 EXCHANGE COUPON
+#
+#
+#		4_2_2 ESTIMATION -----------------------------------------------
+#
+ljungShapiro('reswhite',
              [ResultadoGarchOC.resid, ResultadoGarchDI.resid],
              ['Residuals of OC1 Exchange Coupon', 'Residuals of DI1 Exchange Coupon'])
+graph(ResultadoGarchOC.resid,
+      'Residuals',
+      'Residuals from the OC1 Exchange Coupon\'s GARCH',
+      'ocres')
+graph(ResultadoGarchDI.resid,
+      'Residuals',
+      'Residuals from the DI1 Exchange Coupon\'s GARCH',
+      'dires')
+funcao(CupomCambialOC, 'OC1 Exchange Coupon', 'oc', True)
+funcao(CupomCambialDI, 'DI1 Exchange Coupon', 'di', True)
+funcao(ResultadoGarchOC.resid, 'Residuals from OC1 Exchange Coupon', 'ocres')
+funcao(ResultadoGarchDI.resid, 'Residuals from DI1 Exchange Coupon', 'dires')
+
+#
+#		---------------------------------------------- 4_2_2 ESTIMATION
+#
+#
+#		4_2_3 VOLATILITY ESTIMATE -------------------------------------
+#
+graph(ResultadoGarchDI.resid,
+      'Residuals',
+      'Residuals from the DI1 Exchange Coupon\'s GARCH',
+      'dires')
 graph(ResultadoGarchOC.conditional_volatility,
       'Conditional Standard Deviation',
       'Conditional Standard Deviation of OC1 Exchange Coupon',
-      'CSDOC',
-      'fig:csdoc')
+      'occsd')
 graph(ResultadoGarchDI.conditional_volatility,
       'Conditional Standard Deviation',
       'Conditional Standard Deviation of OC1 Exchange Coupon',
-      'CSDDI',
-      'fig:csddi')
-des('tab:des_csd',
+      'dicsd')
+des('OC1 and DI1 Exchange Coupons\' CSD',
+    'descsd',
     [ResultadoGarchOC.conditional_volatility, ResultadoGarchDI.conditional_volatility],
     ['CSD of OC1 Exchange Coupon', 'CSD of Exchange Coupon'],
     csd = True)
-
+#
+#		------------------------------------- 4_2_3 VOLATILITY ESTIMATE
+#
+#
+#		4_2_4 PARAMETRIC ----------------------------------------------
+#
 # Gráfico e tabela análise paramétrica
-tabP('tab:par_lim',
+shapiro('csdshapiro',
+        [ResultadoGarchOC.conditional_volatility, ResultadoGarchDI.conditional_volatility],
+        ['Conditional Standard Deviation of OC1 Exchange Coupon', 'Conditional Standard Deviation of DI1 Exchange Coupon'])
+# TABELA COM LIMITES PARAMETRICOS PARA CSDs DE OC E DI
+tabP('limpar',
      [OCP, DIP],
      ['CSD of OC1 Exchange Coupon', 'CSD of Exchange Coupon'])
+# GRAFICO COM LIMITES PARAMETRICOS PARA CSD DE OC
 graph(ResultadoGarchOC.conditional_volatility,
       'Conditional Standard Deviation',
       'Parametric Limits for Conditional Standard Deviation of OC1 Exchange Couponn',
-      'par_oc',
-      'fig:par_oc',
+      'oclimpar',
       limit = True)
 graph(ResultadoGarchDI.conditional_volatility,
       'Conditional Standard Deviation',
       'Parametric Limits for Conditional Standard Deviation of DI1 Exchange Couponn',
-      'par_di',
-      'fig:par_di',
+      'dilimpar',
       limit = True)
-outside('tab:limite_par_oc',
-        CupomCambialOC,
-        ResultadoGarchOC.conditional_volatility,
-        DIP)
-outside('tab:limite_par_di',
+oc_out_par = outside('ocparout',
+                     CupomCambialOC,
+                     ResultadoGarchOC.conditional_volatility,
+                     DIP)
+di_out_par = outside('diparout',
         CupomCambialDI,
         ResultadoGarchDI.conditional_volatility,
-        DIP)
-
-# Gráfico e tabela análise não paramétrica
-tabNP('tab:non_lim',
+        DIP, True)
+#
+#		---------------------------------------------- 4_2_4 PARAMETRIC
+#
+#
+#   4_2_5 NON PARAMETRIC ------------------------------------------
+#
+tabNP('limnon',
      [OCnP, DInP],
      ['CSD of OC1 Exchange Coupon', 'CSD of Exchange Coupon'])
 graph(ResultadoGarchOC.conditional_volatility,
       'Conditional Standard Deviation',
       'Non-Parametric Limits for Conditional Standard Deviation of OC1 Exchange Couponn',
-      'non_oc',
-      'fig:non_oc',
+      'oclimnon',
       limit = True,
       np = True)
 graph(ResultadoGarchDI.conditional_volatility,
       'Conditional Standard Deviation',
       'Non-Parametric Limits for Conditional Standard Deviation of DI1 Exchange Couponn',
-      'non_di',
-      'fig:non_di',
+      'dilimnon',
       limit = True,
       np = True)
-outside('tab:limite_non_oc',
+oc_out_non = outside('ocnonout',
         CupomCambialOC,
         ResultadoGarchOC.conditional_volatility,
-        DInP)
-outside('tab:limite_non_di',
+        OCnP)
+di_out_non = outside('dinonout',
         CupomCambialDI,
         ResultadoGarchDI.conditional_volatility,
         DInP)
+#
+#   ------------------------------------------ 4_2_5 NON PARAMETRIC
+#
+#
+#   5 RESULTS -----------------------------------------------------
+#
+noticias_relevantes = transformar(separar_noticias(juntar(corrigir(datas_do_ano(), PTAX), noticias('noticias.json')), ['incerteza',
+                                                                     'mercado',
+                                                                     'economia',
+                                                                     'd\\u00f3lar',
+                                                                     'selic',
+                                                                     'cdi',
+                                                                     'c\\u00e2mara',
+                                                                     'senado'
+                                                                     'stf'
+                                                                     'superior tribunal federal'
+                                                                     'tcu',
+                                                                     'tribunal de contas da uni\\u00e3o',
+                                                                     'presidente',
+                                                                     'presid\\u00eancia']))
+#
+#   ----------------------------------------------------- 5 RESULTS
+#
+#
+#       5_1 PARAMETRIC --------------------------------------------
+#
+a = noticia_para_cada_dia('parnews', oc_out_par, noticias_relevantes)
+b = noticia_para_cada_dia('nonnews', oc_out_non, noticias_relevantes)
+#
+#       -------------------------------------------- 5_1 PARAMETRIC
+#
 
-# Tabelas para resultado das análises em termos de noticias nos dias
-a = noticia_para_cada_dia('tab:noticias_par', oc_out_par, noticias_relevantes)
-b = noticia_para_cada_dia('tab:noticias_non', oc_out_non, noticias_relevantes)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
