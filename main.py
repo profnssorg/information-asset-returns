@@ -33,7 +33,7 @@ from modules import process_output_tables # module for output of tables
 #
 # OBJECTS ----------------------------------------------------------------------
 #
-data_inicial = str() # data inicial para a serie temporal que sera coletada
+data_inicial = str() # initial date for use in the time series collection via API
 data_final - str() # data final para a  serie temporal que sera coletada
 
 PTAX = pd.DataFrame() # data frame que contera a serie temporal de cambio (PTAX)
