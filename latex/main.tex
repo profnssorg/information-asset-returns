@@ -92,40 +92,39 @@ The transferable securities market (securiries, commodities and derivatives exch
 
 \section{News and Market Efficiency}
 
+
 The Efficient Market Hypothesis, as posed by \citet{fama1970}, states that security prices "fully reflect" available information, providing "accuarate signals for resource allocation" (\citet{fama1970}). In the model, information is divided in three subsets. For the weak form efficiency, the information set is the historical prices of the security. For the semi strong form, it is all the publicly available information, and finally, for the strong form, it is all available information, even if held private. There is massive literature on market efficiency, as the hypothesis has enormous implications for trading strategies, since indicates the impossibility of economic profit with existing information \citet{kamal2014}. Our paper focus on semi strong form efficiency, as we work with information in the form of publicly available news.
+
 
 The evidence on the relationship between financial variables and news support that the first responds to the latter. News about the macroeconomy are shown to affect commodity prices in 
 \citet{caporaleetal2015}, while \citet{macqueenroley1993} shows not only that the stock market responds to this subset of news, but that the response depends on the state of the economy. The use of news for trading strategies is shown to award economic profit in \citet{larsenthorsrud2017}. In \citet{moussaetal2017} it is shown that information supply has impact on prices, but the effect is more pronounced on volatility than on returns.
 
-\citet{caporaleetal2015} applies a VAR-GARCH model to analyze the spillovers between mean and variance of both macroeconomic news and commodity returns. The sample of returns is composed by ten commodities and the exchange rate, in a period of over 13 years. The news sample includes the worldwide coverage of four macroeconomic variables: GDP, unemployment, retail sales and durable good, which are are used in the making of two indexes, one for positive and one for negative news. The results showed spillovers for all variables but gold and silver. In \citet{macqueenroley1993} it is analyzed if stock prices response to news vary over different stages of the business cycle \todo{muito parecido com paper original}. The sample of equity prices consists in the S\&P 500 Index from over 10 years, and the sample of series used to represent the stage of the economy consists of variables related to cash flows and equity discount rates. The results show that the stock market responds positively to good macroeconomic news when the economy weak, but negatively when the economy is strong. \todo{comentar sobre larsen  2017 e moussa 2017}
+\citet{caporaleetal2015} applies a VAR-GARCH model to analyze the spillovers between mean and variance of both macroeconomic news and commodity returns. The sample of returns is composed by ten commodities and the exchange rate, in a period of over 13 years. The news sample includes the worldwide coverage of four macroeconomic variables: GDP, unemployment, retail sales and durable good, which are are used in the making of two indexes, one for positive and one for negative news. The results showed spillovers for all variables but gold and silver.
+In \citet{macqueenroley1993} it is analyzed if stock prices response to news vary over different stages of the business cycle \todo{muito parecido com paper original}. The sample of equity prices consists in the S\&P 500 Index from over 10 years, and the sample of series used to represent the stage of the economy consists of variables related to cash flows and equity discount rates. The results show that the stock market responds positively to good macroeconomic news when the economy weak, but negatively when the economy is strong. \todo{comentar sobre larsen  2017 e moussa 2017}
+
+Textual data is used to analyze the relationship between news topics and stock returns in \citet{larsenthorsrud2017}. The news sample comes from a daily Norwegian newspaper, and the stock prices sample comes from several firms listed in the Oslo Stock Exchange. The results show that news predict daily returns, allowing for investment strategies with economic returns.
+
+
+
+We decompose the textual data in a daily Norwegian business newspaper into news topics and investigate their predictive and causal role for asset prices.
+
+\citet{moussaetal2017}
 
 When testing for political information, the results also support that security prices are responsive. Both \citet{smales2015} and \citet{marquessantos2016} show that political uncertainty is related to market uncertainty, the first for Australia and the latter for Brazil. The Brazilian stock market is also shown to react to tax announcements in \cite{gabrielribeiro2013}.
 
 
-\citet{smales2015} uses electoral polls data to measure political uncertainty.
-
-The market is shows to suffer increased volatility as the economic policy of the main cadidate is known, 
-
-
-
-In \citet{marquessantos2016} a GARCH model is applied to daily stock returns and short term interest rates. The sample for the first is the Bovespa Index, and the sample for the latter is composed by the Selic rate and the one-day interbank deposits rate. Samples range from January 2014 to April 206. The results show that the the stock market only responds to political news in the case of elections, as the only period of abnormal volatility happened to occur around the 2014 election date. On the other hand, the short term interest rates do not respond to political news.
-
-
-
-
-An implications of the impact of news on security prices come from its effects on monetary policy. \citet{jovanoviczimmermann2010} shows that stock market uncertainty affects monetary policy in the USA, while \citet{naraidooraputsoane2015} shows this relationship in South Africa.
-
-
-
-
+\citet{smales2015} uses electoral polls data to construct two measures of political uncertainty. One represents overall election uncertainty, and the other represents uncertainty about reelection. Accounting for political incumbency is considered of importance as economic policies of a reelected president are well known in caparison with the policies from a newly elected president. The financial series are exchange-traded futures and options based on the main benchmark for Australia's equity markets, the S\&P/ASX 200\todo{algumas frases muito parecidas com paper}. Market volatility is shown to increase with political uncertainty, and decrease with the probability of reelection.
+In \citet{marquessantos2016} a GARCH model is applied to daily stock returns and short term interest rates in Brazil. The sample for the first is the Bovespa Index, and the sample for the latter is composed by the Selic Over rate and the one-day interbank deposits rate. Samples range from January 2014 to April 206. The results show that the the stock market only responds to political news in the case of elections, as the only period of abnormal volatility happened to occur around the 2014 election date. On the other hand, the short term interest rates do not respond to political news.
+\cite{gabrielribeiro2013} verifies if a government's annunciation of tax cuts affected stock prices of companies from sector that would be directly affected. The referred tax is the Tax on Industrialized Products (IPI). After filtering for characteristics that would make the calculations possible, 13 stocks made to the final sample. The results indicate that the stock prices were affected by the tax cut annunciation.
 
 
 
 \begin{comment}
+An implication of the impact of news on security prices comes from the latter's effects on monetary policy. \citet{jovanoviczimmermann2010} shows that stock market uncertainty affects monetary policy in the USA, while \citet{naraidooraputsoane2015} shows this relationship in South Africa.
+
 \cite{gabrielribeiro2013} LER METODOLOGIA, ACHO QUE PODE EXPICAR MELHOR A RELACAO ENTRE VOLATILIDADE ANORMAL E INEFICIENCIA
 \citet{oprean2012} LER, FALA SOBRE TESTE DE EFICIENCIA
 \end{comment}
-
 \begin{comment}
 \todo{Buscar outras citações, lembre do Mandelbrot e do Fama 1963 Journal of Busines})
 As a consequence, \citet{pearce1987} states If the market is efficient there is no economic profit to be done with publicly available information, and investors should expect normal returns for the risk they bear, independent of the (publicly available) information they have access to.
@@ -158,7 +157,7 @@ Testing of semi-strong form market efficiency is done by testing for the existen
 \section{Methods and Data}
 
 
-In order to test the impact of political news on the Exchange Coupon, we searched for political news, calculated the Exchange Coupon series (for both the OC1 and the DI1 measures), tested for abnormal volatility in the series, and finally we crossed the periods with abnormal volatility in the Exchange Coupon with the correspondent political news. The information on political news was gathered with web scrapping technique, applied in some of the main Brazilian news sources. We calculated the two different measures of Exchange Coupon negotiated in Brazil from the series of its components (a shared exchange rate measure series and two specific interest rate measures). To find the periods with abnormal volatility, we applied a GARCH to the Exchange Coupon series, and then filtered it's Conditional Standard Deviation series for abnormal values, with both a parametric and a non parametric analysis.
+In order to test the impact of political news on the Exchange Coupon, we searched for political news, calculated the Exchange Coupon series (for both the OC1 and the DI1 measures), tested for abnormal volatility in the series, and finally we crossed the periods with abnormal volatility in the Exchange Coupon with the correspondent political news. The information on political news was gathered with web scrapping technique, applied in the main Brazilian news portal. We calculated the two different measures of Exchange Coupon negotiated in Brazil from the series of its components (a shared exchange rate measure series and two specific interest rate measures). To find the periods with abnormal volatility, we applied a GARCH to the Exchange Coupon series, and then filtered it's Conditional Standard Deviation series for abnormal values, with both a parametric and a non parametric analysis.
 
 
 \subsection{Data}
