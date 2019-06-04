@@ -154,11 +154,10 @@ To my family and friends. % and to whoever contributes to the search for truth
     \item[ARCH] Auto Regressive Conditional Heteroscedasticity
     \item[GARCH] General Auto Regressive Conditional Heteroscedasticity
     \item[API] Application Programming Interface
-    \item[BACEN-SGS] Central Bank of Brazil Time Series Management System
+    \item[SGS] Time Series Management System
     \item[BRL] Brazilian Real
     \item[USS] United States Dollar
-    \item[ARMA] Auto Regressive Moving Average
-    \item[VAR] Vector Auto Regressive
+    \item[VAR] Vector Auto Regression
     \item[CDS] Conditional Standard Deviation
     \item[OAB] Federal Council of the Brazilian Lawyers Association
     \item[PSDB] Party of Social Democracy
@@ -269,7 +268,8 @@ To my family and friends. % and to whoever contributes to the search for truth
 
 \subsubsection{Exchange Coupon} \label{chapter_exchange_coupon}
 
-    In order to obtain the series for the Exchange Coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate (PTAX 800), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank Deposit rate (CDI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through it's Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day. 
+    In order to obtain the series for the Exchange Coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate (PTAX 800), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank Deposit rate (CDI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through it's Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day.
+    
     Our sample ranges from September 26, 2016 to May 16, 2019. It begins shortly after the end of the impeachment process of President Dilma Rousseff, at August 31, when President Michel Temer (Ms Dilma's Vice President) took office after three months as Interim President. This happened in the middle of the largest economic crisis in Brazilian history, with the fourth trimester of 2016 being the last from a series of eleven in which the Gross Domestic Product decreased. The remaining period from our sample saw economic stagnation. Mr Temer's presidency was marked by reforms - like the Labour Reform, which successfully passed, and the Pension Reform, which was not successful -, and by a corruption scandal related to Operation Car Wash, a investigation on money laundry involving Brazilian politicians, which was very present in the media since even before his presidency. At October 2018 presidential elections were held, when Jair Bolsonaro was elected. The new president took office with he's main focus as the Pension Reform, which was (and still is by the time this is being written) awaiting for approval.
     
 
@@ -490,7 +490,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     The second period was between June 11th and 13th, 2019, when news dealt with the visit of Paraguay's newly elected president Marido Abdo Benítez to president Temer, with a encounter of Petrobra's President with the Legislative and Judiciary, and with the change of judges from Superior Justice Tribunal in a process from Operation Car Wash, among other topics. The third period lasted only a single day, the 23th of July, 2018. In this date, Geraldo Alckmin, a presidential candidate, revealed his candidate for the vice presidency; and Dias Toffoli, a Supreme Court minister, substituted Cármem Lúcia as the president of the Court while she was substituting the country's president, and both Jair Bolsonaro, from Liberal Social Party, and Guilherme Boulos, from Socialism and Liberty Party, were confirmed as condidates for the presidential elections that would occur in October.
 
-    The second last period of abnormal volatility begun 6 days before the 2018 presidential elections, and ended two days after the election. At October 4th, when the period of abnormal volatility started, a voter intent survey was released which result was, in the case of a second round between Jair Bolsonaro and Fernanando Haddad, of 43\% of votes for the first and 42\% for the latter. {comentar sobre caracteristicas diferente dos dois canditatos, no sentido de seus programas de governo, talvez principalmente da atitude em relação à crise fiscal}.
+    The second last period of abnormal volatility begun 6 days before the 2018 presidential elections, and ended two days after the election. At October 4th, when the period of abnormal volatility started, a voter intent survey was released which result was, in the case of a second round between Jair Bolsonaro and Fernanando Haddad, of 43\% of votes for the first and 42\% for the latter.
 
     The last period was the January 4th, at the time, Bolsonaro was talking about trying to pass a new Pension Reform rather than working on the approval of the reform from the previous president, Temer.
 
@@ -504,9 +504,13 @@ To my family and friends. % and to whoever contributes to the search for truth
             \hline
             Period & News Topics \\
             \hline \hline
-            19/05/17 - 25/05/17 & President Temer's corruption scandal \\
+            17/05/19 - 17/05/25 & President Temer's corruption scandal \\
             \hline
-            04/10/18 - 10/10/18 & Presidential Elections \\
+            18/07/23 & Announcement of Mr. Bolsonaro's cadidacy \\
+            \hline
+            18/10/04 - 18/10/10 & Presidential Elections \\
+            \hline
+            19/01/04 & Announcement of new Pension Reform \\
             \hline
         \end{tabular}
     \end{table}
@@ -533,9 +537,15 @@ To my family and friends. % and to whoever contributes to the search for truth
             \hline
             Period & News Topics \\
             \hline \hline
-            19/05/17 - 23/05/17 & President Temer's corruption scandal and impeachment requests \\
+            17/03/17 & Voting of the Labour Reform \\
+            \hline
+            19/05/17 - 23/05/17 & President Temer's corruption scandal \\
+            \hline
+            17/08/17 & OAB's triggering of the Supreme Court \\
             \hline
             25/10/17 & Rejection of the denunciation against president Temer \\
+            \hline
+            18/07/23 & Announcement of Mr. Bolsonaro's cadidacy \\
             \hline
             04/10/18 - 10/10/18 & Presidential elections \\
             \hline
@@ -558,6 +568,23 @@ To my family and friends. % and to whoever contributes to the search for truth
 
 
     These results follow \cite{smales2015} and \cite{marquessantos2016}, as the results of both show that political uncertainty, as with who will win the elections, causes market uncertainty. The results from \cite{marquessantos2016} don't show, however, that other matters related to presidency cause market uncertainty, even though the sample used contained the period with the impeachment process of President Dilma Rouseff {me parece que o que está descrito no abstract do thales é diferente da conclusao, no abstract ele fala que há sim efeito do impeachment sobre o ibovespa}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     
