@@ -28,7 +28,7 @@
 % \usepackage{palatino}
 % \usepackage{mathptmx}       % p/ usar fonte Adobe Times nas fórmulas
 
-\usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% pacote para usar citações abnt
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite} % pacote para usar citações abnt
 
 \usepackage{nameref}
 
@@ -151,21 +151,21 @@ To my family and friends. % and to whoever contributes to the search for truth
     \item[BM\&F] Commodities and Futures Exchange
     \item[CETIP] Central of Custody and Financial Settlement of Private Securities
     \item[CDI] Inter-Bank Deposit Rate
-    \item[ARCH]	Auto Regressive Conditional Heteroscedasticity
+    \item[ARCH] Auto Regressive Conditional Heteroscedasticity
     \item[GARCH] General Auto Regressive Conditional Heteroscedasticity
     \item[API] Application Programming Interface
     \item[BACEN-SGS] Central Bank of Brazil Time Series Management System
     \item[BRL] Brazilian Real
     \item[USS] United States Dollar
-    \item[ARMA]	Auto Regressive Moving Average
+    \item[ARMA] Auto Regressive Moving Average
     \item[VAR] Vector Auto Regressive
     \item[CDS] Conditional Standard Deviation
     \item[OAB] Federal Council of the Brazilian Lawyers Association
-    \item[PSDB]	Party of Social Democracy
+    \item[PSDB] Party of Social Democracy
     \item[PR] Liberal Party
-    \item[OC1] OC1 Exchange Coupon	
+    \item[OC1] OC1 Exchange Coupon  
     \item[DI1] DI1 Exchange Coupon
-%    \item[]	
+%    \item[]    
 
 \end{listofabbrv}
 
@@ -269,7 +269,9 @@ To my family and friends. % and to whoever contributes to the search for truth
 
 \subsubsection{Exchange Coupon} \label{chapter_exchange_coupon}
 
-    In order to obtain the series for the Exchange Coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate (PTAX 800), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank Deposit rate (CDI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through it's Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day.
+    In order to obtain the series for the Exchange Coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate (PTAX 800), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank Deposit rate (CDI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through it's Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day. 
+    Our sample ranges from September 26, 2016 to May 16, 2019. It begins shortly after the end of the impeachment process of President Dilma Rousseff, at August 31, when President Michel Temer (Ms Dilma's Vice President) took office after three months as Interim President. This happened in the middle of the largest economic crisis in Brazilian history, with the fourth trimester of 2016 being the last from a series of eleven in which the Gross Domestic Product decreased. The remaining period from our sample saw economic stagnation. Mr Temer's presidency was marked by reforms - like the Labour Reform, which successfully passed, and the Pension Reform, which was not successful -, and by a corruption scandal related to Operation Car Wash, a investigation on money laundry involving Brazilian politicians, which was very present in the media since even before his presidency. At October 2018 presidential elections were held, when Jair Bolsonaro was elected. The new president took office with he's main focus as the Pension Reform, which was (and still is by the time this is being written) awaiting for approval.
+    
 
     Figure \ref{fig:ptax} shows the exchange rate series , Figure \ref{fig:selic} shows the referential rate of the Special Settlement and Custody System series, and Figure \ref{fig:di} shows the Interbank Deposits rate series. The descriptive statistics for the series are shown in Table \ref{tab:desptaxselicdi}.
 
@@ -281,7 +283,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     \subfile{tables/desptaxselicdi.txt}
 
-    {comentar sobre o que aconteceu no período no Brasil, como parte da descrição dos dados}
+    Our samples range from 
 
     The Exchange Coupon is the interest rate obtained from the difference between the accrued interest rate between the operation date and the business day preceding the due date, and the exchange rate variation observed between the business day preceding the operation date and the business day preceding the due date. We calculated both measures of the Exchange Coupon via Equation \ref{eqn:coupon}:
 
@@ -316,7 +318,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
 \subsubsection{Generalized Autoregressive Conditional Heteroskedastic (GARCH) Model}
 
-    The Generalized Autoregressive Conditional Heteroskedastic (GARCH) model, introduced in \citet{bollerslev1986}, is a generalization of the Autoregressive Conditional Heteroskedastic (ARCH) model introduced in \citet{engle1982}, which models heteroscedasticity. While the most common models for time series assume a constant variance for the process (as ARMA and VAR){referencias}, the ARCH process assumes an inconstant variance conditional on past variance, together with a constant unconditional variance. The GARCH process assumes inconstant variance conditional on past conditional variance as well as past variance. Both ARCH and GARCH are serial uncorrelated processes with zero mean.{ver se o modelo que eu não apliquei não tem média condicional. alias, posso fazer uma terceira analise np em que a media e variancia do CDS se dao por uma regressao arma garch}
+    The Generalized Autoregressive Conditional Heteroskedastic (GARCH) model, introduced in \citet{bollerslev1986}, is a generalization of the Autoregressive Conditional Heteroskedastic (ARCH) model introduced in \citet{engle1982}, which models heteroscedasticity. While the most common models for time series assume a constant variance for the process (as the Vector Auto Regression (VAR), popularized by \citet{var}), the ARCH process assumes an inconstant variance conditional on past variance, together with a constant unconditional variance. The GARCH process assumes inconstant variance conditional on past conditional variance as well as past variance. Both ARCH and GARCH are serial uncorrelated processes with zero mean.{ver se o modelo que eu não apliquei não tem média condicional. alias, posso fazer uma terceira analise np em que a media e variancia do CDS se dao por uma regressao arma garch}
 
     Let $y_t$ denote a real-valued discrete time process and $\psi_t$ denote the information set at time $t$, the ARCH process is given by Equation \ref{eqn:archgarch} and Equation \ref{eqn:arch} while the GARCH process is given by Equation \ref{eqn:archgarch} and Equation \ref{eqn:garch}.
 
@@ -345,7 +347,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     $$\beta_i \geq 0, \quad  i=1,...,p$$
 
-    As we can see above, if $p = 0$ it becomes a ARCH process. If $q = 0$ the process is white noise. We will use $ht$ as a estimate for the exchange coupon's standard deviation.
+    As we can see above, if $p = 0$ it becomes a ARCH process. If $q = 0$ the process is white noise. We will use $h_t$ as a estimate for the exchange coupon's standard deviation.
 
 \subsubsection{Estimation} \label{chapter_estimation}
 
@@ -556,23 +558,6 @@ To my family and friends. % and to whoever contributes to the search for truth
 
 
     These results follow \cite{smales2015} and \cite{marquessantos2016}, as the results of both show that political uncertainty, as with who will win the elections, causes market uncertainty. The results from \cite{marquessantos2016} don't show, however, that other matters related to presidency cause market uncertainty, even though the sample used contained the period with the impeachment process of President Dilma Rouseff {me parece que o que está descrito no abstract do thales é diferente da conclusao, no abstract ele fala que há sim efeito do impeachment sobre o ibovespa}.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     
