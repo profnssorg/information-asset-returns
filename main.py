@@ -126,7 +126,7 @@ os.system('xelatex main')
 #				ptax selic di ----------------------------------
 #
 graph(PTAX,
-      'PTAX 800',
+      'PTAX',
       'Dollar Exchange Rate',
       'ptax')
 graph(Selic,
@@ -137,7 +137,7 @@ graph(DI,
       'DI',
       'Interbank Deposit Rate',
       'di')
-des('PTAX 800, Selic and DI',
+des('PTAX, Selic and DI',
     'desptaxselicdi',
     [PTAX, Selic, DI],
     ['PTAX', 'Selic', 'DI'])
@@ -148,23 +148,23 @@ des('PTAX 800, Selic and DI',
 #				oc di ------------------------------------------
 #
 graph(CupomCambialOC,
-      'CupomCambialOC',
+      'OC1',
       'OC1 Exchange Coupon',
       'oc')
 graph(CupomCambialDI,
-      'CupomCambialDI',
+      'DI1',
       'DI1 Exchange Coupon',
       'di')
 des('OC1 and DI1 Exchange Coupons',
     'desocdi',
     [CupomCambialOC, CupomCambialDI],
-    ['OC1 Exchange Coupon', 'DI1 Exchange Coupon'])
+    ['OC1', 'DI1'])
 adf('ocdiadf',
     [CupomCambialOC, CupomCambialDI],
-    ['OC1 Exchange Coupon', 'DI1 Exchange Coupon'])
+    ['OC1', 'DI1'])
 kpss('ocdikpss',
     [CupomCambialOC, CupomCambialDI],
-    ['OC1 Exchange Coupon', 'DI1 Exchange Coupon'])
+    ['OC1', 'DI1'])
 #
 #				------------------------------------------ oc di
 #
@@ -176,19 +176,19 @@ kpss('ocdikpss',
 #
 ljungShapiro('reswhite',
              [ResultadoGarchOC.resid, ResultadoGarchDI.resid],
-             ['Residuals of OC1 Exchange Coupon', 'Residuals of DI1 Exchange Coupon'])
+             ['Residuals of OC1\'s GARCH', 'Residuals of DI1\'s GARCH'])
 graph(ResultadoGarchOC.resid,
       'Residuals',
-      'Residuals from the OC1 Exchange Coupon\'s GARCH',
+      'Residuals of OC1\'s GARCH',
       'ocres')
 graph(ResultadoGarchDI.resid,
       'Residuals',
-      'Residuals from the DI1 Exchange Coupon\'s GARCH',
+      'Residuals of DI1\'s GARCH',
       'dires')
 funcao(CupomCambialOC, 'OC1 Exchange Coupon', 'oc', True)
 funcao(CupomCambialDI, 'DI1 Exchange Coupon', 'di', True)
-funcao(ResultadoGarchOC.resid, 'Residuals from OC1 Exchange Coupon', 'ocres')
-funcao(ResultadoGarchDI.resid, 'Residuals from DI1 Exchange Coupon', 'dires')
+funcao(ResultadoGarchOC.resid, 'Residuals of OC1', 'ocres')
+funcao(ResultadoGarchDI.resid, 'Residuals of DI1', 'dires')
 
 #
 #		---------------------------------------------- 4_2_2 ESTIMATION
@@ -196,22 +196,18 @@ funcao(ResultadoGarchDI.resid, 'Residuals from DI1 Exchange Coupon', 'dires')
 #
 #		4_2_3 VOLATILITY ESTIMATE -------------------------------------
 #
-graph(ResultadoGarchDI.resid,
-      'Residuals',
-      'Residuals from the DI1 Exchange Coupon\'s GARCH',
-      'dires')
 graph(ResultadoGarchOC.conditional_volatility,
-      'Conditional Standard Deviation',
-      'Conditional Standard Deviation of OC1 Exchange Coupon',
+      'CSD',
+      'OC1\'s CSD',
       'occsd')
 graph(ResultadoGarchDI.conditional_volatility,
-      'Conditional Standard Deviation',
-      'Conditional Standard Deviation of OC1 Exchange Coupon',
+      'CSD',
+      'DI1\'s CSD',
       'dicsd')
-des('OC1 and DI1 Exchange Coupons\' CSD',
+des('OC1 and DI1\'s CSD',
     'descsd',
     [ResultadoGarchOC.conditional_volatility, ResultadoGarchDI.conditional_volatility],
-    ['CSD of OC1 Exchange Coupon', 'CSD of Exchange Coupon'],
+    ['OC1\'s CSD', 'DI1\'s CSD'],
     csd = True)
 #
 #		------------------------------------- 4_2_3 VOLATILITY ESTIMATE
@@ -222,20 +218,20 @@ des('OC1 and DI1 Exchange Coupons\' CSD',
 # Gráfico e tabela análise paramétrica
 shapiro('csdshapiro',
         [ResultadoGarchOC.conditional_volatility, ResultadoGarchDI.conditional_volatility],
-        ['Conditional Standard Deviation of OC1 Exchange Coupon', 'Conditional Standard Deviation of DI1 Exchange Coupon'])
+        ['OC1\'s CSD', 'DI1\'s CSD'])
 # TABELA COM LIMITES PARAMETRICOS PARA CSDs DE OC E DI
 tabP('limpar',
      [OCP, DIP],
-     ['CSD of OC1 Exchange Coupon', 'CSD of Exchange Coupon'])
+     ['OC1\'s CSD', 'DI1\'s CSD'])
 # GRAFICO COM LIMITES PARAMETRICOS PARA CSD DE OC
 graph(ResultadoGarchOC.conditional_volatility,
-      'Conditional Standard Deviation',
-      'Parametric Limits for Conditional Standard Deviation of OC1 Exchange Couponn',
+      'CSD',
+      'Parametric Limits for OC1\'s CSD',
       'oclimpar',
       limit = True)
 graph(ResultadoGarchDI.conditional_volatility,
-      'Conditional Standard Deviation',
-      'Parametric Limits for Conditional Standard Deviation of DI1 Exchange Couponn',
+      'CSD',
+      'Parametric Limits for DI1\'s CSD',
       'dilimpar',
       limit = True)
 oc_out_par = outside('ocparout',
@@ -254,34 +250,37 @@ di_out_par = outside('diparout',
 #
 tabNP('limnon',
      [OCnP, DInP],
-     ['CSD of OC1 Exchange Coupon', 'CSD of Exchange Coupon'])
+     ['OC1\'s CSD', 'DI1\'s CSD'])
 graph(ResultadoGarchOC.conditional_volatility,
-      'Conditional Standard Deviation',
-      'Non-Parametric Limits for Conditional Standard Deviation of OC1 Exchange Couponn',
+      'CSD',
+      'Non-Parametric Limits for OC1\'s CSD',
       'oclimnon',
       limit = True,
-      np = True)
+      non = True)
 graph(ResultadoGarchDI.conditional_volatility,
-      'Conditional Standard Deviation',
-      'Non-Parametric Limits for Conditional Standard Deviation of DI1 Exchange Couponn',
+      'CSD',
+      'Non-Parametric Limits for DI1\'s CSD',
       'dilimnon',
       limit = True,
-      np = True)
+      non = True)
 oc_out_non = outside('ocnonout',
-        CupomCambialOC,
-        ResultadoGarchOC.conditional_volatility,
-        OCnP)
+                     CupomCambialOC,
+                     ResultadoGarchOC.conditional_volatility,
+                     OCnP,
+                     np = True)
 di_out_non = outside('dinonout',
-        CupomCambialDI,
-        ResultadoGarchDI.conditional_volatility,
-        DInP)
+                     CupomCambialDI,
+                     ResultadoGarchDI.conditional_volatility,
+                     DInP,
+                     True,
+                     True)
 #
 #   ------------------------------------------ 4_2_5 NON PARAMETRIC
 #
 #
 #   5 RESULTS -----------------------------------------------------
 #
-noticias_relevantes = transformar(separar_noticias(juntar(corrigir(datas_do_ano(), PTAX), noticias('noticias.json')), ['incerteza',
+noticias_relevantes = transformar(separar_noticias(juntar(corrigir(datas_do_ano(), PTAX), proximodia(arrumar(noticias('noticias.json')), lista_datas(corrigir(datas_do_ano(), PTAX)))), ['incerteza',
                                                                      'mercado',
                                                                      'economia',
                                                                      'd\\u00f3lar',
@@ -295,36 +294,9 @@ noticias_relevantes = transformar(separar_noticias(juntar(corrigir(datas_do_ano(
                                                                      'tribunal de contas da uni\\u00e3o',
                                                                      'presidente',
                                                                      'presid\\u00eancia']))
-#
-#   ----------------------------------------------------- 5 RESULTS
-#
-#
-#       5_1 PARAMETRIC --------------------------------------------
-#
+
 a = noticia_para_cada_dia('parnews', oc_out_par, noticias_relevantes)
 b = noticia_para_cada_dia('nonnews', oc_out_non, noticias_relevantes)
 #
-#       -------------------------------------------- 5_1 PARAMETRIC
+#   ----------------------------------------------------- 5 RESULTS
 #
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -56,9 +56,9 @@ Series & Test Statistic & Critical Value at 5\% Level \\\\
 
 # Teste de KPSS
 def kpss(refName, variables = [], names = []):
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
+    b = open('tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{table}}[H]
-\\caption{{Augmented Dickey-Fuller Test}}
+\\caption{{Kwiatkowski–Phillips–Schmidt–Shin Test}}
 \\label{{{}}}
 \\centering
 \\begin{{tabular}}{{ | c | c | c | }}
@@ -246,7 +246,7 @@ def noticia_para_cada_dia(refName, dias, noticias, np = False):
         for noticia in noticias:
             if (dia in noticia[7:17]):
                 data_cupom = '{}/{}/{}'.format(noticia[13:17], noticia[10:12], noticia[7:9])
-                data_hora_noticia = '{}/{}/{} {}:{}'.format(noticia[33:37], noticia[30:32], noticia[27:29], noticia[45:47], noticia[57:59])
+                data_hora_noticia = '{}/{} {}:{}'.format(noticia[30:32], noticia[27:29], noticia[45:47], noticia[57:59])
                 n += 1
                 a += '\n{} & {} & {} & {}[...] \\\\'.format(n, data_cupom, data_hora_noticia, noticia[noticia.find('titulo')+8:noticia.find('titulo')+49])
                 a += '\n\\hline'

@@ -1,18 +1,12 @@
-#
-#
-#
-#
-# GRAPHS -----------------------------------------------------------------------
-#
+
 # TIME SERIES GRAPH
-# Função para criar gráfico da variável
 def graph(df, yName, graphName, refName, limit = False, non = False):
     if limit == True:
         if non == False:
-            limitP(df).plot(figsize = (18,9))
+            limitP(df).plot(figsize = (8,5))
         else:
-            limitNP(df).plot(figsize = (18,9))
-    ax = df.plot(figsize = (18,9))
+            limitNP(df).plot(figsize = (8,5))
+    ax = df.plot(figsize = (8,5))
     ax.grid(axis = 'x')
     ax.xaxis.set_major_locator(mdates.YearLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%Y'))
@@ -29,7 +23,8 @@ def graph(df, yName, graphName, refName, limit = False, non = False):
 \\centering
 \\includegraphics[width=\\textwidth]{{graphs/{1}.png}}
 \\end{{figure}}'''.format(graphName, refName))
-    a.close()   
+    a.close()  
+
 # ACF AND PACF GRAPHS
 def funcao(serie, graphName, refName, pacf = False):
     cima = []
@@ -41,12 +36,12 @@ def funcao(serie, graphName, refName, pacf = False):
     a = pd.DataFrame(va)
 
     serieum = pd.Series(stat.acf(serie, alpha = .05)[0])
-    serieum.plot(figsize = (18,9), kind = 'bar')
+    serieum.plot(figsize = (8,5), kind = 'bar')
     plt.plot(a)
     plt.xlabel('Lag')
-    plt.ylabel('Auto-Correlation')
+    plt.ylabel('ACF')
     plt.legend(('97.5%', '2.5%'))
-    plt.savefig('latex/graphs/{}acf'.format(refName), dpi = 200)
+    plt.savefig('graphs/{}acf'.format(refName))
     plt.show()
 
     if pacf == True:
@@ -59,15 +54,15 @@ def funcao(serie, graphName, refName, pacf = False):
         a = pd.DataFrame(va)
 
         serieum = pd.Series(stat.pacf(serie, alpha = .05)[0])
-        serieum.plot(figsize = (18,9), kind = 'bar')
+        serieum.plot(figsize = (8,5), kind = 'bar')
         plt.plot(a)
         plt.xlabel('Lag')
-        plt.ylabel('Partial Auto-Correlation')
+        plt.ylabel('PACF')
         plt.legend(('97.5%', '2.5%'))
-        plt.savefig('latex/graphs/{}pacf'.format(refName), dpi = 200)
+        plt.savefig('graphs/{}pacf'.format(refName))
         plt.show()
     
-    a = open('latex/graphstext/{}acf.txt'.format(refName), 'w')
+    a = open('graphstext/{}acf.txt'.format(refName), 'w')
     a.write('''\\begin{{figure}}[H]
 \\caption{{Auto-Correlation Funcion for {0}}}
 \\label{{fig:{1}acf}}
@@ -77,7 +72,7 @@ def funcao(serie, graphName, refName, pacf = False):
     a.close() 
 
     if pacf == True:
-        a = open('latex/graphstext/{}pacf.txt'.format(refName), 'w')
+        a = open('graphstext/{}pacf.txt'.format(refName), 'w')
         a.write('''\\begin{{figure}}[H]
 \\caption{{Partial Auto-Correlation Funcion for {0}}}
 \\label{{fig:{1}pacf}}
