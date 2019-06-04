@@ -5,27 +5,31 @@
 # GRAPHS -----------------------------------------------------------------------
 #
 # TIME SERIES GRAPH
-def graph(df, seriesName, graphName, refName, limit = False, np = False):
+# Função para criar gráfico da variável
+def graph(df, yName, graphName, refName, limit = False, non = False):
     if limit == True:
-        if np == False:
+        if non == False:
             limitP(df).plot(figsize = (18,9))
         else:
             limitNP(df).plot(figsize = (18,9))
-    df.plot(figsize = (18,9))
+    ax = df.plot(figsize = (18,9))
+    ax.grid(axis = 'x')
+    ax.xaxis.set_major_locator(mdates.YearLocator())
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%Y'))
+    plt.gcf().autofmt_xdate()
     plt.xlabel('Date')
-    plt.ylabel(seriesName)
-    plt.grid(which = 'both', axis = 'x')
-    plt.savefig('latex/graphs/{}'.format(refName), dpi = 200)
+    plt.ylabel(yName)
+    plt.savefig('graphs/{}'.format(refName), dpi = 200)
     plt.show()
-    
-    a = open('latex/graphstext/{}.txt'.format(refName), 'w')
+
+    a = open('graphstext/{}.txt'.format(refName), 'w')
     a.write('''\\begin{{figure}}[H]
 \\caption{{{0}}}
 \\label{{fig:{1}}}
 \\centering
 \\includegraphics[width=\\textwidth]{{graphs/{1}.png}}
 \\end{{figure}}'''.format(graphName, refName))
-    a.close()
+    a.close()   
 # ACF AND PACF GRAPHS
 def funcao(serie, graphName, refName, pacf = False):
     cima = []
