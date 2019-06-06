@@ -1,3 +1,5 @@
+# IMPORT PACKAGES
+from matplotlib import pyplot as plt # graphs
 
 # TIME SERIES GRAPH
 def graph(df, yName, graphName, refName, limit = False, non = False):

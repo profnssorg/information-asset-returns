@@ -1,6 +1,9 @@
-#
-#
-#
+# IMPORT PACKAGES
+import numpy as np # api - array used for series and dataframe data structures
+                   # fundamental package for scientific computing
+import pandas as pd # api - series and datagrame data structues & various 
+                    # data structures and data analysis tools
+from scipy import stats # confidence interval
 #
 # SCRAPPING --------------------------------------------------------------------
 #

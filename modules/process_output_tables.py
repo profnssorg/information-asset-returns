@@ -1,3 +1,7 @@
+# IMPORT PACKAGES
+import statsmodels.tsa.stattools as stat # adf, kpss, shapito white
+import statsmodels.stats.diagnostic as dig #ljung box
+
 # Função para criar tabela de estatisticas decritivas
 def des(series, refName, variables = [], names = [], csd = False):
     b = open('latex/tables/{}.txt'.format(refName), 'w')
@@ -90,7 +94,7 @@ Series & P-value for Ljung-Box Test & P-value for Shapiro-Wilk Test \\\\
     for i in range(len(variables)):
         var = variables[i]
         a += '\n{0} & {1:.3e} & {2:.3e} \\\\'.format(names[i],
-                                                     dig.acorr_ljungbox(var, lags=1)[1][0],
+                                                     dig.acorr_ljungbox(var)[1][39],
                                                      stats.shapiro(var)[1])
         a += '\n\\hline'
     a += '''\n\\end{tabular}

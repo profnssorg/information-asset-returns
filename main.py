@@ -8,21 +8,21 @@ github : https://github.com/profnssorg/information-asset-returns
 #
 # Impoprt (and transform) data
 import os # scrapping - os run command
-import scrapy # scrapping - package
-import numpy as np # api - array used for series and dataframe data structures
+#import scrapy # scrapping - package
+#import numpy as np # api - array used for series and dataframe data structures
                    # fundamental package for scientific computing
-import pandas as pd # api - series and datagrame data structues & various 
+#import pandas as pd # api - series and datagrame data structues & various 
                     # data structures and data analysis tools
 #
 # Transform data
 from arch import arch_model # garch model
-import statsmodels.tsa.stattools as stat # adf, kpss, shapito white
-import statsmodels.stats.diagnostic as dig #ljung box
-from scipy import stats # confidence interval
+#import statsmodels.tsa.stattools as stat # adf, kpss, shapito white
+#import statsmodels.stats.diagnostic as dig #ljung box
+#from scipy import stats # confidence interval
 #
 # Output data
 #	Graphs
-from matplotlib import pyplot as plt # graphs
+#from matplotlib import pyplot as plt # graphs
 #
 #----------------------------------------------------------------IMPORT PACKAGES
 #
@@ -301,7 +301,7 @@ noticias_relevantes = transformar(separar_noticias(juntar(corrigir(datas_do_ano(
                                                                      'presid\\u00eancia']))
 
 a = noticia_para_cada_dia('parnews', oc_out_par, noticias_relevantes)
-b = noticia_para_cada_dia('nonnews', oc_out_non, noticias_relevantes)
+b = noticia_para_cada_dia('nonnews', oc_out_non, noticias_relevantes, np = True)
 #
 #   ----------------------------------------------------- 5 RESULTS
 #
