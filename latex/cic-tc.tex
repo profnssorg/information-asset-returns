@@ -28,7 +28,7 @@
 % \usepackage{palatino}
 % \usepackage{mathptmx}       % p/ usar fonte Adobe Times nas fórmulas
 
-\usepackage[alf,abnt-emphasize=bf]{abntex2cite} % pacote para usar citações abnt
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% pacote para usar citações abnt
 
 \usepackage{nameref}
 
@@ -151,7 +151,7 @@ To my family and friends. % and to whoever contributes to the search for truth
     \item[BM\&F] Commodities and Futures Exchange
     \item[CETIP] Central of Custody and Financial Settlement of Private Securities
     \item[CDI] Inter-Bank Deposit Rate
-    \item[ARCH] Autoregressive Conditional Heteroscedasticity
+    \item[ARCH]	Autoregressive Conditional Heteroscedasticity
     \item[GARCH] General Autoregressive Conditional Heteroscedasticity
     \item[API] Application Programming Interface
     \item[SGS] Time Series Management System
@@ -160,11 +160,12 @@ To my family and friends. % and to whoever contributes to the search for truth
     \item[VAR] Vector Autoregression
     \item[CDS] Conditional Standard Deviation
     \item[OAB] Federal Council of the Brazilian Lawyers Association
-    \item[PSDB] Party of Social Democracy
+    \item[PSDB]	Party of Social Democracy
     \item[PR] Liberal Party
-    \item[OC1] OC1 Exchange Coupon  
+    \item[OC1] OC1 Exchange Coupon	
     \item[DI1] DI1 Exchange Coupon
     \item[EMH] Efficient Market Hypothesis
+    \item[CAPM] Capital Asset Pricing Model
 %    \item[]
 
 \end{listofabbrv}
@@ -233,7 +234,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
 \chapter{The Model} \label{chapter_model}
 
-    Market efficiency, as posed by \citet{fama1970}, suggests that prices fully reflect available information. The hypothesis is a implication of a perfect capital market {(neither transaction or information costs)}, investor risk aversion, and two-parameter return distributions \citet{famamcbeth1973}.
+    Market efficiency, as posed by \citet{fama1970}, suggests that prices fully reflect available information. The hypothesis is a implication of a perfect capital market (neither transaction or information costs), investor risk aversion, and two-parameter return distributions \citet{famamcbeth1973}.
 
     \begin{comment}
         providing accurate signals for resource allocation. Prices should reflect information as it reflects the forecasts of future prices, which should be revised with the arrival of new information.
@@ -241,18 +242,74 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     Tree information subsets define tree forms of market efficiency: for the weak form market efficiency the information set reflected in the price is the historical prices; for the semi-strong form the information set is all publicly available information (including historical prices); and for the strong form the information set is all available information, even if held private. If weak form market efficiency holds, then chartist or technical analysis is useless, and if the semi-strong form holds, then fundamental analysis, founded on public information, is useless \citet{oprean2012}.
 
-    For a brief demonstration of the model, we will consider that equilibrium prices are generated in the two parameter \citet{sharpe1964} world. 
-    Two assumptions about the investor are made: that he acts in the basis of two parameters of the distribution of returns of an asset - its expected value and standard deviation; and that he derives utility from returns and is risk averse, choosing a investment that maximizes his utility. The market is built upon two other assumptions: a common pure rate of interest; and homogeneity of investor expectations. In this world, the equilibrium expected return on a security is a function of it's correlation with a efficient combination of securities.
+    For a brief demonstration of the model, we will consider that equilibrium prices are generated in the two parameter \citet{sharpe1964} world. Two assumptions about the investor are made: that he acts in the basis of two parameters of the distribution of returns of an asset - its expected value and standard deviation; and that he derives utility from returns and disutility from risk. The market is built upon two other assumptions: a common pure rate of interest; and homogeneity of investor expectations, as they agree on expected values, standard deviations, and correlations of the securities. In this world, the equilibrium expected return on a security is a function of it's correlation with a efficient combination of securities.
+    
+    Let $U$ denote the utility of an investor, $E_W$ denote the expected value of a security, and $\sigma_W$ its standard deviation, the utility function of the investor is defined in Equation \ref{eqn:ut1}.
+    
+    \begin{equation}
+        \label{eqn:ut1}
+        U = f(E_W, \sigma_W)
+    \end{equation}
+    
+    As the future value of a security is directly related to its return, the utility function can be defined as in Equantion \ref{eqn:ut2}.
 
-    As the expected return is a function of risk, its mean and variance are independent from other information, what brings us to the random walk model. Let $y_t$ denote the security price at time $t$ and $\psi_t$ denote the information set at time $t$, the random walk model is given by Equation \ref{eqn:efficient}.
+    \begin{equation}
+        \label{eqn:ut2}
+        U = g(E_R, \sigma_R)
+    \end{equation}
+
+    The investor likes return and dislikes risk, therefore the utility function is increasing with security's expected return and decreasing with its standard deviation, as shown in Equations \ref{eqn:der1} and \ref{eqn:der2}.
+    
+    \begin{equation}
+        \label{eqn:der1}
+        \frac{dU}{dE_R} > 0
+    \end{equation}
+
+    \begin{equation}
+        \label{eqn:der2}
+        \frac{dU}{d\sigma_R} < 0
+    \end{equation}
+
+    Let $i$ denote an investor among the population and $r$ the pure rate of interest, the assumption of a common pure rate of interest can be defined in Equation \ref{eqn:r}.
+
+    \begin{equation}
+        \label{eqn:r}
+        r_i = r, \quad \forall i
+    \end{equation}
+
+    Let $a$ and $b$ denote each any security in the market, the assumption of homogeneous expectations can be defined in Equations \ref{eqn:equal_exp}, \ref{eqn:equal_std} and \ref{eqn:equal_cor}.
+
+    \begin{equation}
+        \label{eqn:equal_exp}
+        E_{W_i} = E_W, \quad \forall i
+    \end{equation}
+
+    \begin{equation}
+        \label{eqn:equal_std}
+        \sigma_{W_i} = \sigma_W, \quad \forall i
+    \end{equation}
+
+    \begin{equation}
+        \label{eqn:equal_cor}
+        Cor(W_a, W_b)_i = Cor(W_a, W_b), \quad \forall i
+    \end{equation}
+
+    Let $G$ denote a efficient portfolio, the equilibrium expected return function derived from the assumptions above for any given security can be described in Equation \ref{eqn:exp_ret}.
+
+    \begin{equation}
+        \label{eqn:exp_ret}
+        E_R = r + \frac{Cov(R_W, R_G)}{\sigma_{R_G}} (E_{R_G} - r)
+    \end{equation}
+
+    The model in Equation \ref{eqn:exp_ret} is called Capital Asset Pricing Model (CAPM), and shows that the equilibrium expected return for a security is a function of its risk. The assumption that expected returns adjust immediately to new information, and therefore information can't be used to gain excess returns, implies independence of successive price changes. This leads us to the random walk model. Let $r_t$ denote the security price at time $t$ and $\psi_t$ denote the information set at time $t$, the random walk model is given by Equation \ref{eqn:efficient}.
 
     \begin{equation}
         \label{eqn:efficient}
-        f ( y_t | \psi{t-1} ) \sim f(y_{t-1})
+        f ( r_t | \psi_{t-1} ) \sim f(r_{t-1})
     \end{equation}
 
-    As in this paper we are testing for semi-strong form efficiency, the information subset for our analysis is publicly available information, not only historical prices. 
-    Testing of this form  is executed by testing for the existence of abnormal volatility around the moment when new information was released. The test for abnormal returns can focus on a specific event like \citet{gabrielribeiro2013}, or on a asset during a specific period, testing if the asset was affected by any information of a specific form or source during the period, like \citet{larsenthorsrud2017} and \citet{caporaleetal2015}. Our analysis follow the latter.
+    As in this paper we are testing for semi-strong form efficiency, the information subset for our analysis is publicly available information. The test of efficiency can focus on a specific event like \citet{gabrielribeiro2013}, or can analyze a specific period, and test if information released during the period had effect on a security's price, like \citet{caporaleetal2015}, \citet{mcqueenroley1993}, \citet{larsenthorsrud2017}, \citet{moussaetal2017}, \citet{smales2015} and \citet{marquessantos2016}.
+
 
 \chapter{Methods and Data} \label{chapter_methods_data}
 
