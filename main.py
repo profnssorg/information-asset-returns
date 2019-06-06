@@ -1,3 +1,8 @@
+'''
+
+github : https://github.com/profnssorg/information-asset-returns
+
+'''
 #
 # IMPORT PACKAGES --------------------------------------------------------------
 #
@@ -154,7 +159,7 @@ graph(CupomCambialOC,
 graph(CupomCambialDI,
       'DI1',
       'DI1 Exchange Coupon',
-      'di')
+      'di1')
 des('OC1 and DI1 Exchange Coupons',
     'desocdi',
     [CupomCambialOC, CupomCambialDI],

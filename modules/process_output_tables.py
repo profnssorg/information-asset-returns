@@ -37,7 +37,7 @@ def adf(refName, variables = [], names = []):
     b = open('latex/tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Augmented Dickey-Fuller Test}}
-\\label{{{}}}
+\\label{{tab:{}}}
 \\centering
 \\begin{{tabular}}{{ | c | c | c | }}
 \\hline
@@ -56,10 +56,10 @@ Series & Test Statistic & Critical Value at 5\% Level \\\\
 
 # Teste de KPSS
 def kpss(refName, variables = [], names = []):
-    b = open('tables/{}.txt'.format(refName), 'w')
+    b = open('latex/tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Kwiatkowski–Phillips–Schmidt–Shin Test}}
-\\label{{{}}}
+\\label{{tab:{}}}
 \\centering
 \\begin{{tabular}}{{ | c | c | c | }}
 \\hline
@@ -81,7 +81,7 @@ def ljungShapiro(refName, variables = [], names = []):
     b = open('latex/tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Ljung-Box Test and Shapiro-Wilk Test}}
-\\label{{{}}}
+\\label{{tab:{}}}
 \\centering
 \\begin{{tabular}}{{ | c | c | c | }}
 \\hline
@@ -103,7 +103,7 @@ def shapiro(refName, variables = [], names = []):
     b = open('latex/tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Shapiro-Wilk Test}}
-\\label{{{}}}
+\\label{{tab:{}}}
 \\centering
 \\begin{{tabular}}{{ | c | c | }}
 \\hline
@@ -124,7 +124,7 @@ def tabP(refName, variables = [], names = []):
     b = open('latex/tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Limits from Parametric Analysis}}
-\\label{{{}}}
+\\label{{tab:tab:{}}}
 \\centering
 \\begin{{tabular}}{{ | c | c | c | c | c | }}
 \\hline
@@ -146,7 +146,7 @@ def tabNP(refName, variables = [], names = []):
     b = open('latex/tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Limits from Parametric Analysis}}
-\\label{{{}}}
+\\label{{tab:{}}}
 \\centering
 \\begin{{tabular}}{{ | c | c | c | c | c | }}
 \\hline
@@ -176,7 +176,7 @@ def outside(refName, ec, csd, lim, di = False , np = False):
     else:
         anal = 'Non Parametric'
 
-    b = open('tables/{}.txt'.format(refName), 'w')
+    b = open('latex/tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Days with Abnormal Returns for {} Exchange Coupon by {} Analysis}}
 \\label{{tab:{}}}
@@ -227,7 +227,7 @@ def noticia_para_cada_dia(refName, dias, noticias, np = False):
     else:
         anal = 'Non Parametric'
 
-    b = open('tables/{}.txt'.format(refName), 'w')
+    b = open('latex/ables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{longtable}}{{ | c | c | c | c | }}
 \\caption{{Political News in Days of Abnormal Volatility by {} Analysis}}
 \\label{{tab:{}}}

@@ -13,10 +13,10 @@ def graph(df, yName, graphName, refName, limit = False, non = False):
     plt.gcf().autofmt_xdate()
     plt.xlabel('Date')
     plt.ylabel(yName)
-    plt.savefig('graphs/{}'.format(refName), dpi = 200)
+    plt.savefig('latex/graphs/{}'.format(refName), dpi = 200)
     plt.show()
 
-    a = open('graphstext/{}.txt'.format(refName), 'w')
+    a = open('latex/graphstext/{}.txt'.format(refName), 'w')
     a.write('''\\begin{{figure}}[H]
 \\caption{{{0}}}
 \\label{{fig:{1}}}
@@ -41,7 +41,7 @@ def funcao(serie, graphName, refName, pacf = False):
     plt.xlabel('Lag')
     plt.ylabel('ACF')
     plt.legend(('97.5%', '2.5%'))
-    plt.savefig('graphs/{}acf'.format(refName))
+    plt.savefig('latex/graphs/{}acf'.format(refName))
     plt.show()
 
     if pacf == True:
@@ -59,10 +59,10 @@ def funcao(serie, graphName, refName, pacf = False):
         plt.xlabel('Lag')
         plt.ylabel('PACF')
         plt.legend(('97.5%', '2.5%'))
-        plt.savefig('graphs/{}pacf'.format(refName))
+        plt.savefig('latex/graphs/{}pacf'.format(refName))
         plt.show()
     
-    a = open('graphstext/{}acf.txt'.format(refName), 'w')
+    a = open('latex/graphstext/{}acf.txt'.format(refName), 'w')
     a.write('''\\begin{{figure}}[H]
 \\caption{{Auto-Correlation Funcion for {0}}}
 \\label{{fig:{1}acf}}
@@ -72,7 +72,7 @@ def funcao(serie, graphName, refName, pacf = False):
     a.close() 
 
     if pacf == True:
-        a = open('graphstext/{}pacf.txt'.format(refName), 'w')
+        a = open('latex/graphstext/{}pacf.txt'.format(refName), 'w')
         a.write('''\\begin{{figure}}[H]
 \\caption{{Partial Auto-Correlation Funcion for {0}}}
 \\label{{fig:{1}pacf}}
