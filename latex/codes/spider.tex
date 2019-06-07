@@ -1,0 +1,55 @@
+\begin{lstlisting}[language=Python]
+"""
+
+Nome: Spider G1
+Objetivo: Coletar informaeoes -titulo, texto e data - para cada uma
+das noticias sonbre politica presentes no site do G1
+Autor: Bernardo Paulsen
+Data: 31/03/2019
+Versao: 1.0.0
+Detalhes versao: Tudo certo 
+
+
+O q vai fazer
+    Entrada: "https://g1.globo.com/politica/"
+    Saida: arquivo de texto com informacoes (titulo, data e link)
+    sobre todas as noticias publicadas no site de entrada.
+    Processamento: classe .Spyder vai buscar pelas informacoes
+Planejamento de codigo:
+    Procurar, no site, os links para ir para as paginas das noiticas
+    publicadas, e tambem para ir ate a proxima pagina de noticias.
+    Nas paginas das noticias, coletar titulo, data e link. Na
+    proxima pagina de noticias, repetir o processo. Parar quando
+    houver mais uma proxima pagina.
+
+
+"""
+
+import scrapy
+
+n = 1
+
+class news3(scrapy.Spider):
+    name = 'g1'
+    start_urls = ['https://g1.globo.com/politica/']
+
+    def parse(self, response):
+        global n
+        # follow links to news pages
+        for page in response.xpath('//div/div[2]/div/div/a/@href').getall():
+            yield response.follow(page, self.parse_noticia)
+
+        # follow pagination links
+        n += 1
+        if n <= 2000:
+            next_page = ("https://g1.globo.com/politica/index/feed/pagina-%d.ghtml" % (n))
+            yield response.follow(next_page, self.parse)
+
+    def parse_noticia(self, response):
+        yield {
+            'data': response.xpath('//time/text()')[0].get(),
+            'titulo': response.xpath('//h1/text()')[2].get(),
+            'link': response.url,
+            }
+
+\end{lstlisting}
