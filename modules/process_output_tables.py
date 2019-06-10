@@ -2,9 +2,14 @@
 import statsmodels.tsa.stattools as stat # adf, kpss, shapito white
 import statsmodels.stats.diagnostic as dig #ljung box
 
-# Função para criar tabela de estatisticas decritivas
-def des(series, refName, variables = [], names = [], csd = False):
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
+def des(title, # series names for input in table's title
+        label,
+        series = list(),
+        names = list()):
+    
+    '''TABLE WITH DESCRIPTIVE STATISTICS'''
+    
+    b = open('latex/tables/{}.txt'.format(label), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Descriptive Statistics for {}}}
 \\label{{tab:{}}}
@@ -12,33 +17,28 @@ def des(series, refName, variables = [], names = [], csd = False):
 \\begin{{tabular}}{{ | c | c | c | c | c | }}
 \\hline
 Series & Mean & Standard Deviation & Minimum Value & Maximum Value \\\\
-\\hline \\hline'''.format(series, refName)
-    if csd == False:
-        for i in range(len(variables)):
-            var = variables[i]
-            a += '\n{0} & {1:.3f} & {2:.3f} & {3:.3f} & {4:.3f} \\\\'.format(names[i],
-                                                                             var.mean()[0],
-                                                                             var.std()[0],
-                                                                             var.min()[0],
-                                                                             var.max()[0])
-            a += '\n\\hline'
-    else:
-        for i in range(len(variables)):
-            var = variables[i]
-            a += '\n{0} & {1:.3f} & {2:.3f} & {3:.3f} & {4:.3f} \\\\'.format(names[i],
-                                                                             var.mean(),
-                                                                             var.std(),
-                                                                             var.min(),
-                                                                             var.max())
-            a += '\n\\hline'
+\\hline \\hline'''.format(title, label)
+    for i in range(len(series)):
+        var = series[i]
+        a += '\n{0} & {1:.3f} & {2:.3f} & {3:.3f} & {4:.3f} \\\\'.format(names[i],
+                                                                         var.mean(),
+                                                                         var.std(),
+                                                                         var.min(),
+                                                                         var.max())
+        a += '\n\\hline'
+        a += '\n\\hline'
     a += '''\n\\end{tabular}
 \\end{table}'''
     b.write(a)
     b.close()
 
-# Teste de Augmented Dickey-Fuller
-def adf(refName, variables = [], names = []):
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
+def adf(label = str(),
+        series = list(),
+        names = list()):
+    
+    '''TABLE FOR AUGMENTED DICKEY-FULLER TEST'''
+    
+    b = open('latex/tables/{}.txt'.format(label), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Augmented Dickey-Fuller Test}}
 \\label{{tab:{}}}
@@ -46,9 +46,9 @@ def adf(refName, variables = [], names = []):
 \\begin{{tabular}}{{ | c | c | c | }}
 \\hline
 Series & Test Statistic & Critical Value at 5\% Level \\\\
-\\hline \\hline'''.format(refName)
-    for i in range(len(variables)):
-        adf = stat.adfuller(variables[i].valor)
+\\hline \\hline'''.format(label)
+    for i in range(len(series)):
+        adf = stat.adfuller(series[i][1:])
         a += '\n{0} & {1:.3e} & {2:.3e} \\\\'.format(names[i],
                                                      adf[0],
                                                      adf[4]['5%'])
@@ -58,9 +58,13 @@ Series & Test Statistic & Critical Value at 5\% Level \\\\
     b.write(a)
     b.close()
 
-# Teste de KPSS
-def kpss(refName, variables = [], names = []):
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
+def kpss(label = str(),
+         variables = list(),
+         names = list()):
+    
+    '''TABLE FOR KWIATKOWSKI-PHILLIPS-SCHMIDT-SHIN TEST'''
+    
+    b = open('latex/tables/{}.txt'.format(label), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Kwiatkowski–Phillips–Schmidt–Shin Test}}
 \\label{{tab:{}}}
@@ -68,9 +72,9 @@ def kpss(refName, variables = [], names = []):
 \\begin{{tabular}}{{ | c | c | c | }}
 \\hline
 Series & Test Statistic & Critical Value at 5\% Level \\\\
-\\hline \\hline'''.format(refName)
+\\hline \\hline'''.format(label)
     for i in range(len(variables)):
-        kpss = stat.kpss(variables[i].valor)
+        kpss = stat.kpss(variables[i][1:])
         a += '\n{0} & {1:.3e} & {2:.3e} \\\\'.format(names[i],
                                                      kpss[0],
                                                      kpss[3]['5%'])
@@ -80,9 +84,13 @@ Series & Test Statistic & Critical Value at 5\% Level \\\\
     b.write(a)
     b.close()
 
-# Testes de Ljung-Box e Shapiro-Wilk
-def ljungShapiro(refName, variables = [], names = []):
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
+def ljung_shapiro(label = str(),
+                 variables = list(),
+                 names = list()):
+    
+    '''TABLE FOR LJUNG-BOX AND SHAPIRO-WILK TESTS'''
+    
+    b = open('latex/tables/{}.txt'.format(label), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Ljung-Box Test and Shapiro-Wilk Test}}
 \\label{{tab:{}}}
@@ -90,9 +98,9 @@ def ljungShapiro(refName, variables = [], names = []):
 \\begin{{tabular}}{{ | c | c | c | }}
 \\hline
 Series & P-value for Ljung-Box Test & P-value for Shapiro-Wilk Test \\\\
-\\hline \\hline'''.format(refName)
+\\hline \\hline'''.format(label)
     for i in range(len(variables)):
-        var = variables[i]
+        var = variables[i][1:]
         a += '\n{0} & {1:.3e} & {2:.3e} \\\\'.format(names[i],
                                                      dig.acorr_ljungbox(var)[1][39],
                                                      stats.shapiro(var)[1])
@@ -102,9 +110,13 @@ Series & P-value for Ljung-Box Test & P-value for Shapiro-Wilk Test \\\\
     b.write(a)
     b.close()
 
-# Testes de Ljung-Box e Shapiro-Wilk
-def shapiro(refName, variables = [], names = []):
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
+def shapiro(label = str(),
+            variables = list(),
+            names = list()):
+    
+    '''TABLE FOR SHAPIRO-WILK TEST'''
+    
+    b = open('latex/tables/{}.txt'.format(label), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Shapiro-Wilk Test}}
 \\label{{tab:{}}}
@@ -112,60 +124,26 @@ def shapiro(refName, variables = [], names = []):
 \\begin{{tabular}}{{ | c | c | }}
 \\hline
 Series & P-value \\\\
-\\hline \\hline'''.format(refName)
+\\hline \\hline'''.format(label)
     for i in range(len(variables)):
-        var = variables[i]
+        var = variables[i][1:]
         a += '\n{0} & {1:.3e} \\\\'.format(names[i],
-                                           dig.acorr_ljungbox(var, lags=1)[1][0])
+                                           stats.shapiro(var)[1])
         a += '\n\\hline'
     a += '''\n\\end{tabular}
 \\end{table}'''
     b.write(a)
     b.close()
 
-# Tabela com limites da análise paramétrica
-def tabP(refName, variables = [], names = []):
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
-    a = '''\\begin{{table}}[H]
-\\caption{{Limits from Parametric Analysis}}
-\\label{{tab:tab:{}}}
-\\centering
-\\begin{{tabular}}{{ | c | c | c | c | c | }}
-\\hline
-Series & Lower Limit & Upper Limit \\\\
-\\hline \\hline'''.format(refName)
-    for i in range(len(variables)):
-        var = variables[i]
-        a += '\n{0} & {1:.3f} & {2:.3f} \\\\'.format(names[i],
-                                                     var.LowerLimit[0],
-                                                     var.UpperLimit[0])
-        a += '\n\\hline'
-    a += '''\n\\end{tabular}
-\\end{table}'''
-    b.write(a)
-    b.close()
 
-# Tabela com média dos limites da análise nãp paramétrica
-def tabNP(refName, variables = [], names = []):
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
-    a = '''\\begin{{table}}[H]
-\\caption{{Limits from Parametric Analysis}}
-\\label{{tab:{}}}
-\\centering
-\\begin{{tabular}}{{ | c | c | c | c | c | }}
-\\hline
-Series & Mean of Lower Limits & Mean of Upper Limits \\\\
-\\hline \\hline'''.format(refName)
-    for i in range(len(variables)):
-        var = variables[i]
-        a += '\n{0} & {1:.3f} & {2:.3f} \\\\'.format(names[i],
-                                                     var.LowerLimit.mean(),
-                                                     var.UpperLimit.mean())
-        a += '\n\\hline'
-    a += '''\n\\end{tabular}
-\\end{table}'''
-    b.write(a)
-    b.close()
+
+
+
+#
+#
+# ----- OLD CODE -----
+#
+#
 
 def outside(refName, ec, csd, lim, di = False , np = False):
     dias = []

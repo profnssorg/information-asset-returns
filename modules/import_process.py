@@ -3,6 +3,7 @@ import numpy as np # api - array used for series and dataframe data structures
                    # fundamental package for scientific computing
 import pandas as pd # api - series and datagrame data structues & various 
                     # data structures and data analysis tools
+from arch import arch_model # garch model
 from scipy import stats # confidence interval
 #
 # SCRAPPING --------------------------------------------------------------------
@@ -134,53 +135,106 @@ def transformar(lista):
 #
 # TIME SERIES ------------------------------------------------------------------
 #
-# CREATE DATAFRAME FROM API LINK
-def serie(numero, DataInicial, DataFinal):
-    url = 'http://api.bcb.gov.br/dados/serie/bcdata.sgs.{}/dados?formato=csv&&dataInicial={}&dataFinal={}'.format(numero, data_inicial, data_final)
-    return(pd.read_csv(url, sep = ';', index_col = 0, decimal = ','))
-# EXCHANGE COUPON
-def cupomCambial(juros, usd):
-    CupomCambialValor = []
-    CupomCambialData = []
-    for i in range(len(usd.valor)):
-        if i >= 1:
-            valor = (1+ juros.valor[i]/100)/(usd.valor[i]/usd.valor[i-1])-1
-            CupomCambialValor.append(valor)
-            CupomCambialData.append(usd.index[i])
-    v = {'valor': CupomCambialValor}        
-    CupomCambial = pd.DataFrame(v, index = CupomCambialData)
-    return(CupomCambial)
-# LIMITS - PARAMETRIC
-def limitP(v):
-    mais = []
-    menos = []
-    data = []
-    maior = v.mean() + (stats.norm.ppf(q = 0.975) * (v.std()))
-    menor = v.mean() - (stats.norm.ppf(q = 0.975) * (v.std()))
-    for i in range(len(v.values)):
-        mais.append(maior)
-        menos.append(menor)
-        data.append(v.index[i])
-    va = {'UpperLimit': mais, 'LowerLimit': menos}        
-    T = pd.DataFrame(va, index = data)
-    return(T)
-# LIMITS - NON PARAMETRIC
-def limitNP(v):
-    mais = []
-    menos = []
-    valor = []
-    data = []
-    mean = v.rolling(window = 63, min_periods = 0, center = True).mean()
-    std = v.rolling(window = 63, min_periods = 0, center = True).std()
-    for i in range(len(v.values)):
-        valor.append(v[i])
-        array = pd.Series(valor)
-        data.append(v.index[i])
-        mais.append(mean[i] + (stats.norm.ppf(q = 0.975) * (std[i])))
-        menos.append(mean[i] - (stats.norm.ppf(q = 0.975) * (std[i])))
-    va = {'UpperLimit': mais, 'LowerLimit': menos}        
-    T = pd.DataFrame(va, index = data)
-    return(T)
+def bacen_sgs_api(names = list(), # names to be assign to series
+                  numbers = list(), # series' numbers on SGS
+                  initial_date = str(),
+                  final_date = str()):
+    
+    '''CREATES DATAFRAME FROM BACEN-SGS SERIES'''
+
+    for i in range(len(names)):
+        name = str(names[i])
+        url = 'http://api.bcb.gov.br/dados/serie/bcdata.sgs.{}/dados?formato=csv&&dataInicial={}&dataFinal={}'.format(numbers[i], initial_date, final_date)
+        df = pd.read_csv(url, sep = ';', index_col = 0, parse_dates = [0], infer_datetime_format = True, decimal = ',')
+        if i == 0:
+            DF = pd.DataFrame({name: df.valor},
+                              index = df.index)
+        else:
+            DF[name] = df.valor
+    return(DF)
+def exchange_coupon(df = pd.DataFrame(), # DataFrame containing the Series for the exchange coupon
+                  dol = int(), # column number of exchange rate Series
+                  rs = list(), # columns numbers for interest rates Series (min 1 number, if > 1 then more than one measure of exchange coupon is generated)
+                  names = list()): # names for exchange coupons
+    
+    '''APPENDS EXCHANGE COUPON TO DATAFRAME'''
+    
+    usd = df[df.columns[dol]]
+    for e in range(len(rs)):
+        r = df[df.columns[rs[e]]]
+        name = names[e]
+        arr = np.array(list())
+        for i in range(len(usd)):
+            if i == 0:
+                arr = np.append(arr, np.NaN)
+            else:
+                arr = np.append(arr, (1+ r[i]/100)/(usd[i]/usd[i-1]))
+        df[name] = arr
+def garch(df = pd.DataFrame(), # DataFrame containing the Series 
+          cols = list()): # columns numbers of Series
+    
+    '''APPENDS GARCH'S CSD AND RESIDUALS TO DATAFRAME'''
+    
+    for i in range(len(cols)):
+        name = df.columns[cols[i]]
+        fitted_model = arch_model(df[name][1:]).fit()
+        df['{}Csd'.format(name)] = fitted_model.conditional_volatility
+        df['{}Res'.format(name)] = fitted_model.resid
+
+def limits(df = pd.DataFrame(), # DataFrame containing the Series
+           cols = list()): # columns numbers of Series
+    
+    '''APPENDS PARAMETRIC AND NON PARAMETRIC LIMITS TO DATAFRAME'''
+    
+    def create_par(up = True):
+        
+        '''RETURNS ARRAY OF PARAMETRIC LIMIT (UPPER OR LOWER)'''
+        
+        mean = series.mean()
+        std = series.std()
+        if up == True:
+            value = mean + stats.norm.ppf(q = 0.975) * (std)
+        else:
+            value = mean - stats.norm.ppf(q = 0.975) * (std)
+        arr = np.array(list())
+        for i in range(len(series)):
+            if i == 0:
+                arr = np.append(arr, np.NaN)
+            else:
+                arr = np.append(arr, value)
+        return(arr)
+
+    def create_non(up = True):
+
+        '''RETURNS ARRAY OF NON PARAMETRIC LIMIT (UPPER OR LOWER)'''
+        
+        mean = series.rolling(window = 63, min_periods = 0, center = True).mean()
+        std = series.rolling(window = 63, min_periods = 0, center = True).std()
+        arr = np.array(list())
+        for i in range(len(mean)):
+            if up == True:
+                value = mean[i] + stats.norm.ppf(q = 0.975) * (std[i])
+            else:
+                value = mean[i] - stats.norm.ppf(q = 0.975) * (std[i])
+            if i == 0:
+                arr = np.append(arr, np.NaN)
+            else:
+                arr = np.append(arr, value)
+        return(arr)
+    
+    for e in range(len(cols)):
+        name = df.columns[cols[e]]
+        series = df[name]
+        # PARAMETRIC
+        # ----UPPER
+        df['{}ParUp'.format(name)] = create_par(up=True)
+        # ----LOWER 
+        df['{}ParLo'.format(name)] = create_par(up=False)
+        # NON PARAMETRIC
+        # ----UPPER
+        df['{}NonUp'.format(name)] = create_non(up = True)
+        # ----LOWER
+        df['{}NonLo'.format(name)] = create_non(up = False)
 #
 #--------------------------------------------------------------------TIME SERIES
 #
