@@ -129,6 +129,7 @@ def transformar(lista):
                 a = a.replace(asci[i], utf[i])
         final.append(a)
     return(final)
+
 #
 #----------------------------------------------------------------------SCRAPPING
 #

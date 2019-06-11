@@ -2,8 +2,8 @@
 import statsmodels.tsa.stattools as stat # adf, kpss, shapito white
 import statsmodels.stats.diagnostic as dig #ljung box
 
-def des(title, # series names for input in table's title
-        label,
+def des(title = str(), # series names for input in table's title
+        label = str(),
         series = list(),
         names = list()):
     
@@ -135,30 +135,71 @@ Series & P-value \\\\
     b.write(a)
     b.close()
 
-
-
-
-
-#
-#
-# ----- OLD CODE -----
-#
-#
-
-def outside(refName, ec, csd, lim, di = False , np = False):
-    dias = []
+def limitstab(label = str(),
+              upper_limits = list(),
+              lower_limits = list(),
+              names = list(),
+              par = True):
     
+    '''TABLE WITH LIMITS'''
+    
+    if par == True:
+        title = 'Parametric'
+        up = 'Upper Limit'
+        lo = 'Lower Limit'
+    else:
+        title = 'Non Parametric'
+        up = 'Mean of Upper Limits'
+        lo = 'Mean of Lower Limits'
+        
+    b = open('tables/{}.txt'.format(label), 'w')
+    a = '''\\begin{{table}}[H]
+\\caption{{Limits from {} Analysis}}
+\\label{{tab:{}}}
+\\centering
+\\begin{{tabular}}{{ | c | c | c | c | c | }}
+\\hline
+Series & {} & {} \\\\
+\\hline \\hline'''.format(title, label, up, lo)
+    for i in range(len(upper_limits)):
+        upper = upper_limits[i]
+        lower = lower_limits[i]
+        a += '\n{0} & {1:.3f} & {2:.3f} \\\\'.format(names[i],
+                                                     upper.mean(),
+                                                     lower.mean())
+        a += '\n\\hline'
+    a += '''\n\\end{tabular}
+\\end{table}'''
+    b.write(a)
+    b.close()
+
+def outside(label = str(),
+            df = pd.DataFrame(),
+            ec = str(),
+            csd = str(),
+            limits = list(),
+            di = False ,
+            non = False):
+    
+    '''TABLE WITH DAYS WITH ABNORMAL VOLATILITY'''
+    
+    exc_cou = df[ec]
+    con_std = df[csd]
+    upp_lim = df[limits[0]]
+    low_lim = df[limits[1]]
+
+    dias = []
     if di == False:
         cupom = 'OC1'
     else:
         cupom = 'DI1'
 
-    if np == False:
+    if non == False:
         anal = 'Parametric'
     else:
         anal = 'Non Parametric'
 
-    b = open('latex/tables/{}.txt'.format(refName), 'w')
+    b = open('tables/{}.txt'.format(label), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Days with Abnormal Returns for {} Exchange Coupon by {} Analysis}}
 \\label{{tab:{}}}
@@ -166,30 +207,20 @@ def outside(refName, ec, csd, lim, di = False , np = False):
 \\begin{{tabular}}{{ | c | c | c | c | c | c |}}
 \\hline
 & Date & Exchange Coupon & CSD & Lower Limit & Upper Limit \\\\
-\\hline \\hline'''.format(cupom, anal, refName)
+\\hline \\hline'''.format(cupom, anal, label)
     n = 0
-    for i in range(len(csd.index)):
-        poxa = csd.index[i]
-        date = '{}/{}/{}'.format(str(poxa)[:4], str(poxa)[5:7], str(poxa)[8:10])
-        if csd[i] > lim.UpperLimit[i]:
+    for i in range(len(con_std.index)):
+        if con_std[i] > upp_lim[i] or con_std[i] < low_lim[i]:
+            poxa = con_std.index[i]
+            date = '{}/{}/{}'.format(str(poxa)[:4], str(poxa)[5:7], str(poxa)[8:10])
             n += 1
-            dias.append(lim.index[i])
+            dias.append(upp_lim.index[i])
             a += '\n{0} & {1} & {2:.3f} & {3:.3f} & {4:.3f} & {5:.3f}\\\\'.format(n,
                                                                                   date,
-                                                                                  ec.valor[i],
-                                                                                  csd[i],
-                                                                                  lim.LowerLimit[i],
-                                                                                  lim.UpperLimit[i])
-            a += '\n\\hline'
-        elif csd[i] < lim.LowerLimit[i]:
-            n += 1
-            dias.append(lim.index[i])
-            a += '\n{0} & {1} & {2:.3f} & {3:.3f} & {4:.3f} & {5:.3f}\\\\'.format(n,
-                                                                                  csd.index[i],
-                                                                                  ec.valor[i],
-                                                                                  csd[i],
-                                                                                  lim.LowerLimit[i],
-                                                                                  lim.UpperLimit[i])
+                                                                                  exc_cou[i],
+                                                                                  con_std[i],
+                                                                                  low_lim[i],
+                                                                                  upp_lim[i])
             a += '\n\\hline'
     a += '''\n\\end{tabular}
 \\end{table}'''
@@ -197,7 +228,6 @@ def outside(refName, ec, csd, lim, di = False , np = False):
     b.close()
     return(dias)
 
-# pega os dias e as noticias selecionadas e exporta uma tabela com as noticias para cada dia de volatilidade anormal
 def noticia_para_cada_dia(refName, dias, noticias, np = False):
     diass = list()
     for poxa in dias:
@@ -209,7 +239,7 @@ def noticia_para_cada_dia(refName, dias, noticias, np = False):
     else:
         anal = 'Non Parametric'
 
-    b = open('latex/ables/{}.txt'.format(refName), 'w')
+    b = open('tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{longtable}}{{ | c | c | c | c | }}
 \\caption{{Political News in Days of Abnormal Volatility by {} Analysis}}
 \\label{{tab:{}}}
