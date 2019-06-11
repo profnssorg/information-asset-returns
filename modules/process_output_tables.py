@@ -268,4 +268,42 @@ def noticia_para_cada_dia(refName, dias, noticias, np = False):
     b.close()
     return(lista)
 
+def out_and_news():
+    
+    oc_out_non = outside('ocnonout',
+                         BASE,
+                         'Oc1',
+                         'Oc1Csd',
+                         ['Oc1CsdNonUp', 'Oc1CsdNonLo'],
+                         di = False,
+                         non = True)
 
+    di_out_non = outside('dinonout',
+                         BASE,
+                         'Di1',
+                         'Di1Csd',
+                         ['Di1CsdNonUp', 'Di1CsdNonLo'],
+                         di = True,
+                         non = True)
+    
+    noticias_relevantes = transformar(separar_noticias(juntar(corrigir(datas_do_ano(),
+                                                                       BASE.Ptax),
+                                                              proximodia(arrumar(noticias('noticias.json')),
+                                                              lista_datas(corrigir(datas_do_ano(), BASE.Ptax)))),
+                                                                    ['incerteza',
+                                                                     'mercado',
+                                                                     'economia',
+                                                                     'd\\u00f3lar',
+                                                                     'selic',
+                                                                     'cdi',
+                                                                     'c\\u00e2mara',
+                                                                     'senado'
+                                                                     'stf'
+                                                                     'superior tribunal federal'
+                                                                     'tcu',
+                                                                     'tribunal de contas da uni\\u00e3o',
+                                                                     'presidente',
+                                                                     'presid\\u00eancia']))
+    
+    noticia_para_cada_dia('parnews', oc_out_par, noticias_relevantes)
+    noticia_para_cada_dia('nonnews', oc_out_non, noticias_relevantes)
