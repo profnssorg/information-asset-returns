@@ -169,7 +169,7 @@ def exchange_coupon(df = pd.DataFrame(), # DataFrame containing the Series for t
             if i == 0:
                 arr = np.append(arr, np.NaN)
             else:
-                arr = np.append(arr, (1+ r[i]/100)/(usd[i]/usd[i-1]))
+                arr = np.append(arr, ((1+ r[i]/100)/(usd[i]/usd[i-1])-1))
         df[name] = arr
 def garch(df = pd.DataFrame(), # DataFrame containing the Series 
           cols = list()): # columns numbers of Series

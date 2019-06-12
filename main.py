@@ -141,13 +141,13 @@ graph([BASE.Di1Res],
       'Residuals of DI1\'s GARCH',
       'dires')
 
-acf_pacf(BASE.Oc1, 'OC1 Exchange Coupon', 'oc')
+acf_pacf(BASE.Oc1, 'OC1 Exchange Coupon', 'oc', , True)
 
-acf_pacf(BASE.Di1, 'DI1 Exchange Coupon', 'di')
+acf_pacf(BASE.Di1, 'DI1 Exchange Coupon', 'di', , True)
 
-acf_pacf(BASE.Oc1Res, 'Residuals of OC1', 'ocres', True)
+acf_pacf(BASE.Oc1Res, 'Residuals of OC1', 'ocres')
 
-acf_pacf(BASE.Di1Res, 'Residuals of DI1', 'dires', True)
+acf_pacf(BASE.Di1Res, 'Residuals of DI1', 'dires')
 
 
 #		4_2_3 VOLATILITY ESTIMATE -------------------------------------

@@ -26,7 +26,6 @@ Series & Mean & Standard Deviation & Minimum Value & Maximum Value \\\\
                                                                          var.min(),
                                                                          var.max())
         a += '\n\\hline'
-        a += '\n\\hline'
     a += '''\n\\end{tabular}
 \\end{table}'''
     b.write(a)
@@ -152,7 +151,7 @@ def limitstab(label = str(),
         up = 'Mean of Upper Limits'
         lo = 'Mean of Lower Limits'
         
-    b = open('tables/{}.txt'.format(label), 'w')
+    b = open('latex/tables/{}.txt'.format(label), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Limits from {} Analysis}}
 \\label{{tab:{}}}
@@ -199,7 +198,7 @@ def outside(label = str(),
     else:
         anal = 'Non Parametric'
 
-    b = open('tables/{}.txt'.format(label), 'w')
+    b = open('latex/tables/{}.txt'.format(label), 'w')
     a = '''\\begin{{table}}[H]
 \\caption{{Days with Abnormal Returns for {} Exchange Coupon by {} Analysis}}
 \\label{{tab:{}}}
@@ -239,7 +238,7 @@ def noticia_para_cada_dia(refName, dias, noticias, np = False):
     else:
         anal = 'Non Parametric'
 
-    b = open('tables/{}.txt'.format(refName), 'w')
+    b = open('latex/tables/{}.txt'.format(refName), 'w')
     a = '''\\begin{{longtable}}{{ | c | c | c | c | }}
 \\caption{{Political News in Days of Abnormal Volatility by {} Analysis}}
 \\label{{tab:{}}}
