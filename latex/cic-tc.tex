@@ -20,6 +20,7 @@
 
 \usepackage{subfiles} % para importar arquivos de texto de outra pasta
 
+
 \usepackage{longtable} % para tabelas em mais de uma página
 % Necessário para incluir figuras
 \usepackage{graphicx}         % pacote para importar figuras
@@ -31,6 +32,7 @@
 \usepackage[alf,abnt-emphasize=bf]{abntex2cite} % pacote para usar citações abnt
 
 \usepackage{nameref}
+
 
 % 
 % Informações gerais
@@ -126,7 +128,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 % resumo na língua do documento
 % manter 500 palavras
 \begin{abstract}
-    We investigate whether political news affect the exchange coupon in Brazil, in a period ranging from September 9, 2016, through April 16, 2019. Our sample of news was collected via web scrapping, which we applied on a Brazilian news portal. We use two measures for the exchange coupon, and we apply a GARCH model to estimate conditional volatility, which we filter with both a parametric and a non parametric approach. The results from the parametric analysis indicate that the exchange coupon was affected by the corruption scandal of President Temer (May 17, 2017), the annoucement of Jair Bolsonaro as candidate for the federal presidency (July 22, 2018), the first round of the presidential elections (October 8, 2018), and the announcement of changes to the Pension Reform (January 4, 2019). The results from the non parametric analysis indicate that, besides the events above, the exchange coupon was also affected by news related to the Labour Reform (March 17, 2017), to the impeachment requests of President Temer following the corruption scandal (August 17 and October 25, 2017), and to the elections for the Chamber of Deputies' presidency (January 8 and February 1st, 2019).
+    We investigate whether political news affect the exchange coupon in Brazil, in a period ranging from September 9, 2016, through April 16, 2019. Our sample of news was collected via web scrapping, which we applied on a Brazilian news portal. We use two measures for the exchange coupon, and we apply a GARCH model to estimate conditional volatility, which we filter with both a parametric and a non parametric approach. The results from the parametric analysis indicate that the exchange coupon was affected by the corruption scandal of President Temer (May 17, 2017), the annoucement of Jair Bolsonaro as candidate for the federal presidency (July 23, 2018), the first round of the presidential elections (October 8, 2018), and the announcement of changes to the Pension Reform (January 4, 2019). The results from the non parametric analysis indicate that, besides the events above, the exchange coupon was also affected by news related to the Labour Reform (March 17, 2017), to the impeachment requests of President Temer following the corruption scandal (August 17 and October 25, 2017), and to the elections for the Chamber of Deputies' presidency (January 8 and February 1st, 2019).
 \end{abstract}
 
 
@@ -312,19 +314,19 @@ To my family and friends. % and to whoever contributes to the search for truth
 
 \section{Data} \label{chapter_data}
 
-    Based on data availability, our news sample begins at September 27, 2016, the first date for which there were political news available in the scrapped website. Our exchange rate and interest rates samples begin one day earlier, to allow for the exchange coupon series to begin with the news sample. All samples end at May 16, 2019.
+    Based on data availability, our news sample begins at November 24, 2016, the first date for which there were political news available in the scrapped website. Our exchange rate and interest rates samples begin one day earlier, to allow for the exchange coupon series to begin with the news sample. All samples end at May 16, 2019.
 
 \subsection{Political News} \label{chapter_political_news}
     
-    We gathered information on political news by applying web scrapping to a online news portal. The scrapping was made in the political section of G1, a Brazilian news portal maintained by Grupo Globo, a conglomerate based in Rio de Janeiro, that provides content from Grupo Globo's television channels, radio stations, newspapers and magazines, besides it's own content. The scrapping was executed at May 17, 2019, and resulted in a sample of 17.836 news over 896 days. The dollar market closes at 6 pm, therefore all news after this time were pushed to the subsequent day, and the news from weekdays and holidays were pushed to the closest subsequent business day.
+    We gathered information on political news by applying web scrapping to a online news portal. The scrapping was made in the political section of G1, a Brazilian news portal maintained by Grupo Globo, a conglomerate based in Rio de Janeiro, that provides content from Grupo Globo's television channels, radio stations, newspapers and magazines, besides it's own content. The scrapping was executed at May 17, 2019, and resulted in a sample of 17.836 news over 837 days. The dollar market closes at 6 pm, therefore all news after this time were pushed to the subsequent day, and the news from weekdays and holidays were pushed to the closest subsequent business day.
 
-    To find political events that could impact the Exchange Coupon, we follow \citet{bbb} as we searched our headlines sample for news that contained keywords related to uncertainty, the exchange coupon, and federal government matters. The keywords were: related to uncertainty, 'incerteza', 'mercado' and 'economia' (uncertainty, market, economy); related to the components of the exchange coupon, 'dólar', 'selic' and 'cdi' (dollar, Selic, DI) ; and related to federal government matters, 'presidente', 'presidência', 'câmara', 'senado', 'tribunal de contas da união', 'tcu', 'superior tribunal federal' and 'stf' (president, presidency, chamber (as in Chamber of Deputies), senate, Federal Accountability Office and its initials, and Supreme Court and its initials). The search resulted in a sample of 2.333 news over 855 days. The final sample is 13\% the size of the unfiltered sample in terms of number of news, therefore, we excluded 87\% of the initial sample as it was composed of political news unrelated to federal political matters.
+    To find political events that could impact the Exchange Coupon, we follow \citet{bbb} as we searched our headlines sample for news that contained keywords related to uncertainty, the exchange coupon, and federal government matters. The keywords were: related to uncertainty, 'incerteza', 'mercado' and 'economia' (uncertainty, market, economy); related to the components of the exchange coupon, 'dólar', 'selic' and 'cdi' (dollar, Selic, DI) ; and related to federal government matters, 'presidente', 'presidência', 'câmara', 'senado', 'tribunal de contas da união', 'tcu', 'superior tribunal federal' and 'stf' (president, presidency, chamber (as in Chamber of Deputies), senate, Federal Accountability Office and its initials, and Supreme Court and its initials). The search resulted in a sample of 2.333 news. The final sample is 13\% the size of the unfiltered sample in terms of number of news, therefore, we excluded 87\% of the initial sample as it was composed of political news unrelated to federal political matters.
 
 \subsection{Exchange Coupon} \label{chapter_exchange_coupon}
 
     In order to obtain the series for the exchange coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate PTAX 800 (PTAX), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank deposit rate (DI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through it's Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day.
     
-    Our samples range from September 26, 2016 to May 16, 2019. They begin shortly after the end of the impeachment process of President Dilma Rousseff, at August 31, when President Michel Temer (Ms Dilma's Vice President) took office after three months as Interim President. This happened during the largest economic crisis in Brazilian history, with the fourth trimester of 2016 being the last from a series of eleven in which the Gross Domestic Product decreased. The remaining period from our sample saw economic stagnation. Mr Temer's presidency was marked by reforms - like the Labour Reform, which successfully passed, and the Pension Reform, which was not successful -, and by a corruption scandal related to Operation Car Wash, a investigation on money laundry involving Brazilian politicians, which was very present in the media since even before his presidency. At October 2018 presidential elections were held, and Jair Bolsonaro was elected. The new president took office with he's main focus as the Pension Reform, which was proposed by the preceding president, Mr. Temer, and was (and still is by the time this is being written) awaiting for approval.
+    Our samples range from November 23, 2016 to May 16, 2019. They begin shortly after the end of the impeachment process of President Dilma Rousseff, at August 31, when President Michel Temer (Ms Dilma's Vice President) took office after three months as Interim President. This happened during the largest economic crisis in Brazilian history, with the fourth trimester of 2016 being the last from a series of eleven in which the Gross Domestic Product decreased. The remaining period from our sample saw economic stagnation. Mr Temer's presidency was marked by reforms - like the Labour Reform, which successfully passed, and the Pension Reform, which was not successful -, and by a corruption scandal related to Operation Car Wash, a investigation on money laundry involving Brazilian politicians, which was very present in the media since even before his presidency. At October 2018 presidential elections were held, and Jair Bolsonaro was elected. The new president took office with he's main focus as the Pension Reform, which was proposed by the preceding president, Mr. Temer, and was (and still is by the time this is being written) awaiting for approval.
     
 
     Figure \ref{fig:ptax} shows the exchange rate (PTAX) series , Figure \ref{fig:selic} shows the referential rate of the Special Settlement and Custody System (Selic) series, and Figure \ref{fig:di} shows the inter-bank deposits rate (DI) series. The descriptive statistics for the series are shown in Table \ref{tab:desptaxselicdi}.
@@ -341,7 +343,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     \begin{equation}
         \label{eqn:coupon}
-        ExchangeCoupon_t = \frac{1 + \frac{InterestRate_t}{100}}{\frac{ExchangeRate_t}{ExchangeRate_t-1}}
+        ExchangeCoupon_t = \frac{1 + \frac{InterestRate_t}{100}}{\frac{ExchangeRate_t}{ExchangeRate_{t-1}}} - 1
     \end{equation}
 
     Figure \ref{fig:oc} shows the OC1 exchange coupon series, Figure \ref{fig:di} shows the DI1 exchange coupon series, and Table \ref{tab:desocdi} shows the descriptive statistics for both series.
@@ -395,7 +397,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     $$\beta_i \geq 0, \quad  i=1,...,p$$
 
-    As we can see above, if $p = 0$ than it becomes a ARCH process. If $q = 0$ than the process is white noise. We will use $h_t$, the Conditional Standard Deviation, as a estimate for the exchange coupon's standard deviation.
+    As we can see above, if $p = 0$ than it becomes a ARCH process. If $q = 0$ than the process is white noise. We will use $h_t$, the Conditional Standard Deviation, as a estimate for the exchange coupon's standard deviation at time $t$.
 
 \subsection{Estimation} \label{chapter_estimation}
 
@@ -435,7 +437,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     \subfile{tables/descsd.txt}
 
-    We consider abnormal volatility every value outside the 95\% confidence interval. We used both a  and a non parametric analysis to filter for abnormal volatility. In the former, we assume a two-parameter distribution for the population, while in the latter we do not make this assumption.
+    We consider abnormal volatility every value outside the 95\% confidence interval. We used both a parametric and a non parametric analysis to filter for abnormal volatility. In the former, we assume a two-parameter distribution for the population, while in the latter we do not make this assumption.
 
 \subsection{Parametric}
 
@@ -461,7 +463,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     \subfile{tables/csdshapiro.txt}
 
-    The test results shown in Table \ref{tab:csdshapiro} support the null hypothesis.
+    The test results shown in Table \ref{tab:csdshapiro} support the null hypothesis of that the sample comes from a normally distributed population.
 
     The lower and upper limits are shown in Table \ref{tab:limpar} for both measures of the Exchange Coupon. Figure \ref{fig:oclimpar} and Figure \ref{fig:dilimpar} show the upper and lower limits altogether with the CDS series, for the OC1 and DI1 exchange coupons respectively.
 
@@ -477,7 +479,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     \subfile{tables/diparout.txt}
 
-    As we see in the tables above, the results are basically the same for both measures of the exchange coupon. There were 18 days of abnormal volatility in our 685 days sample, of which 4 are from 2016, 5 are from 2017, 8 are from 2018, and 1 is from 2019. Of these 18 days, in 10 the exchange coupons show positive values.
+    As we see in the tables above, the results are basically the same for both measures of the exchange coupon. There were 18 days of abnormal volatility, of which 4 are from 2016, 5 are from 2017, 8 are from 2018, and 1 is from 2019. Of these 18 days, in 10 the exchange coupons show positive values.
 
 
 \subsection{Non Parametric}
@@ -516,7 +518,7 @@ To my family and friends. % and to whoever contributes to the search for truth
 
     \subfile{tables/dinonout.txt}
 
-    As we see in the tables above, the results are basically the same for both measures of the exchange coupon. There were 28 days of abnormal volatility in our 685 days sample, of which 4 are from 2016, 8 are from 2017, 10 are from 2018, and 6 are from 2019. Of these 28 days, in 16 the exchange coupons show positive values.
+    As we see in the tables above, the results are basically the same for both measures of the exchange coupon. There were 29 days of abnormal volatility, of which 3 are from 2016, 8 are from 2017, 10 are from 2018, and 8 are from 2019. Of these 29 days, in 16 the exchange coupons show positive values.
 
 \chapter{Results and Discussion} \label{chapter_results_discussion}
 

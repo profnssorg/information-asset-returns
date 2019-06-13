@@ -27,9 +27,11 @@ import os # scrapping - os run command
 #
 # IMPORT MODULES ---------------------------------------------------------------
 #
-from modules import import_process # module for importing and trasnforming data
-from modules import process_output_graphs # muodule for output of graphs
-from modules import process_output_tables # module for output of tables
+from modules import importbacen # module for importing data from BACEN SGS
+from modules import calculations # module for calculations with time series
+from modules import graphs # muodule for output of graphs
+from modules import tables # module for output of tables
+from modules import news # module for dealing with news
 #
 # IMPORT DATA ------------------------------------------------------------------
 #
@@ -46,160 +48,203 @@ from modules import process_output_tables # module for output of tables
 # PRECESS DATA -----------------------------------------------------------------
 #
 # Scrapping
-os.system('scrapy crawl g1 -o noticias.json')
+#os.system('scrapy crawl g1 -o noticias.json')
 
 # CREATES DATAFRAM WITH SERIES FROM BACEN-SGS
-BASE = bacen_sgs_api(names = ['Ptax', 'Selic', 'Di'],
-                     numbers = [1, 11, 12],
-                     initial_date = '26/09/2016',
-                     final_date = '16/05/2019')
+BASE = ImportBacen.create(names = ['Ptax', 'Selic', 'Di'],
+                          numbers = [1, 11, 12],
+                          initial_date = '26/09/2016',
+                          final_date = '16/05/2019')
 
 # APPENDS EXCHANGE COUPONS TO DATAFRAME
-exchange_coupon(BASE, 0, [1, 2], ['Oc1', 'Di1'])
+Calculations.exchange_coupon(BASE, 0, [1, 2], ['Oc1', 'Di1'])
 
 # APPENDS GARCH'S CSD AND RESIDUALS OF EXCHANGE COUPONS TO DATAFRAME
-garch(BASE, [3,4])
+Calculations.garch(BASE, [3,4])
 
 # APPENDS LIMITS FROM BOTH PARAMETRIC AND NON PARAMETRIC ANALYSIS FOR BOTH MEASU
 #RES OF EXCHANGE COUPON TO DATAGRAME
-limits(BASE, [5, 7])
+Calculations.limits(BASE, [5, 7])
+
+# Creates list with relevant news
+'''
+noticias_relevantes = transformar(separar_noticias('noticias.json',
+                                                   ['incerteza',
+                                                    'mercado',
+                                                    'economia',
+                                                    'd\\u00f3lar',
+                                                    'selic',
+                                                    'cdi',
+                                                    'c\\u00e2mara',
+                                                    'senado'
+                                                    'stf'
+                                                    'superior tribunal federal'
+                                                    'tcu',
+                                            'tribunal de contas da uni\\u00e3o',
+                                                    'presidente',
+                                                    'presid\\u00eancia']))'''
+
+# CREATES LIST WITH RELEVANT NEWS
+noticias_relevantes = News.transformar(News.separar_noticias(News.juntar(News.corrigir(News.datas_do_ano(),
+                                                                       BASE.Ptax),
+                                                              News.proximodia(News.arrumar(News.noticias('noticias.json')),
+                                                              News.lista_datas(News.corrigir(News.datas_do_ano(), BASE.Ptax)))),
+                                                                    ['incerteza',
+                                                                     'mercado',
+                                                                     'economia',
+                                                                     'd\\u00f3lar',
+                                                                     'selic',
+                                                                     'cdi',
+                                                                     'c\\u00e2mara',
+                                                                     'senado'
+                                                                     'stf'
+                                                                     'superior tribunal federal'
+                                                                     'tcu',
+                                                                     'tribunal de contas da uni\\u00e3o',
+                                                                     'presidente',
+                                                                     'presid\\u00eancia']))
+
+
+
+
 
 # OUTPUT DATA ------------------------------------------------------------------
 
 #       PTAX, SELIC AND DI -----------------------------------------------------
 
 # GRAPH FOR PTAX
-graph([BASE.Ptax],
+Graph.series([BASE.Ptax],
       [],
       'PTAX',
       'Dollar Exchange Rate',
       'ptax')
 
 # GRAPH FOR SELIC
-graph([BASE.Selic],
+Graph.series([BASE.Selic],
       [],
       'Selic',
       'Referential Rate of the Special Settlement and Custody System',
       'selic')
 
 # GRAPH FOR DI
-graph([BASE.Di],
+Graph.series([BASE.Di],
       [],
       'DI',
       'Interbank Deposit Rate',
       'di')
 
 # DESCRIPTIVE STATISTICS TABLE FOR PTAX, SELIC AND DI
-des('PTAX, Selic and DI',
+Tables.des('PTAX, Selic and DI',
     'desptaxselicdi',
     [BASE.Ptax, BASE.Selic, BASE.Di],
     ['PTAX', 'Selic', 'DI'])
 
 #       EXCHANGE COUPONS -------------------------------------------------------
 
-graph([BASE.Oc1],
+Graph.series([BASE.Oc1],
       [],
       'OC1',
       'OC1 Exchange Coupon',
       'oc')
 
-graph([BASE.Di1],
+Graph.series([BASE.Di1],
       [],
       'DI1',
       'DI1 Exchange Coupon',
       'di1')
 
-des('OC1 and DI1 Exchange Coupons',
+Tables.des('OC1 and DI1 Exchange Coupons',
     'desocdi',
     [BASE.Oc1, BASE.Di1],
     ['OC1', 'DI1'])
 
-adf('ocdiadf',
+Tables.adf('ocdiadf',
     [BASE.Oc1, BASE.Di1],
     ['OC1', 'DI1'])
 
-kpss('ocdikpss',
+Tables.kpss('ocdikpss',
     [BASE.Oc1, BASE.Di1],
     ['OC1', 'DI1'])
 
 
-#		4_2_2 ESTIMATION -----------------------------------------------
+#   4_2_2 ESTIMATION -----------------------------------------------
 
-ljung_shapiro('reswhite',
+Tables.ljung_shapiro('reswhite',
              [BASE.Oc1Res, BASE.Di1Res],
              ['Residuals of OC1\'s GARCH', 'Residuals of DI1\'s GARCH'])
 
-graph([BASE.Oc1Res],
+Graph.series([BASE.Oc1Res],
       [],
       'Residuals',
       'Residuals of OC1\'s GARCH',
       'ocres')
 
-graph([BASE.Di1Res],
+Graph.series([BASE.Di1Res],
       [],
       'Residuals',
       'Residuals of DI1\'s GARCH',
       'dires')
 
-acf_pacf(BASE.Oc1, 'OC1 Exchange Coupon', 'oc', , True)
+Graph.acf_pacf(BASE.Oc1, 'OC1 Exchange Coupon', 'oc', True)
 
-acf_pacf(BASE.Di1, 'DI1 Exchange Coupon', 'di', , True)
+Graph.acf_pacf(BASE.Di1, 'DI1 Exchange Coupon', 'di', True)
 
-acf_pacf(BASE.Oc1Res, 'Residuals of OC1', 'ocres')
+Graph.acf_pacf(BASE.Oc1Res, 'Residuals of OC1', 'ocres')
 
-acf_pacf(BASE.Di1Res, 'Residuals of DI1', 'dires')
+Graph.acf_pacf(BASE.Di1Res, 'Residuals of DI1', 'dires')
 
 
-#		4_2_3 VOLATILITY ESTIMATE -------------------------------------
+#   4_2_3 VOLATILITY ESTIMATE -------------------------------------
 
-graph([BASE.Oc1Csd],
+Graph.series([BASE.Oc1Csd],
       [],
       'CSD',
       'OC1\'s CSD',
       'occsd')
 
-graph([BASE.Di1Csd],
+Graph.series([BASE.Di1Csd],
       [],
       'CSD',
       'DI1\'s CSD',
       'dicsd')
 
-des('OC1 and DI1\'s CSD',
+Tables.des('OC1 and DI1\'s CSD',
     'descsd',
     [BASE.Oc1Csd, BASE.Di1Csd],
     ['OC1\'s CSD', 'DI1\'s CSD'])
 
-#		4_2_4 PARAMETRIC ----------------------------------------------
+#   4_2_4 PARAMETRIC ----------------------------------------------
 
-shapiro('csdshapiro',
+Tables.shapiro('csdshapiro',
         [BASE.Oc1Csd, BASE.Di1Csd],
         ['OC1\'s CSD', 'DI1\'s CSD'])
 
-limitstab('limpar',
+Tables.limits('limpar',
           [BASE.Oc1CsdParUp, BASE.Di1CsdParUp],
           [BASE.Oc1CsdParLo, BASE.Di1CsdParLo],
           ['OC1\'s CSD', 'DI1\'s CSD'],
           par = True)
 
-graph([BASE.Oc1Csd, BASE.Oc1CsdParUp, BASE.Oc1CsdParLo],
+Graph.series([BASE.Oc1Csd, BASE.Oc1CsdParUp, BASE.Oc1CsdParLo],
       ['CSD', 'Upper Limit', 'Lower Limit'],
       'CSD',
       'Parametric Limits for OC1\'s CSD',
       'oclimpar')
 
-graph([BASE.Di1Csd, BASE.Di1CsdParUp, BASE.Di1CsdParLo],
+Graph.series([BASE.Di1Csd, BASE.Di1CsdParUp, BASE.Di1CsdParLo],
       ['CSD', 'Upper Limit', 'Lower Limit'],
       'CSD',
       'Parametric Limits for DI1\'s CSD',
       'dilimpar')
-oc_out_par = outside('ocparout',
+
+oc_out_par = Tables.outside('ocparout',
                      BASE,
                      'Oc1',
                      'Oc1Csd',
                      ['Oc1CsdParUp', 'Oc1CsdParLo'],
                      di = False,
                      non = False)
-di_out_par = outside('diparout',
+Tables.outside('diparout',
                      BASE,
                      'Di1',
                      'Di1Csd',
@@ -209,33 +254,32 @@ di_out_par = outside('diparout',
 
 #   4_2_5 NON PARAMETRIC ------------------------------------------
 
-limitstab('limnon',
+Tables.limits('limnon',
           [BASE.Oc1CsdNonUp, BASE.Di1CsdNonUp],
           [BASE.Oc1CsdNonLo, BASE.Di1CsdNonLo],
           ['OC1\'s CSD', 'DI1\'s CSD'],
           par = False)
 
-graph([BASE.Oc1Csd, BASE.Oc1CsdNonUp, BASE.Oc1CsdNonLo],
+Graph.series([BASE.Oc1Csd, BASE.Oc1CsdNonUp, BASE.Oc1CsdNonLo],
       ['CSD', 'Upper Limit', 'Lower Limit'],
       'CSD',
       'Non Parametric Limits for OC1\'s CSD',
       'oclimnon')
 
-graph([BASE.Di1Csd, BASE.Di1CsdNonUp, BASE.Di1CsdNonLo],
+Graph.series([BASE.Di1Csd, BASE.Di1CsdNonUp, BASE.Di1CsdNonLo],
       ['CSD', 'Upper Limit', 'Lower Limit'],
       'CSD',
       'Non Parametric Limits for DI1\'s CSD',
       'dilimnon')
 
-oc_out_non = outside('ocnonout',
+oc_out_non = Tables.outside('ocnonout',
                      BASE,
                      'Oc1',
                      'Oc1Csd',
-                     ['Oc1CsdNonUp', 'Oc1CsdNonLo'],
+                     ['Oc1CsdParUp', 'Oc1CsdParLo'],
                      di = False,
                      non = True)
-
-di_out_non = outside('dinonout',
+Tables.outside('dinonout',
                      BASE,
                      'Di1',
                      'Di1Csd',
@@ -243,6 +287,12 @@ di_out_non = outside('dinonout',
                      di = True,
                      non = True)
 
+# RESULTS
+
+a = Tables.noticia_para_cada_dia('parnews', oc_out_par, noticias_relevantes)
+b = Tables.noticia_para_cada_dia('nonnews', oc_out_non, noticias_relevantes)
+
 #     ---------------------------------------------------
 
-out_and_news()
+#os.system('cd latex')
+#os.system('pdflatex cic-tc')
