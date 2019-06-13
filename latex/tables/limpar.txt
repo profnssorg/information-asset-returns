@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Limits from Parametric Analysis}
+\label{tab:limpar}
+\centering
+\begin{tabular}{ | c | c | c | c | c | }
+\hline
+Series & Upper Limit & Lower Limit \\
+\hline \hline
+OC1's CSD & 0.011 & 0.005 \\
+\hline
+DI1's CSD & 0.011 & 0.005 \\
+\hline
+\end{tabular}
+\end{table}

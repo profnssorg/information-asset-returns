@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{OC1's CSD}
+\label{fig:occsd}
+\centering
+\includegraphics[width=\textwidth]{graphs/occsd.png}
+\end{figure}

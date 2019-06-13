@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Parametric Limits for OC1's CSD}
+\label{fig:oclimpar}
+\centering
+\includegraphics[width=\textwidth]{graphs/oclimpar.png}
+\end{figure}

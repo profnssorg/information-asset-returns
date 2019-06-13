@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Shapiro-Wilk Test}
+\label{tab:csdshapiro}
+\centering
+\begin{tabular}{ | c | c | }
+\hline
+Series & P-value \\
+\hline \hline
+OC1's CSD & 7.359e-40 \\
+\hline
+DI1's CSD & 7.579e-40 \\
+\hline
+\end{tabular}
+\end{table}

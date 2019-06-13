@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Ljung-Box Test and Shapiro-Wilk Test}
+\label{tab:reswhite}
+\centering
+\begin{tabular}{ | c | c | c | }
+\hline
+Series & P-value for Ljung-Box Test & P-value for Shapiro-Wilk Test \\
+\hline \hline
+Residuals of OC1's GARCH & 8.069e-01 & 3.588e-19 \\
+\hline
+Residuals of DI1's GARCH & 8.069e-01 & 3.587e-19 \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Kwiatkowski–Phillips–Schmidt–Shin Test}
+\label{tab:ocdikpss}
+\centering
+\begin{tabular}{ | c | c | c | }
+\hline
+Series & Test Statistic & Critical Value at 5\% Level \\
+\hline \hline
+OC1 & 1.435e-01 & 4.630e-01 \\
+\hline
+DI1 & 1.434e-01 & 4.630e-01 \\
+\hline
+\end{tabular}
+    \end{table}

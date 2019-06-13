@@ -6,7 +6,7 @@ import pandas as pd # api - series and datagrame data structues & various
 
 class ImportBacen():
 
-    '''THIS CLASS HAS METHODS TO IMPORT DATA FROM BACEN SGS API''
+    '''THIS CLASS HAS METHODS TO IMPORT DATA FROM BACEN SGS API'''
 
     def __init__(self):
         

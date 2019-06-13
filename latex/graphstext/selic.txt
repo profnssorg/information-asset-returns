@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Referential Rate of the Special Settlement and Custody System}
+\label{fig:selic}
+\centering
+\includegraphics[width=\textwidth]{graphs/selic.png}
+\end{figure}

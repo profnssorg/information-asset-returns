@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Partial Auto-Correlation Funcion for OC1 Exchange Coupon}
+\label{fig:ocpacf}
+\centering
+\includegraphics[width=\textwidth]{graphs/ocpacf.png}
+\end{figure}

@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Auto-Correlation Funcion for Residuals of DI1}
+\label{fig:diresacf}
+\centering
+\includegraphics[width=\textwidth]{graphs/diresacf.png}
+\end{figure}

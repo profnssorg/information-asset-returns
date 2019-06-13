@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Dollar Exchange Rate}
+\label{fig:ptax}
+\centering
+\includegraphics[width=\textwidth]{graphs/ptax.png}
+\end{figure}

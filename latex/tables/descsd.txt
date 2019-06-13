@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Descriptive Statistics for OC1 and DI1's CSD}
+\label{tab:descsd}
+\centering
+\begin{tabular}{ | c | c | c | c | c | }
+\hline
+Series & Mean & Standard Deviation & Minimum Value & Maximum Value \\
+\hline \hline
+OC1's CSD & 0.008 & 0.002 & 0.007 & 0.030 \\
+\hline
+DI1's CSD & 0.008 & 0.002 & 0.007 & 0.030 \\
+\hline
+\end{tabular}
+    \end{table}
