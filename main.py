@@ -199,13 +199,13 @@ Graph.acf_pacf(BASE.Di1Res, 'Residuals of DI1', 'dires')
 Graph.series([BASE.Oc1Csd],
       [],
       'CSD',
-      'OC1\'s CSD',
+      'OC1\'s Conditional Standard Deviation',
       'occsd')
 
 Graph.series([BASE.Di1Csd],
       [],
       'CSD',
-      'DI1\'s CSD',
+      'DI1\'s Conditional Standard Deviation',
       'dicsd')
 
 Tables.des('OC1 and DI1\'s CSD',
@@ -276,7 +276,7 @@ oc_out_non = Tables.outside('ocnonout',
                      BASE,
                      'Oc1',
                      'Oc1Csd',
-                     ['Oc1CsdParUp', 'Oc1CsdParLo'],
+                     ['Oc1CsdNonUp', 'Oc1CsdNonLo'],
                      di = False,
                      non = True)
 Tables.outside('dinonout',

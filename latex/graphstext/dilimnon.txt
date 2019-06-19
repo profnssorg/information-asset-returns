@@ -1,5 +1,5 @@
 \begin{figure}[H]
-\caption{Non Parametric Limits for DI1's CSD}
+\caption{Non-Parametric Limits for DI1's CSD}
 \label{fig:dilimnon}
 \centering
 \includegraphics[width=\textwidth]{graphs/dilimnon.png}

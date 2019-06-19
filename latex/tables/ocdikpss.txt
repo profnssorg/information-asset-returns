@@ -11,4 +11,4 @@ OC1 & 1.435e-01 & 4.630e-01 \\
 DI1 & 1.434e-01 & 4.630e-01 \\
 \hline
 \end{tabular}
-    \end{table}
+\end{table}

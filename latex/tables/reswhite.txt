@@ -4,7 +4,7 @@
 \centering
 \begin{tabular}{ | c | c | c | }
 \hline
-Series & P-value for Ljung-Box Test & P-value for Shapiro-Wilk Test \\
+Series & P-value for Ljung-Box & P-value for Shapiro-Wilk \\
 \hline \hline
 Residuals of OC1's GARCH & 8.069e-01 & 3.588e-19 \\
 \hline
