@@ -13,8 +13,6 @@ import matplotlib.dates as mdates
 import statsmodels.tsa.stattools as stat
 
 class Graph():
-
-    '''THIS CLASS HAS METHODS TO EXPORT GRAPHS'''
     
     def __init__(self):
         
@@ -27,9 +25,11 @@ class Graph():
                label = str()): # label to use in LaTeX
 
         '''GRAPH FOR ONE OR MULTIPLE SERIES'''
-
-        for serie in series:
-            ax = serie.plot(figsize = (8,5))
+        
+        lines = ['solid', 'dashed', 'dashdot', 'dotted']
+        
+        for i in range(len(series)):
+            ax = series[i].plot(figsize = (8,5), color = 'black', linestyle = lines[i])
         if len(legends) > 0:
             ax.legend(legends)
         ax.grid(axis = 'x')
@@ -49,7 +49,7 @@ class Graph():
 \\includegraphics[width=\\textwidth]{{graphs/{1}.png}}
 \\end{{figure}}'''.format(title, label))
         a.close()
-
+    
     def acf_pacf(serie, # Series
                  title,
                  label, 
@@ -62,12 +62,15 @@ class Graph():
         for i in stat.acf(serie[1:], alpha = .05)[1]:
             cima.append(i[0])
             baixo.append(i[1])
-        va = {'cima': cima, 'baixo': baixo}
+        va = {'cima': baixo}
         a = pd.DataFrame(va)
+        vb = {'baixo': cima}
+        b = pd.DataFrame(vb)
 
         serieum = pd.Series(stat.acf(serie[1:], alpha = .05)[0])
-        serieum.plot(figsize = (8,5), kind = 'bar')
-        plt.plot(a)
+        serieum.plot(figsize = (8,5), kind = 'bar', color = 'black')
+        plt.plot(a, color = 'black', linestyle = 'dashed')
+        plt.plot(b, color = 'black', linestyle = 'dashdot')
         plt.xlabel('Lag')
         plt.ylabel('ACF')
         plt.legend(('97.5%', '2.5%'))
@@ -80,12 +83,16 @@ class Graph():
             for i in stat.pacf(serie[1:], alpha = .05)[1]:
                 cima.append(i[0])
                 baixo.append(i[1])
-            va = {'cima': cima, 'baixo': baixo}
-            a = pd.DataFrame(va)
 
+            va = {'cima': baixo}
+            a = pd.DataFrame(va)
+            vb = {'baixo': cima}
+            b = pd.DataFrame(vb)
+            
             serieum = pd.Series(stat.pacf(serie[1:], alpha = .05)[0])
-            serieum.plot(figsize = (8,5), kind = 'bar')
-            plt.plot(a)
+            serieum.plot(figsize = (8,5), kind = 'bar', color = 'black')
+            plt.plot(a, color = 'black', linestyle = 'dashed')
+            plt.plot(b, color = 'black', linestyle = 'dashdot')
             plt.xlabel('Lag')
             plt.ylabel('PACF')
             plt.legend(('97.5%', '2.5%'))
