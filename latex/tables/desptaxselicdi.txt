@@ -13,4 +13,4 @@ Selic & 0.033 & 0.010 & 0.025 & 0.053 \\
 DI & 0.033 & 0.010 & 0.025 & 0.052 \\
 \hline
 \end{tabular}
-\end{table}
+    \end{table}

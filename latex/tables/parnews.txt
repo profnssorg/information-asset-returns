@@ -11,93 +11,93 @@
 \endfoot
 \hline \hline \multicolumn{4}{| r |}{End of table} \\ \hline
 \endlastfoot
-1 & 2017/05/19 & 05/18 19:00 & Manifestações em diferentes cidades brasi[...] \\
+1 & 2016/12/16 & 12/15 18:27 & CCJ define relator de consulta sobre reel[...] \\
 \hline
-2 & 2017/05/19 & 05/18 19:29 & Após denúncias, PTB na Câmara e PR reiter[...] \\
+2 & 2016/12/16 & 12/15 18:27 & CCJ define relator de consulta sobre reel[...] \\
 \hline
-3 & 2017/05/19 & 05/19 15:12 & Delator diz que ouviu de Temer que presid[...] \\
+3 & 2016/12/16 & 12/15 19:55 & PSDB prorroga mandato de Aécio como presi[...] \\
 \hline
-4 & 2017/05/19 & 05/19 14:28 & Dono da JBS diz que deu R\$ 30 milhões pa[...] \\
+4 & 2016/12/16 & 12/16 13:35 & Câmara envia a Fux recurso contra decisão[...] \\
 \hline
-5 & 2017/05/19 & 05/19 15:11 & JBS admite que comprou dólar nos últimos [...] \\
+5 & 2016/12/16 & 12/16 17:32 & Janot reitera ao STF pedido para afastar [...] \\
 \hline
-6 & 2017/05/19 & 05/19 15:45 & Gravação de Joesley com Temer é legal, di[...] \\
+6 & 2017/05/19 & 05/18 19:00 & Manifestações em diferentes cidades brasi[...] \\
 \hline
-7 & 2017/05/22 & 05/19 19:14 & CVM investiga JBS por uso de informação p[...] \\
+7 & 2017/05/19 & 05/18 19:29 & Após denúncias, PTB na Câmara e PR reiter[...] \\
 \hline
-8 & 2017/05/22 & 05/20 14:52 & Temer diz que segue na Presidência e pede[...] \\
+8 & 2017/05/19 & 05/19 15:12 & Delator diz que ouviu de Temer que presid[...] \\
 \hline
-9 & 2017/05/22 & 05/21 00:23 & OAB decide apresentar à Câmara pedido de [...] \\
+9 & 2017/05/19 & 05/19 14:28 & Dono da JBS diz que deu R\$ 30 milhões pa[...] \\
 \hline
-10 & 2017/05/22 & 05/22 16:20 & Câmara acumula 14 pedidos de impeachment [...] \\
+10 & 2017/05/19 & 05/19 15:11 & JBS admite que comprou dólar nos últimos [...] \\
 \hline
-11 & 2017/05/23 & 05/22 18:28 & Câmara deve discutir e votar reforma da P[...] \\
+11 & 2017/05/19 & 05/19 15:45 & Gravação de Joesley com Temer é legal, di[...] \\
 \hline
-12 & 2017/05/24 & 05/23 20:33 & Câmara aprova MP que libera saque das con[...] \\
+12 & 2017/05/22 & 05/19 19:14 & CVM investiga JBS por uso de informação p[...] \\
 \hline
-13 & 2017/05/24 & 05/24 00:02 & Presidente de comissão na Câmara adia aná[...] \\
+13 & 2017/05/22 & 05/20 14:52 & Temer diz que segue na Presidência e pede[...] \\
 \hline
-14 & 2017/05/24 & 05/24 00:02 & Presidente de comissão na Câmara adia aná[...] \\
+14 & 2017/05/22 & 05/21 00:23 & OAB decide apresentar à Câmara pedido de [...] \\
 \hline
-15 & 2017/05/24 & 05/24 14:02 & Presidência da República faz alerta a sit[...] \\
+15 & 2017/05/22 & 05/22 16:20 & Câmara acumula 14 pedidos de impeachment [...] \\
 \hline
-16 & 2017/05/24 & 05/24 14:38 & Câmara decide manter salário de R\$ 33,7 [...] \\
+16 & 2018/06/08 & 06/07 22:54 & Lewandowski manda desbloquear bens de Sér[...] \\
 \hline
-17 & 2017/05/24 & 05/24 16:04 & Sessão da Câmara tem gritaria e troca de [...] \\
+17 & 2018/06/08 & 06/07 23:24 & Barroso autoriza deputado preso a trabalh[...] \\
 \hline
-18 & 2017/05/24 & 05/24 17:12 & Deputados governistas e de oposição entra[...] \\
+18 & 2018/06/08 & 06/07 19:39 & Em dia de turbulências na economia, Temer[...] \\
 \hline
-19 & 2017/05/25 & 05/24 19:46 & Sem oposição em plenário, Câmara aprova M[...] \\
+19 & 2018/06/08 & 06/08 08:31 & Dólar dispara e Banco Central amplia açõe[...] \\
 \hline
-20 & 2017/05/25 & 05/25 00:16 & Câmara aprova texto-base de MP que prevê [...] \\
+20 & 2018/06/08 & 06/08 09:43 & Diante da alta do dólar, Temer se reúne e[...] \\
 \hline
-21 & 2017/05/25 & 05/24 20:07 & Câmara aprova MP que aumenta carência par[...] \\
+21 & 2018/06/11 & 06/10 11:13 & Empresas buscam proteção após alta do dól[...] \\
 \hline
-22 & 2017/05/25 & 05/25 13:22 & Presidente da Câmara prorroga CPI da Funa[...] \\
+22 & 2018/06/11 & 06/11 13:46 & Presidente eleito do Paraguai, Benítez vi[...] \\
 \hline
-23 & 2017/05/25 & 05/25 13:22 & Presidente da Câmara prorroga CPI da Funa[...] \\
+23 & 2018/06/11 & 06/11 17:38 & Deputado preso volta a trabalhar na Câmar[...] \\
 \hline
-24 & 2017/05/25 & 05/25 15:06 & OAB entrega à Câmara pedido de impeachmen[...] \\
+24 & 2018/06/12 & 06/12 14:16 & Ministério da Fazenda diz que greve dos c[...] \\
 \hline
-25 & 2018/06/11 & 06/10 11:13 & Empresas buscam proteção após alta do dól[...] \\
+25 & 2018/06/12 & 06/12 14:35 & Presidente da Petrobras se encontra com c[...] \\
 \hline
-26 & 2018/06/11 & 06/11 13:46 & Presidente eleito do Paraguai, Benítez vi[...] \\
+26 & 2018/06/12 & 06/12 17:28 & Em audiência na Câmara, representantes do[...] \\
 \hline
-27 & 2018/06/11 & 06/11 17:38 & Deputado preso volta a trabalhar na Câmar[...] \\
+27 & 2018/07/23 & 07/21 11:06 & PMN rejeita Valéria Monteiro para disputa[...] \\
 \hline
-28 & 2018/06/12 & 06/12 14:16 & Ministério da Fazenda diz que greve dos c[...] \\
+28 & 2018/07/23 & 07/20 20:57 & PSTU oficializa Vera Lúcia para disputa d[...] \\
 \hline
-29 & 2018/06/12 & 06/12 14:35 & Presidente da Petrobras se encontra com c[...] \\
+29 & 2018/07/23 & 07/23 05:00 & Temer viaja para o México nesta segunda-f[...] \\
 \hline
-30 & 2018/06/12 & 06/12 17:28 & Em audiência na Câmara, representantes do[...] \\
+30 & 2018/07/23 & 07/22 12:47 & PSL oficializa candidatura de Jair Bolson[...] \\
 \hline
-31 & 2018/06/13 & 06/13 07:00 & Laurita Vaz deve assumir processos da Cal[...] \\
+31 & 2018/07/23 & 07/22 09:39 & Servidores têm bancada mais forte da Câma[...] \\
 \hline
-32 & 2018/06/13 & 06/13 11:12 & Ampliação dos saques do PIS-Pasep vai inj[...] \\
+32 & 2018/07/23 & 07/21 16:37 & PSOL confirma Guilherme Boulos para dispu[...] \\
 \hline
-33 & 2018/06/13 & 06/13 17:54 & Senado retira de texto da Câmara obrigaçã[...] \\
+33 & 2018/07/23 & 07/23 08:37 & Só em 2020 economia anulará perdas da rec[...] \\
 \hline
-34 & 2018/06/13 & 06/13 17:37 & Judiciário precisa assumir papel na 'agen[...] \\
+34 & 2018/07/23 & 07/23 13:59 & Com Cármen Lúcia no Planalto, Dias Toffol[...] \\
 \hline
-35 & 2018/06/13 & 06/13 16:53 & Câmara aprova MP que criou Ministério da [...] \\
+35 & 2018/07/23 & 07/23 13:01 & Alckmin trabalha para acalmar aliados em [...] \\
 \hline
-36 & 2018/07/23 & 07/21 11:06 & PMN rejeita Valéria Monteiro para disputa[...] \\
+36 & 2018/08/23 & 08/23 07:58 & \u00c0 Polícia Federal, chefe de gabinete[...] \\
 \hline
-37 & 2018/07/23 & 07/20 20:57 & PSTU oficializa Vera Lúcia para disputa d[...] \\
+37 & 2018/08/23 & 08/22 21:54 & José Maria Eymael cumpre agenda de campan[...] \\
 \hline
-38 & 2018/07/23 & 07/23 05:00 & Temer viaja para o México nesta segunda-f[...] \\
+38 & 2018/08/23 & 08/23 11:58 & TSE apresenta previsão do tempo de propag[...] \\
 \hline
-39 & 2018/07/23 & 07/22 12:47 & PSL oficializa candidatura de Jair Bolson[...] \\
+39 & 2018/08/23 & 08/23 17:37 & Depósito automático de recursos do PIS/Pa[...] \\
 \hline
-40 & 2018/07/23 & 07/22 09:39 & Servidores têm bancada mais forte da Câma[...] \\
+40 & 2018/10/03 & 10/02 18:12 & Motorista de presidente de concessionária[...] \\
 \hline
-41 & 2018/07/23 & 07/21 16:37 & PSOL confirma Guilherme Boulos para dispu[...] \\
+41 & 2018/10/03 & 10/02 19:05 & Pesquisa Datafolha para presidente: Bolso[...] \\
 \hline
-42 & 2018/07/23 & 07/23 08:37 & Só em 2020 economia anulará perdas da rec[...] \\
+42 & 2018/10/03 & 10/03 08:08 & Pesquisa Datafolha de 2 de outubro para p[...] \\
 \hline
-43 & 2018/07/23 & 07/23 13:59 & Com Cármen Lúcia no Planalto, Dias Toffol[...] \\
+43 & 2018/10/03 & 10/03 05:00 & Pesquisa Datafolha de 2 de outubro para p[...] \\
 \hline
-44 & 2018/07/23 & 07/23 13:01 & Alckmin trabalha para acalmar aliados em [...] \\
+44 & 2018/10/03 & 10/03 15:50 & Pesquisa Datafolha: veja perfil dos eleit[...] \\
 \hline
 45 & 2018/10/04 & 10/03 18:55 & Pesquisa Ibope para presidente: Bolsonaro[...] \\
 \hline
@@ -109,44 +109,28 @@
 \hline
 49 & 2018/10/04 & 10/04 14:27 & Pesquisas Ibope nos estados: veja evoluçã[...] \\
 \hline
-50 & 2018/10/05 & 10/04 18:42 & Pesquisa Datafolha em Pernambuco: Paulo C[...] \\
+50 & 2018/10/09 & 10/09 05:00 & Número cai, mas quase metade da Câmara se[...] \\
 \hline
-51 & 2018/10/05 & 10/04 19:54 & Pesquisa Datafolha para presidente: Bolso[...] \\
+51 & 2018/10/09 & 10/08 19:43 & Levy Fidelix, presidente do partido do vi[...] \\
 \hline
-52 & 2018/10/05 & 10/04 18:59 & Sem votar projetos há mais de um mês, Câm[...] \\
+52 & 2018/10/09 & 10/08 19:43 & Levy Fidelix, presidente do partido do vi[...] \\
 \hline
-53 & 2018/10/05 & 10/05 09:23 & Candidatos a presidente usam anúncios no [...] \\
+53 & 2018/10/09 & 10/09 11:12 & Novo declara que não apoiará nenhum candi[...] \\
 \hline
-54 & 2018/10/05 & 10/05 05:00 & Pesquisa Datafolha de 4 de outubro para p[...] \\
+54 & 2018/10/09 & 10/09 16:17 & CNJ afasta presidente do TRE-MS suspeita [...] \\
 \hline
-55 & 2018/10/05 & 10/05 05:00 & Pesquisa Datafolha de 4 de outubro para p[...] \\
+55 & 2019/01/04 & 01/03 21:10 & PT e PSOL denunciam invasão de gabinetes [...] \\
 \hline
-56 & 2018/10/05 & 10/05 02:16 & Saiba o que disseram os candidatos à Pres[...] \\
+56 & 2019/01/04 & 01/04 12:30 & Bolsonaro sinaliza reforma da Previdência[...] \\
 \hline
-57 & 2018/10/05 & 10/05 16:55 & Veja as propostas das equipes dos preside[...] \\
+57 & 2019/03/25 & 03/23 08:46 & No terceiro dia no Chile, Bolsonaro tem r[...] \\
 \hline
-58 & 2018/10/05 & 10/05 15:57 & Justiça manda soltar diretor-presidente d[...] \\
+58 & 2019/03/25 & 03/24 12:08 & De volta do Chile, Bolsonaro recebe líder[...] \\
 \hline
-59 & 2018/10/09 & 10/09 05:00 & Número cai, mas quase metade da Câmara se[...] \\
+59 & 2019/03/25 & 03/23 09:40 & Maia diz que Bolsonaro deve liderar refor[...] \\
 \hline
-60 & 2018/10/09 & 10/08 19:43 & Levy Fidelix, presidente do partido do vi[...] \\
+60 & 2019/03/25 & 03/24 18:43 & Presidente que não entende que \u2018o Co[...] \\
 \hline
-61 & 2018/10/09 & 10/08 19:43 & Levy Fidelix, presidente do partido do vi[...] \\
-\hline
-62 & 2018/10/09 & 10/09 11:12 & Novo declara que não apoiará nenhum candi[...] \\
-\hline
-63 & 2018/10/09 & 10/09 16:17 & CNJ afasta presidente do TRE-MS suspeita [...] \\
-\hline
-64 & 2018/10/10 & 10/09 19:05 & De 513 deputados eleitos na Câmara, só 27[...] \\
-\hline
-65 & 2018/10/10 & 10/09 22:39 & Três deputados reeleitos vão para o oitav[...] \\
-\hline
-66 & 2018/10/10 & 10/10 16:25 & Bolsonaro dá sinais contraditórios na eco[...] \\
-\hline
-67 & 2018/10/10 & 10/10 16:25 & Bolsonaro dá sinais contraditórios na eco[...] \\
-\hline
-68 & 2019/01/04 & 01/03 21:10 & PT e PSOL denunciam invasão de gabinetes [...] \\
-\hline
-69 & 2019/01/04 & 01/04 12:30 & Bolsonaro sinaliza reforma da Previdência[...] \\
+61 & 2019/03/25 & 03/25 08:14 & Apesar do tom de Bolsonaro, Câmara deve m[...] \\
 \hline
 \end{longtable}

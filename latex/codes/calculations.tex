@@ -35,7 +35,7 @@ class Calculations():
                 if i == 0:
                     arr = np.append(arr, np.NaN)
                 else:
-                    arr = np.append(arr, ((1 + r[i]/100)/(usd[i]/usd[i-1])-1))
+                    arr = np.append(arr, ((1 + r[i-1]/100)/(usd[i]/usd[i-1])-1))
             self[name] = arr
 
     def garch(self, # DataFrame containing the Series 

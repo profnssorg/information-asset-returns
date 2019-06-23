@@ -6,9 +6,9 @@
 \hline
 Series & Mean of Upper Limits & Mean of Lower Limits \\
 \hline \hline
-OC1's CSD & 0.011 & 0.006 \\
+OC1's CSD & 0.010 & 0.006 \\
 \hline
-DI1's CSD & 0.011 & 0.006 \\
+DI1's CSD & 0.010 & 0.006 \\
 \hline
 \end{tabular}
 \end{table}
