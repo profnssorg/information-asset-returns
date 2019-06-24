@@ -3,35 +3,50 @@
 github : https://github.com/profnssorg/information-asset-returns
 
 '''
-#
-# IMPORT PACKAGES --------------------------------------------------------------
-#
+
+######### IMPORT PACKAGES ########
+
+
 # Impoprt (and transform) data
-import os # scrapping - os run command
-#import scrapy # scrapping - package
-#import numpy as np # api - array used for series and dataframe data structures
-                   # fundamental package for scientific computing
-#import pandas as pd # api - series and datagrame data structues & various 
-                    # data structures and data analysis tools
-#
+
+
+import os                           # for scrapping - os run command
+
+#import scrapy                      # scrapping - package
+#import numpy as np                 # api - array used for series and dataframe
+                                    #data structures / fundamental package for s
+                                    #cientific computing
+#import pandas as pd                # api - series and datagrame data structues /
+                                    #various data structures and data analysis to
+                                    #ols
+
+
 # Transform data
-#from arch import arch_model # garch model
-#import statsmodels.tsa.stattools as stat # adf, kpss, shapito white
-#import statsmodels.stats.diagnostic as dig #ljung box
-#from scipy import stats # confidence interval
-#
+
+
+#from arch import arch_model        # garch model
+#import statsmodels.tsa.stattools as stat
+                                    # adf, kpss, shapito white               
+#import statsmodels.stats.diagnostic as dig
+                                    #ljung box              
+#from scipy import stats            # confidence interval
+
+
 # Output data
-#	Graphs
-#from matplotlib import pyplot as plt # graphs
-#import matplotlib.dates as mdates
-#
-# IMPORT MODULES ---------------------------------------------------------------
-#
-from modules import importbacen # module for importing data from BACEN SGS
-from modules import calculations # module for calculations with time series
-from modules import graphs # muodule for output of graphs
-from modules import tables # module for output of tables
-from modules import news # module for dealing with news
+
+
+#from matplotlib import pyplot as plt
+                                    # graphs                   
+#import matplotlib.dates as mdates  # for dates on graphs
+
+
+######## IMPORT MODULES ########
+
+from modules import importbacen     # module for importing data from BACEN SGS
+from modules import calculations    # module for calculations with time series
+from modules import graphs          # muodule for output of graphs
+from modules import tables          # module for output of tables
+from modules import news            # module for dealing with news
 #
 # IMPORT DATA ------------------------------------------------------------------
 #
@@ -169,7 +184,7 @@ Tables.kpss('ocdikpss',
 
 #   4_2_2 ESTIMATION -----------------------------------------------
 
-Tables.ljung_shapiro('reswhite',
+Tables.ljung('reswhite',
              [BASE.Oc1Res, BASE.Di1Res],
              ['Residuals of OC1\'s GARCH', 'Residuals of DI1\'s GARCH'])
 
@@ -184,10 +199,6 @@ Graph.series([BASE.Di1Res],
       'Residuals',
       'Residuals of DI1\'s GARCH',
       'dires')
-
-Graph.acf_pacf(BASE.Oc1, 'OC1 Exchange Coupon', 'oc', True)
-
-Graph.acf_pacf(BASE.Di1, 'DI1 Exchange Coupon', 'di', True)
 
 Graph.acf_pacf(BASE.Oc1Res, 'Residuals of OC1', 'ocres')
 

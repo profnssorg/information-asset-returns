@@ -95,7 +95,7 @@ Series & Test Statistic & Critical Value at 5\% Level \\\\
         b.write(a)
         b.close()
 
-    def ljung_shapiro(label = str(),
+    def ljung(label = str(),
                      variables = list(),
                      names = list()):
 
@@ -103,18 +103,17 @@ Series & Test Statistic & Critical Value at 5\% Level \\\\
 
         b = open('latex/tables/{}.txt'.format(label), 'w')
         a = '''\\begin{{table}}[H]
-\\caption{{Ljung-Box Test and Shapiro-Wilk Test}}
+\\caption{{Ljung-Box Test}
 \\label{{tab:{}}}
 \\centering
-\\begin{{tabular}}{{ | c | c | c | }}
+\\begin{{tabular}}{{ | c | c | }}
 \\hline
-Series & P-value for Ljung-Box Test & P-value for Shapiro-Wilk Test \\\\
+Series & P-value \\\\
 \\hline \\hline'''.format(label)
         for i in range(len(variables)):
             var = variables[i][1:]
-            a += '\n{0} & {1:.3e} & {2:.3e} \\\\'.format(names[i],
-                                                         dig.acorr_ljungbox(var)[1][39],
-                                                         stats.shapiro(var)[1])
+            a += '\n{0} & {1:.3e} \\\\'.format(names[i],
+                                                         dig.acorr_ljungbox(var)[1][39])
             a += '\n\\hline'
         a += '''\n\\end{tabular}
 \\end{table}'''
