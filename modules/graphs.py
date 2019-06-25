@@ -11,8 +11,6 @@ import matplotlib.dates as mdates
 import statsmodels.tsa.stattools as stat
 
 class Graph():
-
-    '''THIS CLASS HAS METHODS TO EXPORT GRAPHS'''
     
     def __init__(self):
         
@@ -25,9 +23,11 @@ class Graph():
                label = str()): # label to use in LaTeX
 
         '''GRAPH FOR ONE OR MULTIPLE SERIES'''
-
-        for serie in series:
-            ax = serie.plot(figsize = (8,5))
+        
+        lines = ['solid', 'dashed', 'dashdot', 'dotted']
+        
+        for i in range(len(series)):
+            ax = series[i].plot(figsize = (8,5), color = 'black', linestyle = lines[i])
         if len(legends) > 0:
             ax.legend(legends)
         ax.grid(axis = 'x')
@@ -47,4 +47,12 @@ class Graph():
 \\includegraphics[width=\\textwidth]{{graphs/{1}.png}}
 \\end{{figure}}'''.format(title, label))
         a.close()
+        
+    def multiple(tup = tuple()):
+        for i in range(len(tup)):
+            Graph.series(tup[i][0],
+                        tup[i][1],
+                        tup[i][2],
+                        tup[i][3],
+                        tup[i][4],)
 

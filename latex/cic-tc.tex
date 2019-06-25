@@ -57,12 +57,12 @@
 
 I want to dedicate this work to my family and friends, without whom life would be flavorless. 
 
-I want also to thank Dr. Nelson Seixas do Santos for his support and patience. Since my earliest works at Equilíbrio AES, through a scientific initiation fellow and until the present course conclusion paper, his orientation was key to my progress.
+I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patience. Since my earliest works at Equilíbrio AES, through a scientific initiation fellow and until the present course conclusion paper, his orientation was key to my progress.
 
 
 
 \begin{abstract}
-    We investigate whether political news affect the exchange coupon in Brazil, in a period ranging from November 24, 2016, until April 16, 2019. Our sample of news is collected via web scrapping, which we apply on a Brazilian news portal. We use two measures for the exchange coupon, and we apply a GARCH model to estimate conditional volatility, which we filter with both a parametric and a non parametric approach. The results from the parametric analysis indicate that the exchange coupon was affected by the corruption scandal of President Temer (May, 2017), the announcement of Jair Bolsonaro as candidate for the republic's presidency (July, 2018), the first round of the presidential elections (October, 2018), and the announcement of a new Pension Reform (January, 2019). The results from the non parametric analysis indicate that, besides the events above, the exchange coupon was also affected by news related to the Labour Reform (March, 2017), the impeachment requests of President Temer that followed the corruption scandal (August and October, 2017), and the elections for the Chamber of Deputies' presidency (January and February, 2019).
+    We investigate whether political news affect the exchange coupon in Brazil, in a period ranging from November 24, 2016, until April 16, 2019. Our sample of news is collected via web scrapping, which we apply on a Brazilian news portal. We use two measures for the exchange coupon, and we apply a GARCH model to estimate conditional volatility, which we filter with both a parametric and a non parametric approach. The results from the parametric analysis indicate that the exchange coupon was affected by the corruption scandal of President Temer (May, 2017), the announcement of Jair Bolsonaro as candidate for the republic's presidency (July, 2018), the first round of the presidential elections (October, 2018), and the announcement of a new Pension Reform (January, 2019). The results from the non parametric analysis indicate that, besides the events above, the exchange coupon was also affected by news related to the Labour Reform (March, 2017), the impeachment requests of President Temer that followed the corruption scandal (August and October, 2017), and the elections for the Chamber of Deputies' presidency (February, 2019).
     
     \noindent
     \textbf{JEL classification:} C58, G14.
@@ -88,6 +88,7 @@ I want also to thank Dr. Nelson Seixas do Santos for his support and patience. S
     \item[CoPoM] Monetary Policy Committee
     \item[CSD] Conditional Standard Deviation
     \item[CVM] Commission of Transferable Securities
+    \item[DEM] Democrats
     \item[DI1] DI1 Exchange Coupon
     \item[EMH] Efficient Market Hypothesis
     \item[GARCH] General Autoregressive Conditional Heteroscedasticity
@@ -120,7 +121,7 @@ I want also to thank Dr. Nelson Seixas do Santos for his support and patience. S
 
     It is very common for the media around the world to announce the idea that a given political event has made an impact on the financial markets. In fact, newspapers constantly refer to political news as the cause of fluctuations in prices of financial assets. That explanation is inconsistent with the classical semi-strong market efficiency hypothesis as posed by \citet{fama1970} though, which states prices reflect all available public information.  
     
-    The evidence on asset prices being affected by news about monetary variables (see \citet{cornell1983}), by news about the real sector (see, \citet{macqueenroley1993}, \citet{caporaleetal2015}) complicates the issue further. Still, in general, the semi-strong form market efficiency tests for political information in Brazil have shown supporting evidence for the hypothesis in the case of stock market returns and interest rates (\citet{marquessantos2016}).
+    The evidence on asset prices being affected by news about macroeconomics (see, \citet{macqueenroley1993}, \citet{caporaleetal2015}) complicates the issue further. Still, in general, the semi-strong form market efficiency tests for political information in Brazil have shown supporting evidence for the hypothesis in the case of stock market returns and interest rates (\citet{marquessantos2016}).
     
     Indeed, the studies mentioned above test for efficiency in a national investor level, since they took for granted investor's return would be measured in domestic currency terms.  But, actually, foreign investors are responsible for 22.61\% of the volume daily traded in the Brazilian stock market in 2019 as it can be seen in  \href{http://www.b3.com.br/data/files/14/B4/D5/25/4B80B61070D79EA6AC094EA8/partdir_NOVOv2.xls}{B3 Participation of Investors Report}.
     
@@ -176,12 +177,14 @@ I want also to thank Dr. Nelson Seixas do Santos for his support and patience. S
     When testing for political information, the results also support that security prices are responsive. Both \citet{smales2015} and \citet{marquessantos2016} show that political uncertainty is related to market uncertainty, the first for Australia and the latter for Brazil. The Brazilian stock market is also shown to react to tax announcements in \citet{gabrielribeiro2013}.
 
     \citet{smales2015} uses electoral polls data to construct two measures of political uncertainty. One represents overall election uncertainty, the other represents uncertainty about reelection, which is considered of importance as economic policies of a reelected president are well known in caparison with the policies of a newly elected president. The financial series are exchange-traded futures and options based on the Australian stock market index S\&P/ASX 200. Market volatility is shown to increase with political uncertainty, and decrease with the probability of reelection.
+    
     In \citet{marquessantos2016} a GARCH model is applied to daily stock returns and short term interest rates in Brazil. The sample for the first is the Bovespa Index, and the sample for the latter is composed by the Selic rate and the DI rate. Samples range from January 2014 to April 2016. The results show that the the stock market only responds to political news in the case of elections, as the only period of abnormal volatility related to news happened to occur around the 2014 presidential elections' date. On the other hand, the short term interest rates do not respond to political news.
+    
     \citet{gabrielribeiro2013} verifies if a government's annunciation of tax cuts had effect over stock prices of companies from the sector that would be directly affected. The referred tax is the Tax on Industrialized Products (IPI). After filtering for characteristics that would make the calculations possible, 13 stocks made to the final sample. The results indicate that the stock prices were indeed affected by the tax cut annunciation.
 
 \chapter{The Model} \label{chapter_model}
 
-    Market efficiency, as posed by \citet{fama1970}, is a implication of a perfect capital market (neither transaction or information costs), investor risk aversion, and two-parameter return distributions (\citet{famamcbeth1973}). Nevertheless, it is worth noticing that absence of transaction and information costs, and agreement among investors, are sufficient but not necessary conditions for market efficiency. Transaction costs do not mean that the transactions do not "fully reflect" available information; if a "sufficient number" of investors have access to information the market may be efficient; and only if there are investors who can consistently make better predictions than the ones implicit in prices market inefficiency will arise (\citet{fama1970}).
+    Market efficiency, as posed by \citet{fama1970}, is a implication of a perfect capital market (neither transaction or information costs), investor risk aversion, and two-parameter return distributions (\citet{famamcbeth1973}). It is worth noticing that absence of transaction and information costs, and agreement among investors, are sufficient but not necessary conditions for market efficiency. Transaction costs do not mean that the transactions do not "fully reflect" available information; if a "sufficient number" of investors have access to information the market may be efficient; and only if there are investors who can consistently make better predictions than the ones implicit in prices market inefficiency will arise (\citet{fama1970}).
     
     For a brief demonstration of the model, we will consider that equilibrium prices are generated in the \citet{sharpe1964} world. Two assumptions about the investor are made: that he acts in the basis of two parameters of the distribution of returns of an asset - its expected value and standard deviation; and that he derives utility from returns and disutility from risk. The market is built upon two other assumptions: a common pure rate of interest; and homogeneity of investor expectations, as they agree on expected values, standard deviations, and correlations of the securities.
     
@@ -294,13 +297,13 @@ I want also to thank Dr. Nelson Seixas do Santos for his support and patience. S
 
 \subsection{Political News} \label{chapter_political_news}
     
-    We gathered information on political news by applying web scrapping technique to a online news portal. The scrapping was made in the political section of G1, a Brazilian news portal maintained by Grupo Globo, a conglomerate based in Rio de Janeiro. It provides content from Grupo Globo's television channels, radio stations, newspapers and magazines, besides it's own content. The scrapping was executed at May 17, 2019, and resulted in a sample of 17.836 news over 837 days. The dollar market closes at 6 pm, therefore all news after this time were pushed to the subsequent day. News from weekends and holidays were pushed to the closest subsequent business day.
+    We gathered information on political news by applying web scrapping technique to a online news portal. The scrapping was made in the political section of G1, a Brazilian news portal maintained by Grupo Globo, a conglomerate based in Rio de Janeiro. It provides content from Grupo Globo's television channels, radio stations, newspapers and magazines, besides it's own content. The scrapping was executed at May 17, 2019, and resulted in a sample of 17.832 news. The dollar market closes at 6 pm, therefore all news after this time were pushed to the subsequent day. News from weekends and holidays were pushed to the closest subsequent business day.
 
-    To find political events that could impact the exchange coupon, we follow \citet{bbb} as we searched our headlines sample for keywords. The keywords were: related to market uncertainty, 'incerteza', 'mercado' and 'economia' (uncertainty, market, economy); related to components of the exchange coupon, 'dólar', 'selic' and 'cdi' (dollar, Selic, DI) ; and related to federal government matters, 'presidente', 'presidência', 'câmara', 'senado', 'tribunal de contas da união', 'tcu', 'superior tribunal federal' and 'stf' (president, presidency, chamber (as in Chamber of Deputies), senate, Federal Accountability Office and its initials, and Supreme Court and its initials). The search resulted in a sample of 2.333 news. The final sample is 13\% the size of the unfiltered sample in terms of number of news, therefore, we excluded 87\% of the initial sample as it was composed of political news unrelated to federal political matters.
+    To find political events that could impact the exchange coupon, we follow \citet{bbb} as we searched our headlines sample for keywords. The keywords were: related to market uncertainty, 'incerteza', 'mercado' and 'economia' (uncertainty, market, economy); related to components of the exchange coupon, 'dólar', 'selic' and 'cdi' (dollar, Selic, DI); and related to federal government matters, 'presidente', 'presidência', 'câmara', 'senado', 'tribunal de contas da união', 'tcu', 'superior tribunal federal' and 'stf' (president, presidency, chamber (as in Chamber of Deputies), senate, Federal Accountability Office and its initials, and Supreme Court and its initials). The search resulted in a sample of 2.333 news. The final sample is 13\% the size of the unfiltered sample in terms of number of news, therefore, we excluded 87\% of the initial sample as it was composed of political news unrelated to federal political matters.
 
 \subsection{Exchange Coupon} \label{chapter_exchange_coupon}
 
-    In order to obtain the series for the exchange coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate PTAX 800 (PTAX), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank deposit rate (DI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through it's Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day.
+    In order to obtain the series for the exchange coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate PTAX 800 (PTAX), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank deposits rate (DI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through it's Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day.
     
     Our samples range from November 23, 2016 to May 16, 2019. They begin shortly after the end of the impeachment process of President Dilma Rousseff, at August 31, when President Temer (Ms Dilma's Vice President) took office after three months as Interim President. This happened during the largest economic crisis in Brazilian history, with the fourth trimester of 2016 being the last from a series of eleven in which the Gross Domestic Product decreased. The remaining period from our sample saw economic stagnation. Mr Temer's presidency was marked by reforms - like the Labour Reform, which successfully passed, and the Pension Reform, which did not -, and by a corruption scandal involving him and related to Operation Car Wash, a investigation on money laundry involving Brazilian politicians, which was very present in the media since even before his presidency. At October 2018 presidential elections were held, and Mr Bolsonaro was elected. The new president took office with his main focus as a new Pension Reform, which is still awaiting for approval by the time this is being written.
     
@@ -416,13 +419,13 @@ I want also to thank Dr. Nelson Seixas do Santos for his support and patience. S
         LowerLimit_t = \bar{X} - 1.96 * \sigma
     \end{equation}
 
-    We test the the null hypothesis that the conditional standard deviation samples come from a normal distributed population with the Shapiro-Wilk test, which results are shown in Table \ref{tab:csdshapiro}.
+    We test the null hypothesis that the conditional standard deviation samples come from a normal distributed population with the Shapiro-Wilk test, which results are shown in Table \ref{tab:csdshapiro}.
 
     \subfile{tables/csdshapiro.txt}
 
-    The test results shown in Table \ref{tab:csdshapiro} reject the null hypothesis that the sample comes from a normally distributed population.
+    The test results shown in Table \ref{tab:csdshapiro} reject the null hypothesis that the samples come from a normally distributed population.
 
-    The lower and upper limits are shown in Table \ref{tab:limpar} for both measures of the exchange coupon. Figure \ref{fig:oclimpar} and Figure \ref{fig:dilimpar} show the upper and lower limits altogether with the CDS series, for the OC1 and DI1 exchange coupons respectively.
+    The lower and upper limits from the confidence interval are shown in Table \ref{tab:limpar} for both measures of the exchange coupon. Figure \ref{fig:oclimpar} and Figure \ref{fig:dilimpar} show the upper and lower limits altogether with the CDS series, for the OC1 and DI1 exchange coupons respectively.
 
     \subfile{tables/limpar.txt}
 
@@ -436,8 +439,7 @@ I want also to thank Dr. Nelson Seixas do Santos for his support and patience. S
 
     \subfile{tables/diparout.txt}
 
-    As we see in the tables above, the results are basically the same for both measures of the exchange coupon. There were 18 days of abnormal volatility, of which 4 are from 2016, 5 are from 2017, 8 are from 2018, and 1 is from 2019. Of these 18 days, in 10 the exchange coupons show positive values.
-
+    As we see in the tables above, the results are very similar for both measures of the exchange coupon. There were 15 days of abnormal volatility for the OC1 exchange coupon, while there were 18 days for the DI1. 10 days were common to both measures.
 
 \subsection{Non Parametric}
 
@@ -475,88 +477,101 @@ I want also to thank Dr. Nelson Seixas do Santos for his support and patience. S
 
     \subfile{tables/dinonout.txt}
 
-    As we see in the tables above, the results are basically the same for both measures of the exchange coupon. There were 29 days of abnormal volatility, of which 3 are from 2016, 8 are from 2017, 10 are from 2018, and 8 are from 2019. Of these 29 days, in 16 the exchange coupons show positive values.
+    As we see in the tables above, the results , just as in the parametric analysis, are very similar for both measures of the exchange coupon. The OC1 shows 25 days of abnormal volatility, and the DI1 shows 29. 18 days are commom to the two measures.
 
 \chapter{Results and Discussion} \label{chapter_results_discussion}
 
-    After having filtered the exchange coupon for abnormal volatility, and the news for national political events, we match the two samples to find what political events happened to occur in the days of abnormal volatility. With this information we can analyze the impact of political news in the exchange coupon.
-
-    The days of abnormal volatility for both measures of the exchange coupon were the same in each approach (parametric and non parametric), therefore we will talk about the results without referencing a specific measure.
+    After having filtered the exchange coupon for abnormal volatility, and the news for national political events, we match the two samples to find what political events happened to occur in the days of abnormal volatility. With this information we can analyze the impact of political news in the exchange coupon. The results differ for the OC1 and DI1 measures, therefore we will show, for both parametric an non parametric analysis, first the news from the days of abnormal volatility the measures share, than the specific news for each measure.
 
 \section{Parametric}
 
-    The political news for each day of abnormal volatility for the parametric analysis are shown in Table \ref{tab:parnews}. There are a total of 69 news over 14 days of abnormal volatility.
+The news for each common day of abnormal volatility for the OC1 and DI1 measures are shown in Table \ref{tab:parcom}. The news specific to the OC1 measure are shown in Table \ref{tab:paroc}, and the news specific to the DI1 measure are shown in Table \ref{tab:pardi}. After each table, we will briefly describe the political event which brought abnormal volatility to the exchange coupon.
 
-    \subfile{tables/parnews.txt}
+    \subfile{tables/parcom.txt}
+    
+    At May, 2017, the corruption scandal of President Michel Temer broke out. It did with the disclosure by the Supreme Court of a recording of a conversation between Mr Temer and the businessman Joesley Batista - owner of JBS, which was, and still is by the time this is written, the largest meat processing company in the world -, who delivered the recording to the authorities as part of a plea bargain. The date when the recording was revealed was commonly dubbed as 'Joesley Day', as it was a day of high volatility for both the stock and dollar markets. In fact, the conditional standard deviation for the OC1 exchange coupon was of 0.033 (for scale, the maximum and minimum values of the 95\% confidence interval were of 0.011 and 0.005 respectively).
 
-    The 14 days of abnormal volatility are divided in 5 periods. The first period started at April 19, 2017 with the corruption scandal of President Michel Temer, and lasted until April 25 - therefore, a whole week. The scandal begun with the disclosure by the Supreme Court of a recording of a conversation between Mr Temer and the businessman Joesley Batista - owner of JBS, which was, and still is by the time this is written, the largest meat processing company in the world -, who delivered the recording to the authorities as part of a plea bargain. The date when the recording was revealed was commonly dubbed as 'Joesley Day', as it was a day of high volatility both in the stock and in the dollar markets. In fact, the conditional standard deviation for both measures of exchange coupon was of 0.033 (for scale, the maximum and minimum value of the 95\% confidence interval are of 0.011 and 0.005 respectively).
-
-    The second period happened between June 11 and 13, 2019, when news dealt with the visit of Paraguay's newly elected president Marido Abdo Benítez to President Temer, with a encounter of Petrobra's President with the Legislative and Judiciary, and with the change of judges from Superior Justice Tribunal in a process from Operation Car Wash, among other topics. The third period lasted only a single day, the 23th of July, 2018. In this date both Jair Bolsonaro, from Liberal Social Party (PSL), and Guilherme Boulos, from Socialism and Liberty Party (PSOL), were confirmed as candidates for the presidential elections that would be held in October.
-
-    The fourth and second last period of abnormal volatility begun 6 days before, and ended 2 days after, the first round of the 2018 presidential elections. At October 4th, when the period of abnormal volatility started, a voter intent survey was released which result was, in the case of a second round between Jair Bolsonaro (PSL) and Fernanando Haddad (Worker's Party (PT)), of 43\% of votes for the first and 42\% for the latter, therefore a technical draw.
-
-    The last period was the January 4th. At the time, Bolsonaro indicated he would try to pass a new Pension Reform rather than working on the approval of the one from the previous president, Mr Temer.
-
-    After knowing the political news that match with the abnormal volatility days, we are able to hypothesize on which political news actually had an effect in the exchange coupon. We considered that mainly matters related to changes in the presidency affected the financial variable, followed by matters about the Pension Reform. Both the arise of the possibility of a impeachment of President Temer caused by a corruption scandal, and the presidential elections with two opposing leading candidates, brought abnormal volatility. The annoucement of a new Pension Reform also had this effect. These periods are shown in Table \ref{tab:respar}.
+    At July, 2018, both Jair Bolsonaro, from Liberal Social Party (PSL), and Guilherme Boulos, from Socialism and Liberty Party (PSOL), were confirmed as candidates for the presidential elections that would be held in October. At October 2018, the presidential elections were held. A vote intent survey released less than a week before the elections' first round  showed a result of, in the case of a second round between Jair Bolsonaro (PSL) and Fernanando Haddad (Worker's Party (PT)), of 43\% of votes for the first and 42\% for the latter, therefore a technical draw. The date when this survey was released, and the date when the first round was held, were the only days when the 2018 elections affected both measures of the exchange coupon.
+    
+    At January, 2019, Bolsonaro indicated he would try to pass a new Pension Reform rather than working on the approval of the one from the previous president, Mr Temer.
+    
+    \subfile{tables/paroc.txt}
+    
+    Most news specific to the OC1 exchange coupon were of minor significance - unable of affecting the coupon. Nevertheless, for this specific measure, the Elections brought abnormal volatility for one day more than it did for both measures.
+    
+    \subfile{tables/pardi.txt}
+    
+    As with the DI1 measure, most news specific to the DI1 exchange coupon were of minor significance. Still, more news affected the DI1 than the OC1, as, besides having, one day more of abnormal volatility related to the Elections (as the OC1), the corruption scandal of President Temer brought abnormal volatility for three days more.
+    
+\subsection{Results of the Parametric Analysis}
+    
+    In the parametric analysis, we considered that mainly matters related to changes in the presidency affected the exchange coupons, followed by matters about the Pension Reform. Both the arise of the possibility of a impeachment of President Temer caused by a corruption scandal, and the presidential elections with two opposing leading candidates, brought abnormal volatility. The annoucement of a new Pension Reform also had this effect. These periods are shown in Table \ref{tab:respar}.
 
     \begin{table}[H]
-        \caption{Periods of Abnormal Volatility related to Political News, by Parametric Analysis}
+        \caption{Periods of Abnormal Volatility Related to Political News, by Parametric Analysis}
         \label{tab:respar}
         \centering
-        \begin{tabular}{| c | c |}
+        \begin{tabular}{ | c | c | c | }
             \hline
-            Period & News Topic \\
+            Period & Coupon & News Topic \\
             \hline \hline
-            17/05/19 - 17/05/25 & President Temer's corruption scandal \\
+            May, 2019 & Both & President Temer's corruption scandal \\
             \hline
-            18/07/23 & Announcement of Mr Bolsonaro's candidacy \\
+            July, 2018 & Both & Announcement of Mr Bolsonaro's candidacy \\
             \hline
-            18/10/04 - 18/10/10 & First Round of Presidential Elections \\
+            October, 2018 & Both & First round of Presidential Elections \\
             \hline
-            19/01/04 & Announcement of new Pension Reform \\
+            January, 2019 & Both & Announcement of new Pension Reform \\
             \hline
         \end{tabular}
     \end{table}
 
 \section{Non Parametric}
 
-    The political news for each day of abnormal volatility, for the non parametric analysis, are shown in Table \ref{tab:nonnews}. There are a total of 151 news over 26 days of abnormal volatility.
+    The news for each common day of abnormal volatility for the OC1 and DI1 measures, the news are shown in Table \ref{tab:noncom}. The news specific to the OC1 measure are shown in Table \ref{tab:nonoc}, and the news specific to the DI1 measure are shown in Table \ref{tab:nondi}. After each table, we will briefly describe the political event which brought abnormal volatility to the exchange coupon.
+   
+   \subfile{tables/noncom.txt}
+   
+   At March, 2017, there was news about the voting of the Labour Reform. At April, the corruption scandal of President Temer broke out, as mentioned in the previous section. Abnormal volatility returned at August, when the Brazilian Bar Association (OAB) triggered the Supreme Court to make the Chamber of Representatives' President analyze the impeachment requests he had received (there were 25 at the time). The impeachment matter correlated with abnormal volatility for the last time at October, when the Chamber of Representatives voted for the corruption denunciation against President Temer not to be sent to the Supreme Court, where it would be judged.
+    
+    At July, 2018, both Jair Bolsonaro, from Liberal Social Party (PSL), and Guilherme Boulos, from Socialism and Liberty Party (PSOL), were confirmed as candidates for the presidential elections that would occur in October. As in the parametric analysis, the days surrounding the first round of the presidential elections (held at October 8) were of abnormal volatility. The fourth day of 2019 was the first day of Bolsonaro's presidency to show abnormal volatility - at the time, Bolsonaro indicated he would try to pass a new Pension Reform rather than working on the approval of the reform from the previous president, Mr Temer. 
+    
+    \subfile{tables/nonoc.txt}
+    
+    Most news specific to the OC1 exchange coupon seem of minor significance - unable of affecting the coupon. The only event that we consider had an impact was the election for the Chamber of Deputies' presidency, at February, 2019, when Rodrigo Maia (DEM) was reelected.
+    
+    \subfile{tables/nondi.txt}
+    
+    As with the OC1 measure, most news specific to the DI1 exchange coupon seem of minor significance. Nevertheless, there were more days in which we consider political news affected the coupon. 
+    The corruption scandal involving President Temer brought abnormal volatility for two days more, therefore the period of high volatility was more extensive. The presidential elections had the same effect, extending the high volatility by two days.
 
-    \subfile{tables/nonnews.txt}
+\subsection{Results of the Non Parametric Analysis}
 
-    The 26 days of abnormal volatility are divided in 14 periods. At March 17, 2017, there was news about the voting of the Labour Reform. The three days of abnormal volatility between April 19 and 23, 2017, saw the beginning of the corruption scandal of President Temer, as mentioned in the previous section. Abnormal volatility returned at August 17, when the Brazilian Bar Association (OAB) triggered the Supreme Court to make the Chamber of Representatives' President analyze the impeachment requests he had received (there were 25 at the time). The impeachment matter correlated with abnormal volatility for the last time at October 25, when the Chamber of Representatives voted for the corruption denunciation against President Temer not to be sent to the Supreme Court, where it would be judged. At December 1st, is was disclosed that the president of the Party of the Republic (PR) used a apartment of the Chamber of Deputies while fugitive (he was convicted for corruption).
-
-    Abnormal volatility for the year of 2018 started in a period ranging from January 26 to January 29, where news about corruption being more decisive than economics in the presidential elections were published. Between June 11 and June 13, there were 11 news, from which the main ones were listed in the previous sub chapter. At July 23, both Jair Bolsonaro, from Liberal Social Party (PSL), and Guilherme Boulos, from Socialism and Liberty Party (PSOL), were confirmed as candidates for the presidential elections that would occur in October. As in the parametric analysis, the days surrounding the first round of the presidential elections (October 4 to 10) were of abnormal volatility.
-
-    The fourth day of 2019 was the first day of Bolsonaro's presidency to show abnormal volatility. At the time, Bolsonaro indicated he would try to pass a new Pension Reform rather than working on the approval of the reform from the previous president, Mr Temer. From January 7 to January 8, both Brazilian Party of Social Democracy (PSDB), Party of the Republic (PR) and party Podemos (called National Labour Party until 2016) announced support for the reelection of Rodrigo Maia for the Chamber of Deputies' presidency. The reelection occurred at February 1st, the date with the most political news - 31 - and correlated with abnormal volatility. At March 25 Chamber of Representative's president, Rodrigo Maia, said president Bolsonaro would lead the political articulation for the Pension Reform, and three days later the rapporteur for the Reform was chosen. The last period of abnormal volatility for our sample ranged from April 1st to 2nd, when the Plateau Palace, house of president Bolsonaro, share a video negating the denomination 'coup' for the military movement of 1964 which overthrew the government.
-
-    The results from the non parametric analysis add to the results of the parametric analysis, as they show that not only matters related to changes in the presidency and the Pension Reform affected the exchange coupon, but matters related to the presidency of the Chamber of Deputies and the Labour reform also did - the remaining news topics from our sample were considered of minor significance. The announcement of the voting of the Labour Reform had effect at March 2017. Even in the matters related to the presidency, more political events affected the exchange coupon: the possibility of impeachment of president Michel Temer impacted the exchange coupon not only in May 2017 (as in the parametric analysis), but in August and October as well. In August, OAB triggered the Supreme Court to make the Chamber of Representatives' President analyze the impeachment requests he had received, while in October the denunciation against the president was rejected by the Chamber of Deputies. The 2018 presidential elections had effect on the exchange coupon just like in the parametric analysis, with the announcement of Jair Bolsonaro as candidate (July 2018) and the first round of the elections (October 2018). The announcement of a new Pension Reform at January 2019 also had the same effect as in the parametric analysis. The elections for the presidency of the Chamber of Deputies, that took place in February 2019, also brought abnormal volatility, with both the announcement of support for the reelection of Mr Maia by PSDB, and the reelection itself. These periods are shown in Table \ref{tab:resnon}.
+    The results from the non parametric analysis add to the results of the parametric analysis, as they show that not only matters related to changes in the presidency and the Pension Reform affected the exchange coupon, but matters related to the presidency of the Chamber of Deputies and the Labour reform also did. The announcement of the voting of the Labour Reform had effect at March 2017. Even in the matters related to the presidency, more political events affected the exchange coupon: the possibility of impeachment of president Michel Temer impacted the exchange coupon not only in May 2017 (as in the parametric analysis), but in August and October as well. The 2018 presidential elections had effect on the exchange coupon just like in the parametric analysis, with the announcement of Jair Bolsonaro as candidate (July 2018) and the first round of the elections (October 2018). The announcement of a new Pension Reform at January 2019 also had the same effect as in the parametric analysis. The elections for the presidency of the Chamber of Deputies, that took place in February 2019, also brought abnormal volatility. These periods are shown in Table \ref{tab:resnon}.
 
     \begin{table}[H]
         \caption{Periods of Abnormal Volatility related to Political News, by Non Parametric Analysis}
         \label{tab:resnon}
         \centering
-        \begin{tabular}{| c | c |}
+        \begin{tabular}{ | c | c | c | }
             \hline
-            Period & News Topic \\
+            Period & Coupon & News Topic \\
             \hline \hline
-            17/03/17 & Voting of the Labour Reform \\
+            March, 2017 & Both & Voting of the Labour Reform \\
             \hline
-            17/05/19 - 23/05/17 & President Temer's corruption scandal \\
+            May, 2017 & Both & President Temer's corruption scandal \\
             \hline
-            17/08/17 & OAB's triggering of the Supreme Court \\
+            August, 2017 & Both & OAB's triggering of the Supreme Court \\
             \hline
-            17/10/25 & Rejection of the denunciation against President Temer \\
+            October, 2017 & Both & Rejection of the denunciation against President Temer \\
             \hline
-            18/07/23 & Announcement of Mr Bolsonaro's candidacy \\
+            July, 2018 & Both & Announcement of Mr Bolsonaro's candidacy \\
             \hline
-            18/10/04 - 18/10/10 & First Round of Presidential elections \\
+            October, 2018 & Both & First Round of Presidential elections \\
             \hline
-            19/01/04 & Announcement of a new Pension Reform \\
+            January, 2019 & Both & Announcement of a new Pension Reform \\
             \hline
-            19/01/08 & PSDB's support for Rodrigo Maia's candidacy \\
-            \hline
-            19/02/01 & Election for Chamber of Deputies' presidency \\
+            February, 2019 & DI1 & Election for Chamber of Deputies' presidency \\
             \hline
         \end{tabular}
     \end{table}
@@ -565,11 +580,11 @@ I want also to thank Dr. Nelson Seixas do Santos for his support and patience. S
 
     In order to test for semi-strong form efficiency, we analyzed the impact of political news on the country's exchange coupon. We cross referenced the days with abnormal returns for the exchange coupon with the days with political news. Ir order to achieve that, we filtered the news collected via web scrapping for national political events, and applied a GARCH filter in the exchange coupon to find abnormal returns. We performed both a parametric and a non parametric analysis.
 
-    The results, from both the parametric and non parametric analysis, show support for the semi-strong form efficient market hypothesis. From 2333 political news, only a small fraction had effect over the exchange coupon - 58 news in the parametric analysis (2.5\% of the total), and 105 news in the non parametric analysis (4.5\%). Nevertheless, if compared to other types of news that could impact the exchange coupon - such as macroeconomic and international - political news had considerable impact. In the parametric analysis, political news were accountable for 11 out of 18 days of abnormal volatility (61\%), and in the non parametric analysis they were accountable for 13 out of 29 days (45\%).
+    The results differ from the two measures of the exchange coupon, although it does not significantly changes the results. Both the parametric and non parametric analysis show support for the semi-strong form efficient market hypothesis. From 2333 political news, only a small fraction had effect over the exchange coupon - 61 news for the OC1 in the parametric analysis (2.6\% of the total), and 124 news for the OC1 in the non parametric analysis (5.3\%). Nevertheless, if compared to other types of news that could impact the exchange coupon - such as macroeconomic and international - political news had considerable impact. For the OC1, in the parametric analysis, political news were accountable for 6 out of 15 days of abnormal volatility (40\%), and in the non parametric analysis they were accountable for 9 out of 25 days (36\%).
 
     The parametric and non parametric analysis differ in their results, but both indicate that the exchange coupon was affected by political news about changes in the republic's presidency and about the Pension Reform. Changes in the presidency means both the 2018 elections, with its first round and the announcement of later-to-become president Jair Bolsonaro as candidate, and the corruption scandal with President Michel Temer at May 2017, which was followed by various impeachment requests. The Pension Reform had its effect with the announcement by President Bolsonaro of a new one, rather than working for the approval of the Reform proposed by Mr Temer.
 
-    While the parametric analysis indicates that the relationship between political news and the exchange coupon is limited to the one mentioned above, the non parametric analysis indicates that this relationship goes further, as political news of less (but in no way small) significance also affected the exchange coupon. In the case of the corruption scandal with President Temer, abnormal volatility was brought also by the triggering of the Supreme Court, by the Brazilian Bar Association (OAB), to make the Chamber of Representatives' President analyze the impeachment requests he had received (August 2017), and by the voting by the Chamber of Deputies for the corruption denunciation not to be sent to the Supreme Court (October 2017). Other than the elections for the federal presidency, the elections for the Chamber of Deputies' presidency also were shown to affect the coupon. Both announcement of support for Rodrigo Maria's candidacy (January 2019) and the election itself (February 2019) caused abnormal volatility. In the non parametric analysis, not only the Pension Reform affected the exchange coupon but also the Labour Reform, when the Chamber of Deputies' president announced its voting at March 2017.
+    While the parametric analysis indicates that the relationship between political news and the exchange coupon is limited to the one mentioned above, the non parametric analysis indicates that this relationship goes further, as political news of less (but in no way small) significance also affected the exchange coupon. In the case of the corruption scandal with President Temer, abnormal volatility was brought also by the triggering of the Supreme Court, by the Brazilian Bar Association (OAB), to make the Chamber of Representatives' President analyze the impeachment requests he had received (August 2017), and by the voting by the Chamber of Deputies for the corruption denunciation not to be sent to the Supreme Court (October 2017). Other than the elections for the federal presidency, the elections for the Chamber of Deputies' presidency also were shown to affect the coupon at February, 2019 - actually, this was the only event which had effect over just one measure of the exchange coupon (OC1). In the non parametric analysis, not only the Pension Reform affected the exchange coupon but also the Labour Reform, when the Chamber of Deputies' president announced its voting at March 2017.
 
     These results follow \citet{smales2015} and \citet{marquessantos2016}, as they both show that political uncertainty, as with who will win the elections, causes market uncertainty. Nevertheless, in our analysis more events  had effect over the market. This difference in results may arise from differences between the foreign and national investors.
 
