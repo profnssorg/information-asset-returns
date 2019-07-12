@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Descriptive Statistics for OC1 and DI1 Exchange Coupons}
+\label{tab:desocdi}
+\centering
+\begin{tabular}{ | c | c | c | c | c | }
+\hline
+Series & Mean & Standard Deviation & Minimum Value & Maximum Value \\
+\hline \hline
+OC1 & 0.000 & 0.008 & -0.080 & 0.030 \\
+\hline
+DI1 & 0.000 & 0.008 & -0.080 & 0.030 \\
+\hline
+\end{tabular}
+    \end{table}

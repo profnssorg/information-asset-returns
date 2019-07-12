@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Parametric Limits for DI1's CSD}
+\label{fig:dilimpar}
+\centering
+\includegraphics[width=\textwidth]{graphs/dilimpar.png}
+\end{figure}

@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{DI1 Exchange Coupon}
+\label{fig:di1}
+\centering
+\includegraphics[width=\textwidth]{graphs/di1.png}
+\end{figure}

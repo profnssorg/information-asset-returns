@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Residuals of DI1's GARCH}
+\label{fig:dires}
+\centering
+\includegraphics[width=\textwidth]{graphs/dires.png}
+\end{figure}

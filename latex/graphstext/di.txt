@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Interbank Deposit Rate}
+\label{fig:di}
+\centering
+\includegraphics[width=\textwidth]{graphs/di.png}
+\end{figure}

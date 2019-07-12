@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{Residuals of OC1's GARCH}
+\label{fig:ocres}
+\centering
+\includegraphics[width=\textwidth]{graphs/ocres.png}
+\end{figure}

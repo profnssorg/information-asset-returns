@@ -1,0 +1,16 @@
+\begin{table}[H]
+\caption{Descriptive Statistics for PTAX, Selic and DI}
+\label{tab:desptaxselicdi}
+\centering
+\begin{tabular}{ | c | c | c | c | c | }
+\hline
+Series & Mean & Standard Deviation & Minimum Value & Maximum Value \\
+\hline \hline
+PTAX & 3.481 & 0.319 & 3.051 & 4.188 \\
+\hline
+Selic & 0.031 & 0.009 & 0.025 & 0.052 \\
+\hline
+DI & 0.031 & 0.009 & 0.025 & 0.052 \\
+\hline
+\end{tabular}
+    \end{table}

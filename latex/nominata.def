@@ -1,0 +1,36 @@
+%
+% UFRGS TeX Users Group
+% Institute of Informatics --- UFRGS
+% Porto Alegre, Brazil
+% http://www.inf.ufrgs.br/utug
+% Discussion list: utug-l@inf.ufrgs.br
+%
+% Copyright (C) 21001,2003 UFRGS TeX Users Group
+% This is free software, distributed under the GNU GPL; please take
+% a look in `iiufrgs.cls' to see complete information on using, copying
+% and redistributing these files
+%
+
+% Reitoria
+\providecommand{\nominataReit}{Prof.~Rui Vicente Oppermann}
+\providecommand{\nominataReitname}{Reitor}
+\providecommand{\nominataPRCA}{Prof\textsuperscript{a}.~Jane Fraga Tutikian}
+\providecommand{\nominataPRCAname}{Vice-Reitora}
+
+
+% Faculdade de Ciências Econômicas
+\providecommand{\nominataDir}{Prof\textsuperscript{a}.~Prof. Andr{\'e} Moreira Cunha}
+\providecommand{\nominataDirname}{Diretor da Faculdade de Ci{\^e}ncias Econ{\^o}micas}
+
+
+% Biblioteca
+\providecommand{\nominataBibchefe}{Beatriz Regina Bastos Haro}
+\providecommand{\nominataBibchefename}{Bibliotec{\'a}ria-chefe do AJUSTAR DESCOBRIR}
+
+% Graduação
+\providecommand{\nominataPRAG}{Prof.~S{\'e}rgio Roberto Kieling Franco}
+\providecommand{\nominataPRAGname}{Pr{\'o}-Reitor de Gradua{\c{c}}{\~a}o}
+
+%CIC
+\providecommand{\nominataCoordCIC}{Prof\textsuperscript{a}.~Janice Dornelles de Castro}
+\providecommand{\nominataCoordCICname}{Coordenadora do Curso de Ci{\^e}ncias Econ{\^o}micas}
