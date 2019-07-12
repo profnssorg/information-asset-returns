@@ -1,5 +1,18 @@
+'''
+NOME: Some Evidence on Political Information and Exchange Coupon in Brazil -
+      Calculations Module
+AUTHOR: Bernardo Paulsen
+DATE: 2019/06/24
+VERSION: 1.0.0
+LINK: https://github.com/profnssorg/information-asset-returns
 
-# IMPORT PACKAGES
+DESCRIPTION: Class for the output of graphs' image and latex text
+
+'''
+
+
+######## IMPORT PACKAGES ########
+
 
 #import numpy as np # api - array used for series and dataframe data structures
                    # fundamental package for scientific computing
@@ -8,6 +21,10 @@
 
 from arch import arch_model
 from scipy import stats
+
+
+######## CLASS DEFINITION ########
+
 
 class Calculations():
 

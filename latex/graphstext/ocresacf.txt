@@ -1,6 +1,0 @@
-\begin{figure}[H]
-\caption{Auto-Correlation Funcion for Residuals of OC1}
-\label{fig:ocresacf}
-\centering
-\includegraphics[width=\textwidth]{graphs/ocresacf.png}
-\end{figure}

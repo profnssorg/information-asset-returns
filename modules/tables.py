@@ -1,10 +1,29 @@
-# IMPORT PACKAGES
+'''
+NOME: Some Evidence on Political Information and Exchange Coupon in Brazil -
+      Tables Module
+AUTHOR: Bernardo Paulsen
+DATE: 2019/06/24
+VERSION: 1.0.0
+LINK: https://github.com/profnssorg/information-asset-returns
+
+DESCRIPTION: Class for the output of latex tables
+
+'''
+
+
+######## IMPORT PACKAGES ########
+
+
 #import numpy as np # api - array used for series and dataframe data structures
                    # fundamental package for scientific computing
 #import pandas as pd # api - series and datagrame data structues & various 
                     # data structures and data analysis tools
 import statsmodels.tsa.stattools as stat # adf, kpss, shapito white
 import statsmodels.stats.diagnostic as dig #ljung box
+
+
+######## CLASS DEFINITION ########
+
 
 class Tables():
 

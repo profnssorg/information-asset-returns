@@ -6,25 +6,16 @@
     breaklines=true,
     postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
 }
-
 \usepackage[utf8]{inputenc}   % pacote para acentuação
-
 \usepackage{amsmath} % para equações
-
 \usepackage{mathtools} % para equações
-
 \usepackage{subfiles} % para importar arquivos de texto
-
 \usepackage{longtable} % para tabelas em mais de uma página
-
 \usepackage{graphicx} % pacote para importar figuras
-
 \usepackage{times}
-
-
 \usepackage[alf,abnt-emphasize=bf]{abntex2cite}
-
 \usepackage{nameref}
+
 
 \title{Some Evidence on Political Information and Exchange Coupon in Brazil}
 
@@ -40,29 +31,16 @@
 \begin{document}
 
 
-
-
-%\clearpage
-%\begin{flushright}
-%    \mbox{}\vfill
-%    {\sffamily\itshape
-%    ``So many things that I've created, this right here might be my favorite''\\}
-%    --- \textsc{Mac Miller}
-%\end{flushright}
-
-% agradecimentos
-
-
 \chapter*{Acknowledgments}
 
-I want to dedicate this work to my family and friends, without whom life would be flavorless. 
 
-I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patience. Since my earliest works at Equilíbrio AES, through a scientific initiation fellow and until the present course conclusion paper, his orientation was key to my progress.
+I want to dedicate this work to my family and friends, without whom life would be flavourless. 
 
+I want also to thank Prof. Dr Nelson Seixas do Santos for his support and patience. Since my earliest works at Equilíbrio AES, through a scientific initiation fellow and until the present course conclusion paper, his orientation was key to my progress.
 
 
 \begin{abstract}
-    We investigate whether political news affect the exchange coupon in Brazil, in a period ranging from November 24, 2016, until April 16, 2019. Our sample of news is collected via web scrapping, which we apply on a Brazilian news portal. We use two measures for the exchange coupon, and we apply a GARCH model to estimate conditional volatility, which we filter with both a parametric and a non parametric approach. The results from the parametric analysis indicate that the exchange coupon was affected by the corruption scandal of President Temer (May, 2017), the announcement of Jair Bolsonaro as candidate for the republic's presidency (July, 2018), the first round of the presidential elections (October, 2018), and the announcement of a new Pension Reform (January, 2019). The results from the non parametric analysis indicate that, besides the events above, the exchange coupon was also affected by news related to the Labour Reform (March, 2017), the impeachment requests of President Temer that followed the corruption scandal (August and October, 2017), and the elections for the Chamber of Deputies' presidency (February, 2019).
+    We investigate whether political news affect the exchange coupon in Brazil, on a period ranging from November 24, 2016, until April 16, 2019. Our sample of news was collected via web scrapping, which we applied on a Brazilian news portal. We used two measures for the exchange coupon, and we utilized a GARCH model to estimate conditional volatility, which we filtered with both parametric and non-parametric approach. The results from the parametric analysis indicate that the exchange coupon was affected by the corruption scandal of President Temer (May 2017), the announcement of Jair Bolsonaro as candidate for the republic's presidency (July, 2018), the first round of the presidential elections (October, 2018), and the announcement of a new Pension Reform (January, 2019). The results from the non-parametric analysis indicate that, besides the events above, the exchange coupon was also affected by news related to the Labour Reform (March 2017) and the impeachment requests of President Temer following the corruption scandal (August and October 2017).
     
     \noindent
     \textbf{JEL classification:} C58, G14.
@@ -77,7 +55,7 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
     
     \item[API] Application Programming Interface
     \item[AR] Autoregressive
-    \item[ARCH] Autoregressive Conditional Heteroscedasticity
+    \item[ARCH]    Autoregressive Conditional Heteroscedasticity
     \item[BCB] Central Bank of Brazil
     \item[BM\&F] Commodities and Futures Exchange
     \item[BRL] Brazilian Real
@@ -96,7 +74,7 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
     \item[OAB] Brazilian Bar Association
     \item[OC1] OC1 Exchange Coupon
     \item[PR] Party of the Republic
-    \item[PSDB] Party of Social Democracy
+    \item[PSDB]    Party of Social Democracy
     \item[PSL] Liberal Social Party
     \item[PSOL] Socialism and Liberty Party
     \item[PT] Worker's Party
@@ -114,20 +92,18 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 % sumario
 \tableofcontents
 
-% aqui comeca o texto propriamente dito
 
-% introducao
 \chapter{Introduction} \label{chapter_introduction}
 
-    It is very common for the media around the world to announce the idea that a given political event has made an impact on the financial markets. In fact, newspapers constantly refer to political news as the cause of fluctuations in prices of financial assets. That explanation is inconsistent with the classical semi-strong market efficiency hypothesis as posed by \citet{fama1970} though, which states prices reflect all available public information.  
+    It is very common for the media around the world to announce the idea that a given political event has made an impact on the financial markets. In fact, newspapers constantly refer to political news as the cause of fluctuations in prices of financial assets. That explanation is inconsistent with the classical semi-strong market efficiency hypothesis as posed by \citet{fama1970} although, which states prices reflect all available public information.  
     
-    The evidence on asset prices being affected by news about macroeconomics (see, \citet{macqueenroley1993}, \citet{caporaleetal2015}) complicates the issue further. Still, in general, the semi-strong form market efficiency tests for political information in Brazil have shown supporting evidence for the hypothesis in the case of stock market returns and interest rates (\citet{marquessantos2016}).
+    The evidence on asset prices being affected by news about the macroeconomy (see, \citet{macqueenroley1993}, \citet{caporaleetal2015}) complicates the issue further. Still, in general, the semi-strong form market efficiency tests for political information in Brazil have shown supporting evidence for the hypothesis in the case of stock market returns and interest rates (\citet{marquessantos2016}).
     
-    Indeed, the studies mentioned above test for efficiency in a national investor level, since they took for granted investor's return would be measured in domestic currency terms.  But, actually, foreign investors are responsible for 22.61\% of the volume daily traded in the Brazilian stock market in 2019 as it can be seen in  \href{http://www.b3.com.br/data/files/14/B4/D5/25/4B80B61070D79EA6AC094EA8/partdir_NOVOv2.xls}{B3 Participation of Investors Report}.
+    Indeed, the studies mentioned above test for efficiency on a national investor level, since they took for granted investor's return would be measured in domestic currency terms.  However, foreign investors are responsible for 22.61\% of the volume daily traded in the Brazilian stock market in 2019 as it can be seen in  \href{http://www.b3.com.br/data/files/14/B4/D5/25/4B80B61070D79EA6AC094EA8/partdir_NOVOv2.xls}{B3 Participation of Investors Report}.
     
-    The problem we address here is whether political information affects the exchange coupon, which is the difference between the interest rate and exchange rate variation in a country, and measures the return for dollars invested locally. Therefore, the contribution made here is not only to investigate market efficiency in Brazil from a international, broader and more solid perspective but also establish a replicable methodology applicable to other countries' data.
+    The problem we address here is whether political information affects the exchange coupon, which is the difference between the interest rate and exchange rate variation in a country and measures the return for dollars invested locally. Therefore, the contribution made here is not only to investigate market efficiency in Brazil from an international, broader and more solid perspective but also establish a replicable methodology applicable to other countries' data.
     
-    We follow \citet{marquessantos2016} methodology, that is: we apply web-scraping to search for news; we find the ones related to national political events by searching the headlines for keywords; we filter the exchange coupon for abnormal volatility; and finally we cross the data to determine whether abnormal volatility was related to political events. To find the periods with abnormal volatility for the exchange coupon, we apply \citet{bollerslev1986} GARCH as a filter, in which we search for abnormal values of the conditional standard deviation series with both a parametric and a non parametric analysis.
+    We follow \citet{marquessantos2016} methodology, that is: we apply web-scraping to search for news; we find the ones related to national political events by searching the headlines for keywords; we filter the exchange coupon for abnormal volatility, and finally we cross the data to determine whether abnormal volatility was related to political events. To find the periods with abnormal volatility for the exchange coupon, we apply \citet{bollerslev1986} GARCH as a filter, in which we search for abnormal values of the conditional standard deviation series with both a parametric and non-parametric analysis.
 
     It is worth noticing there are two measures of exchange coupon in Brazil. The first measure is the difference between the average rate of one-day inter-bank deposits (DI) and the exchange rate variation (as measured by PTAX800), while the other is the excess return of referential rate of the Special Settlement and Custody System (Selic) over exchange rate variation (PTAX800). 
   
@@ -135,119 +111,61 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
 \chapter{The Institutional Environment} \label{chapter_institutional}
 
-    Brazil's legal basis is defined in the 1988 Constitution (\citet{constituicao}). Brazil is a representative federative republic, where the government's power is divided in three branches, the Executive, Legislative and Judiciary, which are independent of each other. The republic's president, chief of the Executive, is elected via universal direct secret compulsory vote by the citizens for a four-year term, and can be reelected only once. The senators and deputies, who make up the Legislative, are also elected this way, and have terms of eight and four years respectively. The constituents of the Judiciary, on the other hand, are almost all selected by pubic tender, as the ministers from the Supreme Court and Superior Justice Tribunal are indicated by the republic's president.
+    Brazil's legal basis is defined in the 1988 Constitution (\citet{constituicao}). Brazil is a representative federative republic, where the government's power is divided into three branches, the Executive, Legislative and Judiciary, which are independent of each other. The republic's president, chief of the Executive, is elected via universal direct secret compulsory vote by the citizens for a four-year term and can be reelected only once. The senators and deputies, who make up the Legislative, are also elected this way and have terms of eight and four years respectively. The constituents of the Judiciary, on the other hand, are almost all selected by pubic tender, as the ministers from the Supreme Court and Superior Justice Tribunal are indicated by the republic's president.
 
-    The Brazilian Financial System (SFN) as it is today was instituted in Law 4.595, from December 1964 (\citet{lei4595}). The National Monetary Council (CMN) was established as the major normative institution of the Financial System, while the Central Bank of Brazil (BCB) was established as the major executive institution. CMN is composed by the Minister of Economy and the Central Bank's President, and defines the guidelines for the budget, fiscal, monetary, credit and exchange policies, while also establishing the rules for the SFN.
+    The Brazilian Financial System (SFN) as it is today was instituted in Law 4.595, from December 1964 (\citet{lei4595}). The National Monetary Council (CMN) was established as the major normative institution of the Financial System, while the Central Bank of Brazil (BCB) was established as the major executive institution. CMN is composed by the Minister of Economy and the Central Bank's President, and defines the guidelines for the budget, fiscal, monetary, credit and exchange policies, while also establishing the rules for the Financial System.
 
-    The policies which guidelines are defined by the Monetary Council are executed by the Central Bank, which goal is to enforce the norms defined by the first. The Central Bank has the monopoly of currency issue, and executes the monetary and exchange policies with the buying and selling of public debt securities, which are issued by the National Treasury (TN). The Central Bank's president is indicated by the republic's president, who can replace him anytime, therefore the institution is not independent - this issue was recently addressed by President Bolsonaro in a complementary bill project which alters Law 4.595 (\citet{lei4595}).
+    The policies which guidelines are defined by the Monetary Council are executed by the Central Bank, whose goal is to enforce the norms defined by the first. The Central Bank has the monopoly of currency issue and executes the monetary and exchange policies with the buying and selling of public debt securities, which are issued by the National Treasury (TN). The Central Bank's president is indicated by the republic's president, who can replace him anytime, therefore the institution is not independent - this issue was recently addressed by President Bolsonaro in a complementary bill project which alters Law 4.595 (\citet{lei4595}).
 
     Today's regimes for fiscal, monetary and exchange policies started in 1999, with the establishment of the so-called Economic Tripod, which is a set of three regimes for economic policy: government surplus for the fiscal policy, inflation targeting for the monetary policy and floating exchange rate for the exchange policy. The target for the inflation rate is defined by the Monetary Council, while the Monetary Policy Committee (CoPoM) defines the target for the short term interest rate (Selic) used for the monetary policy. The Central Bank pursues this interest rate.
 
-    The transferable securities market (securiries, commodities and derivatives exchanges) is disciplined and supervised by the Commission of Transferable Securities (CVM), established in Law 6.385, from December 1976 (\citet{lei6385}). Brazil has only one stock exchange, B3, which acts in all branches of the transferable securities market. B3 emerged as the fusion, in 2017, between BM\&FBOVESPA (itself the fusion of BM\&F (Commodities and Futures Exchange) and BOVESPA (São Paulo Securities Exchange)), and CETIP (Central of Custody and Financial Settlement of Private Securities).  In Table \ref{tab:sistemanacional} the structure of the National Financial System is represented for better visualization.
+    The transferable securities market (securities, commodities and derivatives exchanges) is disciplined and supervised by the Commission of Transferable Securities (CVM), established in Law 6.385, from December 1976 (\citet{lei6385}). Brazil has only one stock exchange, B3, which acts in all branches of the transferable securities market. B3 emerged as the fusion, in 2017, between BM\&FBOVESPA (itself the fusion of BM\&F (Commodities and Futures Exchange) and BOVESPA (São Paulo Securities Exchange)), and CETIP (Central of Custody and Financial Settlement of Private Securities).  In Table \ref{tab:sistemanacional} the structure of the National Financial System is represented for better visualization.
 
     \begin{table}[H]
         \caption{National Financial System}
         \label{tab:sistemanacional}
         \centering
-        \begin{tabular}{lp{2.3cm}|p{2.3cm}|p{2.3cm}|p{2.3cm}}
-             & \multicolumn{2}{p{4.6cm}||}{Currency, Credit, Capital, Currency Exchange} & \multicolumn{1}{l||}{Private Insurance} & \multicolumn{1}{l}{Closed Pension} \\ \cline{2-5} 
-            \multicolumn{1}{l|}{Regulating} & \multicolumn{2}{l||}{CMN} & \multicolumn{1}{p{2.3cm}||}{CNSP} & \multicolumn{1}{p{2.3cm}|}{CNPC} \\
-            \multicolumn{1}{l|}{Entities} & \multicolumn{2}{l||}{(National Monetary Council)} & \multicolumn{1}{p{2.75cm}||}{(National Private Insurance Council)} & \multicolumn{1}{p{2.3cm}|}{(National Supplementary Pension Council)} \\ \hline
-            \multicolumn{1}{l|}{Supervising} & \multicolumn{1}{p{2.3cm}||}{BC} & \multicolumn{1}{p{2.3cm}||}{CVM} & \multicolumn{1}{p{2.3cm}||}{Susep} & \multicolumn{1}{p{2.3cm}|}{Previc} \\
-            \multicolumn{1}{l|}{Entities} & \multicolumn{1}{p{2.3cm}||}{(Central Bank of Brazil)} & \multicolumn{1}{p{2.3cm}||}{(Commission of Transferable Securities)} & \multicolumn{1}{p{2.75cm}||}{(Superintendence of Private Insurance)} & \multicolumn{1}{p{2.3cm}|}{(National Superintendence of Supplementary Pension)} \\ \hline
-            \multicolumn{1}{l|}{Operators} & \multicolumn{1}{p{2.3cm}||}{Banks and Savings Banks,  Credit Cooperatives, Payment Institutions, Consortium Administrators, Brokers and Distributors, other non banking institutions} & \multicolumn{1}{p{2.3cm}||}{Stock, Commodities and Futures Exchanges} & \multicolumn{1}{p{2.75cm}||}{Insurers and Reinsurers, Open Pension Entities, Capitalization Companies} & \multicolumn{1}{p{2.3cm}|}{Closed Entities of Supplementary Pension} \\ \cline{2-5} 
+        \begin{tabular}{|l|p{2.3cm}|p{2.3cm}|p{2.3cm}|p{2.3cm}|}
+            \hline
+             & \multicolumn{2}{|p{4.6cm}||}{Currency, Credit, Capital, Currency Exchange} & \multicolumn{1}{l||}{Private Insurance} & \multicolumn{1}{l|}{Closed Pension} \\
+            \hline
+            \multicolumn{1}{|l|}{Regulating} & \multicolumn{2}{l||}{CMN} & \multicolumn{1}{p{2.3cm}||}{CNSP} & \multicolumn{1}{p{2.3cm}|}{CNPC} \\
+            \multicolumn{1}{|l|}{Entities} & \multicolumn{2}{l||}{(National Monetary Council)} & \multicolumn{1}{p{2.75cm}||}{(National Private Insurance Council)} & \multicolumn{1}{p{2.3cm}|}{(National Supplementary Pension Council)} \\ \hline
+            \multicolumn{1}{|l|}{Supervising} & \multicolumn{1}{p{2.3cm}||}{BC} & \multicolumn{1}{p{2.3cm}||}{CVM} & \multicolumn{1}{p{2.3cm}||}{Susep} & \multicolumn{1}{p{2.3cm}|}{Previc} \\
+            \multicolumn{1}{|l|}{Entities} & \multicolumn{1}{p{2.3cm}||}{(Central Bank of Brazil)} & \multicolumn{1}{p{2.3cm}||}{(Commission of Transferable Securities)} & \multicolumn{1}{p{2.75cm}||}{(Superintendence of Private Insurance)} & \multicolumn{1}{p{2.3cm}|}{(National Superintendence of Supplementary Pension)} \\ \hline
+            \multicolumn{1}{|l|}{Operators} & \multicolumn{1}{p{2.3cm}||}{Banks and Savings Banks,  Credit Cooperatives, Payment Institutions, Consortium Administrators, Brokers and Distributors, other non banking institutions} & \multicolumn{1}{p{2.3cm}||}{Stock, Commodities and Futures Exchanges} & \multicolumn{1}{p{2.75cm}||}{Insurers and Reinsurers, Open Pension Entities, Capitalization Companies} & \multicolumn{1}{p{2.3cm}|}{Closed Entities of Supplementary Pension} \\
+            \hline
         \end{tabular}
     \end{table}
 
-    The structure described above has strong impact in the behaviour of the exchange coupon, as the coupon's interest rate component is closely related to the pursue of a inflation target, and it's exchange rate component fluctuates in a floating exchange rate regime.
+    The structure described above has a strong impact on the behaviour of the exchange coupon, as the coupon's interest rate component is closely related to the pursuit of an inflation target, and its exchange rate component fluctuates in a floating exchange rate regime.
 
 
 \chapter{News and Market Efficiency} \label{chapter_literature}
 
-    The Efficient Market Hypothesis (EMH), as posed by \citet{fama1970}, states that security prices "fully reflect" available information, providing "accuarate signals for resource allocation". In the model, information is divided in three subsets. For the weak form efficiency, the information set is the historical prices of the security. For the semi strong form, it is all the publicly available information, and finally, for the strong form, it is all available information, even if held private. There is massive literature on market efficiency, as the hypothesis has enormous implications for trading strategies, since it indicates the impossibility of economic profit with existing information (\citet{kamal2014}). If weak form market efficiency holds, then chartist or technical analysis is useless, and if the semi-strong form holds, then fundamental analysis, founded on public information, is useless (\citet{oprean2012}). Our paper focus on semi strong form efficiency, as we work with information in the form of publicly available news.
+    The Efficient Market Hypothesis (EMH), as posed by \citet{fama1970}, states that security prices "fully reflect" available information, providing "accurate signals for resource allocation". In this model, information is divided into three subsets. For the weak form efficiency, the information set is the historical prices of the security. For the semi-strong form, it is all the publicly available information, and finally, for the strong form, it is all available information, even if held private. There is massive literature on market efficiency, as the hypothesis has enormous implications for trading strategies, as it indicates the impossibility of economic profit with existing information (\citet{kamal2014}). If weak form market efficiency holds, then chartist or technical analysis is useless, and if the semi-strong form holds, then fundamental analysis, founded on public information, is useless (\citet{oprean2012}). Our paper focuses on semi-strong form efficiency, as we work with information in the form of publicly available news.
 
-    The evidence on the relationship between financial variables and news support that the first responds to the latter. News about the macroeconomy are shown to affect commodity prices in \citet{caporaleetal2015}, while \citet{macqueenroley1993} shows not only that the stock market responds to this subset of news, but that the response depends on the state of the economy. The use of news for trading strategies is shown to award economic profit in \citet{larsenthorsrud2017}. In \citet{moussaetal2017} it is shown that information supply has impact on prices, but the effect is more pronounced on volatility than on returns.
+    The evidence on the relationship between financial variables and news support that the first responds to the latter. News about the macroeconomy are shown to affect commodity prices in \citet{caporaleetal2015}, while \citet{macqueenroley1993} displays not only that the stock market responds to this subset of news, but that the response depends on the state of the economy. The use of news for trading strategies is shown to award economic profit in \citet{larsenthorsrud2017}. In \citet{moussaetal2017} it is shown that information supply has an impact on prices, but the effect is more pronounced on volatility than on returns.
 
-    \citet{caporaleetal2015} applies a VAR-GARCH model to analyze the spillovers between mean and variance of both macroeconomic news and commodity returns. The sample of returns is composed by ten commodities and the exchange rate, in a period of over 13 years. The news sample includes the worldwide coverage of four macroeconomic variables: GDP, unemployment, retail sales and durable good, which are are used in the making of two indexes, one for positive and one for negative news. The results show spillovers for all variables but gold and silver.
-    In \citet{macqueenroley1993} it is analyzed if stock prices response to news vary over different stages of the business cycle. The sample of equity prices consists in the S\&P 500 Index from over 10 years, and the sample of series used to represent the stage of the economy consists of variables related to cash flows and equity discount rates. The results show that the stock market responds positively to good macroeconomic news when the economy is weak, but negatively when the economy is strong.
+    \citet{caporaleetal2015} applies a VAR-GARCH model to analyze the spillovers between mean and variance of both macroeconomic news and commodity returns. The sample of returns is composed of ten commodities and the exchange rate, in a period of over 13 years. The news sample includes the worldwide coverage of four macroeconomic variables: GDP, unemployment, retail sales and durable goods, which are used in the making of two indexes, one for positive and one for negative news. The results show spillovers for all variables but gold and silver.
+    In \citet{macqueenroley1993} it is analyzed if stock prices response to news varies over different stages of the business cycle. The sample of equity prices consists in the S\&P 500 Index from over 10 years, and the sample of series used to represent the stage of the economy consists of variables related to cash flows and equity discount rates. The results show that the stock market responds positively to good macroeconomic news when the economy is weak, but negatively when the economy is strong.
 
     Textual data is used to analyze the relationship between news topics and stock returns in \citet{larsenthorsrud2017}. The news sample comes from a daily Norwegian newspaper, and the stock prices sample comes from several firms listed in the Oslo Stock Exchange. The results show that news predict daily returns, allowing for investment strategies with economic returns.
-    In \citet{moussaetal2017} news headlines are used to measure information supply, while search volume from Google Trends database is used to measure information demand. The sample of stocks is 25 stocks composing the Frech stock market index CAC40 and the index itself, and it's time range is seven years. A model is developed to test the relationship between the samples, and the results indicate that information affects asset prices, but while the effect on volatility is considerable, the effect on returns is small.
+    In \citet{moussaetal2017} news headlines are used to measure information supply, while search volume from Google Trends database is used to measure information demand. The sample of stocks is 25 stocks composing the Frech stock market index CAC40 and the index itself, and its time range is seven years. A model is developed to test the relationship between the samples, and the results indicate that information affects asset prices, but while the effect on volatility is considerable, the effect on returns is small.
 
     When testing for political information, the results also support that security prices are responsive. Both \citet{smales2015} and \citet{marquessantos2016} show that political uncertainty is related to market uncertainty, the first for Australia and the latter for Brazil. The Brazilian stock market is also shown to react to tax announcements in \citet{gabrielribeiro2013}.
 
     \citet{smales2015} uses electoral polls data to construct two measures of political uncertainty. One represents overall election uncertainty, the other represents uncertainty about reelection, which is considered of importance as economic policies of a reelected president are well known in caparison with the policies of a newly elected president. The financial series are exchange-traded futures and options based on the Australian stock market index S\&P/ASX 200. Market volatility is shown to increase with political uncertainty, and decrease with the probability of reelection.
     
-    In \citet{marquessantos2016} a GARCH model is applied to daily stock returns and short term interest rates in Brazil. The sample for the first is the Bovespa Index, and the sample for the latter is composed by the Selic rate and the DI rate. Samples range from January 2014 to April 2016. The results show that the the stock market only responds to political news in the case of elections, as the only period of abnormal volatility related to news happened to occur around the 2014 presidential elections' date. On the other hand, the short term interest rates do not respond to political news.
+    In \citet{marquessantos2016} a GARCH model is applied to daily stock returns and short term interest rates in Brazil. The sample for the first is the Bovespa Index, and the sample for the latter is composed by the Selic rate and the DI rate. Samples range from January 2014 to April 2016. The results show that the stock market only responds to political news in the case of elections, as the only period of abnormal volatility related to news happened to occur around the 2014 presidential elections' date. On the other hand, the short term interest rates do not respond to political news.
     
-    \citet{gabrielribeiro2013} verifies if a government's annunciation of tax cuts had effect over stock prices of companies from the sector that would be directly affected. The referred tax is the Tax on Industrialized Products (IPI). After filtering for characteristics that would make the calculations possible, 13 stocks made to the final sample. The results indicate that the stock prices were indeed affected by the tax cut annunciation.
+    \citet{gabrielribeiro2013} verifies if a government's annunciation of tax cuts affected stock prices of companies from the sector that would be directly affected. The referred tax is the Tax on Industrialized Products (IPI). After filtering for characteristics that would make the calculations possible, 13 stocks made to the final sample. The results indicate that the stock prices were indeed affected by the tax cut annunciation.
 
 \chapter{The Model} \label{chapter_model}
 
-    Market efficiency, as posed by \citet{fama1970}, is a implication of a perfect capital market (neither transaction or information costs), investor risk aversion, and two-parameter return distributions (\citet{famamcbeth1973}). It is worth noticing that absence of transaction and information costs, and agreement among investors, are sufficient but not necessary conditions for market efficiency. Transaction costs do not mean that the transactions do not "fully reflect" available information; if a "sufficient number" of investors have access to information the market may be efficient; and only if there are investors who can consistently make better predictions than the ones implicit in prices market inefficiency will arise (\citet{fama1970}).
+    Three market conditions lead the market to efficiency, as posed by \citet{fama1970}, these are: the absence of transaction or information costs and homogeneous expectations. It is worth noticing that these conditions are sufficient but not necessary for market efficiency. Transaction costs do not mean that the transactions do not "fully reflect" available information; if a "sufficient number" of investors have access to information the market may be efficient; and only if there are investors who can consistently make better predictions than the ones implicit in prices market inefficiency will arise (\citet{fama1970}).
     
-    For a brief demonstration of the model, we will consider that equilibrium prices are generated in the \citet{sharpe1964} world. Two assumptions about the investor are made: that he acts in the basis of two parameters of the distribution of returns of an asset - its expected value and standard deviation; and that he derives utility from returns and disutility from risk. The market is built upon two other assumptions: a common pure rate of interest; and homogeneity of investor expectations, as they agree on expected values, standard deviations, and correlations of the securities.
-    
-    Let $U$ denote the utility of an investor, $E_W$ denote the expected value of a security $W$, and $\sigma_W$ its standard deviation, the utility function of the investor is defined in Equation \ref{eqn:ut1}.
-    
-    \begin{equation}
-        \label{eqn:ut1}
-        U = f(E_W, \sigma_W)
-    \end{equation}
-    
-    As the future value of a security is directly related to its return, let $R$ denote the return, the utility function can be defined as in Equation \ref{eqn:ut2}.
-
-    \begin{equation}
-        \label{eqn:ut2}
-        U = g(E_R, \sigma_R)
-    \end{equation}
-
-    The investor likes return and dislikes risk, therefore the utility function is increasing with security's expected return and decreasing with its standard deviation, as shown in Equations \ref{eqn:der1} and \ref{eqn:der2}.
-    
-    \begin{equation}
-        \label{eqn:der1}
-        \frac{dU}{dE_R} > 0
-    \end{equation}
-
-    \begin{equation}
-        \label{eqn:der2}
-        \frac{dU}{d\sigma_R} < 0
-    \end{equation}
-
-    Let $i$ denote an investor among the population and $r$ denote the pure rate of interest, the assumption of a common pure rate of interest can be defined in Equation \ref{eqn:r}.
-
-    \begin{equation}
-        \label{eqn:r}
-        r_i = r, \quad \forall i
-    \end{equation}
-
-    Let $a$ and $b$ denote each any security in the market, the assumption of homogeneous expectations can be defined in Equations \ref{eqn:equal_exp}, \ref{eqn:equal_std} and \ref{eqn:equal_cor}.
-
-    \begin{equation}
-        \label{eqn:equal_exp}
-        E_{W_i} = E_W, \quad \forall i
-    \end{equation}
-
-    \begin{equation}
-        \label{eqn:equal_std}
-        \sigma_{W_i} = \sigma_W, \quad \forall i
-    \end{equation}
-
-    \begin{equation}
-        \label{eqn:equal_cor}
-        Cor(W_a, W_b)_i = Cor(W_a, W_b), \quad \forall i, a, b
-    \end{equation}
-
-    Let $G$ denote an efficient portfolio, the equilibrium expected return function derived from the assumptions above for any given security can be described in Equation \ref{eqn:exp_ret}.
-
-    \begin{equation}
-        \label{eqn:exp_ret}
-        E_R = r + \frac{Cov(R_W, R_G)}{\sigma_{R_G}} (E_{R_G} - r)
-    \end{equation}
-
-    The model in Equation \ref{eqn:exp_ret} is called Capital Asset Pricing Model (CAPM), and shows that the equilibrium expected return for a security is a function of its correlation with an efficient portfolio.
-    
-    Successive returns of prices which fully reflect available information are uncorrelated (\citet{samuelson1965}). Together with the assumption that successive price changes are identically distributed, this leads us to the random walk model (\citet{fama1970}). The random walk model is a special case of the AR(1) process. Let $w_t$ denote the security price at time $t$, the process is given by Equation \ref{eqn:rw1}.
+    \citet{samuelson1965} poses returns of prices which fully reflect available information are uncorrelated. Together with the assumption that successive price changes are identically distributed, this leads us to the random walk model (\citet{fama1970}). The random walk model is a special case of the AR(1) process. Let $w_t$ denote the security price at time $t$, the process is given by Equation \ref{eqn:rw1}.
     
     \begin{equation}
         \label{eqn:rw1}
@@ -275,7 +193,7 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
         E(r_tr_{t-j}) = 0 \quad for \quad j \neq 0
     \end{equation}
 
-    In order to find inefficiency, we look for unusual behaviour in the regression residuals. As with the random walk model, the residual at time $t$ (denoted by $e_t$) is given by Equation \ref{eqn:rw3}.
+    To find inefficiency, we look for unusual behaviour in the regression residuals. As with the random walk model, the residual at time $t$ (denoted by $e_t$) is given by Equation \ref{eqn:rw3}.
 
     $$e_t = r_t - E(r_t)$$
 
@@ -289,23 +207,23 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
 \chapter{Methods and Data} \label{chapter_methods_data}
 
-    In order to test the impact of political news on the exchange coupon, we searched for political news, calculated the exchange coupon (both the OC1 and the DI1 measures), tested the coupon for abnormal volatility, and finally we crossed the periods with abnormal volatility in the exchange coupon with the correspondent political news. The information on political news was gathered with web scrapping technique, applied in the main Brazilian news portal. A filter was applied to the news sample to find the ones related to national political events. We calculated the two different measures of exchange coupon negotiated in Brazil from its components (a shared exchange rate measure and two specific interest rate measures). To find the periods with abnormal volatility, we applied a GARCH model to the exchange coupon, and then filtered it's conditional standard deviation for abnormal values, with both a parametric and a non parametric approach.
+    To test the impact of political news on the exchange coupon, we searched for political news, calculated the exchange coupon (both the OC1 and the DI1 measures), tested the coupon for abnormal volatility, and finally, we crossed the periods with abnormal volatility in the exchange coupon with the correspondent political news. The information on political news was gathered with web scrapping technique, applied in the main Brazilian news portal. A filter was applied to the news sample to find the ones related to national political events. We calculated the two different measures of exchange coupon negotiated in Brazil from its components (a shared exchange rate measure and two specific interest rate measures). To find the periods with abnormal volatility, we applied a GARCH model to the exchange coupon, and then filtered its conditional standard deviation for abnormal values, with both a parametric and a non-parametric approach.
 
 \section{Data} \label{chapter_data}
 
-    Based on data availability, our news sample begins at November 24, 2016, the first date for which there were political news available in the scrapped website. Our exchange rate and interest rates samples begin one day earlier, to allow for the exchange coupon series to begin with the news sample. All samples end at May 16, 2019.
+    Based on data availability, our news sample begins on November 24, 2016, the first date for which there were political news available on the scrapped website. Our exchange rate and interest rates samples begin one day earlier, to allow for the exchange coupon series to begin with the news sample. All samples end on May 16, 2019.
 
 \subsection{Political News} \label{chapter_political_news}
     
-    We gathered information on political news by applying web scrapping technique to a online news portal. The scrapping was made in the political section of G1, a Brazilian news portal maintained by Grupo Globo, a conglomerate based in Rio de Janeiro. It provides content from Grupo Globo's television channels, radio stations, newspapers and magazines, besides it's own content. The scrapping was executed at May 17, 2019, and resulted in a sample of 17.832 news. The dollar market closes at 6 pm, therefore all news after this time were pushed to the subsequent day. News from weekends and holidays were pushed to the closest subsequent business day.
+    We gathered information on political news by applying web scrapping technique to an online news portal. The scrapping was made in the political section of G1, a Brazilian news portal maintained by Grupo Globo, a conglomerate based in Rio de Janeiro. It provides content from Grupo Globo's television channels, radio stations, newspapers and magazines, besides its content. The scrapping was executed at May 17, 2019, and resulted in a sample of 17.832 news. The dollar market closes at 6 pm, therefore all news after this time were pushed to the subsequent day. News from weekends and holidays were pushed to the closest subsequent business day.
 
-    To find political events that could impact the exchange coupon, we follow \citet{bbb} as we searched our headlines sample for keywords. The keywords were: related to market uncertainty, 'incerteza', 'mercado' and 'economia' (uncertainty, market, economy); related to components of the exchange coupon, 'dólar', 'selic' and 'cdi' (dollar, Selic, DI); and related to federal government matters, 'presidente', 'presidência', 'câmara', 'senado', 'tribunal de contas da união', 'tcu', 'superior tribunal federal' and 'stf' (president, presidency, chamber (as in Chamber of Deputies), senate, Federal Accountability Office and its initials, and Supreme Court and its initials). The search resulted in a sample of 2.333 news. The final sample is 13\% the size of the unfiltered sample in terms of number of news, therefore, we excluded 87\% of the initial sample as it was composed of political news unrelated to federal political matters.
+    To find political events that could impact the exchange coupon, we follow \citet{bbb} as we searched our headlines sample for keywords. The keywords were: related to market uncertainty, 'incerteza', 'mercado' and 'economia' (uncertainty, market, economy); related to components of the exchange coupon, 'dólar', 'selic' and 'cdi' (dollar, Selic, DI); and related to federal government matters, 'presidente', 'presidência', 'câmara', 'senado', 'tribunal de contas da união', 'tcu', 'superior tribunal federal' and 'stf' (president, presidency, chamber (as in Chamber of Deputies), senate, Federal Accountability Office and its initials, and Supreme Court and its initials). The search resulted in a sample of 2.333 news. The final sample is 13\% the size of the unfiltered sample in terms of the number of news, therefore, we excluded 87\% of the initial sample as it was composed of political news unrelated to federal political matters.
 
 \subsection{Exchange Coupon} \label{chapter_exchange_coupon}
 
-    In order to obtain the series for the exchange coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate PTAX 800 (PTAX), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank deposits rate (DI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through it's Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day.
+    In order to obtain the series for the exchange coupon (both the OC1 and the DI1 measures), we collected a sample of the dollar exchange rate PTAX 800 (PTAX), that was used for both measures, a sample of the referential rate of the Special Settlement and Custody System (Selic) for the OC1 measure, and a sample of the of the inter-bank deposits rate (DI) for the DI1 measure. All three series were collected from the Central Bank of Brazil Time Series Management System (BACEN-SGS), through its Application Programming Interface (API). The exchange rate is measured in BRL/USD, and the interests rates are measured in \% a day.
     
-    Our samples range from November 23, 2016 to May 16, 2019. They begin shortly after the end of the impeachment process of President Dilma Rousseff, at August 31, when President Temer (Ms Dilma's Vice President) took office after three months as Interim President. This happened during the largest economic crisis in Brazilian history, with the fourth trimester of 2016 being the last from a series of eleven in which the Gross Domestic Product decreased. The remaining period from our sample saw economic stagnation. Mr Temer's presidency was marked by reforms - like the Labour Reform, which successfully passed, and the Pension Reform, which did not -, and by a corruption scandal involving him and related to Operation Car Wash, a investigation on money laundry involving Brazilian politicians, which was very present in the media since even before his presidency. At October 2018 presidential elections were held, and Mr Bolsonaro was elected. The new president took office with his main focus as a new Pension Reform, which is still awaiting for approval by the time this is being written.
+    Our samples range from November 23, 2016, to May 16, 2019. They begin shortly after the end of the impeachment process of President Dilma Rousseff, on August 31, when President Temer (Ms Dilma's Vice President) took office after three months as Interim President. This happened during the largest economic crisis in Brazilian history, with the fourth trimester of 2016 being the last from a series of eleven in which the Gross Domestic Product decreased. The remaining period from our sample saw economic stagnation. Mr Temer's presidency was marked by reforms - like the Labour Reform, which successfully passed, and the Pension Reform, which did not -, and by a corruption scandal involving him and related to Operation Car Wash, a investigation on money laundry involving Brazilian politicians, which was very present in the media since even before his presidency. At October 2018 presidential elections were held, and Mr Bolsonaro was elected. The new president took office with his main focus as a new Pension Reform, which is still awaiting approval by the time this is being written.
     
 
     Figure \ref{fig:ptax} shows the exchange rate (PTAX) series, Figure \ref{fig:selic} shows the referential rate of the Special Settlement and Custody System (Selic) series, and Figure \ref{fig:di} shows the inter-bank deposits rate (DI) series. The descriptive statistics for the series are shown in Table \ref{tab:desptaxselicdi}.
@@ -318,7 +236,7 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
     \subfile{tables/desptaxselicdi.txt}
 
-    The exchange coupon is the interest rate obtained from the difference between the accrued interest rate between the operation date and the business day preceding the due date, and the exchange rate variation observed between the business day preceding the operation date and the business day preceding the due date. We calculated both measures of the exchange coupon via Equation \ref{eqn:coupon}:
+    The exchange coupon is the accrued interest rate over exchange rate variation. We calculated both measures of the exchange coupon via Equation \ref{eqn:coupon}:
 
     \begin{equation}
         \label{eqn:coupon}
@@ -333,23 +251,19 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
     \subfile{tables/desocdi.txt}
 
-    Visually, both exchange coupon measures show a stationary form, nevertheless, we tested the series against the null hypothesis of presence of a unit root with the Augmented Dickey-Fuller (ADF) test (\citet{adf}), and against the null hypothesis of stationarity around a deterministic trend with the Kwiatkowski– Phillips–Schmidt–Shin (KPSS) test (\citet{kpss}). The results for the ADF test are shown in Table \ref{tab:ocdiadf}, and the results for the KPSS test are shown in Table \ref{tab:ocdikpss}.
+    Visually, both exchange coupon measures show a stationary form, nevertheless, we tested the series against the null hypothesis of presence of a unit root with the Augmented Dickey-Fuller (ADF) test (\citet{adf}), and the null hypothesis of stationarity around a deterministic trend with the Kwiatkowski– Phillips–Schmidt–Shin (KPSS) test (\citet{kpss}). The results for the ADF test are shown in Table \ref{tab:ocdiadf} and the results for the KPSS test are shown in Table \ref{tab:ocdikpss}.
 
     \subfile{tables/ocdiadf.txt}
 
     \subfile{tables/ocdikpss.txt}
 
-    The tests results in Tables \ref{tab:ocdiadf} and \ref{tab:ocdikpss} show support for the hypothesis of stationarity of the series that the visual analysis suggested to be true. For both measures of the exchange coupon the Augmented Dickey-Fuller test rejected the null hypothesis of presence of a unit root and the Kwiatkowski– Phillips–Schmidt–Shin test could not reject the null hypothesis of stationarity around a deterministic trend.
-    
-    \begin{comment}
-        On ten of October 2015 a impeachment request for president Dilma Rousseff was handed to the Chamber Of Representatives' president, who accepted the request on December second. The opening of the impeachment process was accepted by the special impeachment committee on eleven of April 2016.
-    \end{comment}
+    The tests result in Tables \ref{tab:ocdiadf} and \ref{tab:ocdikpss} show support for the hypothesis of stationarity of the series that the visual analysis suggested to be true. For both measures of the exchange coupon, the Augmented Dickey-Fuller test rejected the null hypothesis of presence of a unit root and the Kwiatkowski– Phillips–Schmidt–Shin test could not reject the null hypothesis of stationarity around a deterministic trend.
 
 \section{Methods} \label{chapter_methods}
 
 \subsection{Generalized Autoregressive Conditional Heteroskedastic Model}
 
-    The Generalized Autoregressive Conditional Heteroskedastic (GARCH) model, introduced in \citet{bollerslev1986}, is a generalization of the Autoregressive Conditional Heteroskedastic (ARCH) model introduced in \citet{engle1982}, which models heteroscedasticity. While the most common models for time series assume a constant variance for the process (as ARIMA), the ARCH process assumes an inconstant variance conditional on past variance, together with a constant unconditional variance. The GARCH process assumes inconstant variance conditional on past conditional variance as well as past variance. Both ARCH and GARCH are serial uncorrelated processes with zero mean.
+    The Generalized Autoregressive Conditional Heteroscedastic (GARCH) model, introduced in \citet{bollerslev1986}, is a generalization of the Autoregressive Conditional Heteroskedastic (ARCH) model introduced in \citet{engle1982}, which models heteroscedasticity. Whilst the most common models for time series assume a constant variance for the process (as ARIMA), the ARCH process assumes an inconstant variance conditional on past variance, together with a constant unconditional variance. The GARCH process assumes inconstant variance conditional on past conditional variance as well as past variance. Both ARCH and GARCH are serial uncorrelated processes with zero mean.
 
     Let $y_t$ denote a real-valued discrete time process and $\psi_t$ denote the information set at time $t$,  the GARCH process is given by Equation \ref{eqn:archgarch} and Equation \ref{eqn:garch}.
 
@@ -371,11 +285,11 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
     $$\beta_i \geq 0, \quad  i=1,...,p$$
 
-    As we can see above, if $p = 0$ than it becomes a ARCH process. If also $q = 0$ than the process is white noise. We will use $h_t$, the conditional standard deviation, as a estimate for the exchange coupon's standard deviation at time $t$.
+    As we can see above, if $p = 0$ than it becomes an ARCH process. If also $q = 0$ than the process is white noise. We will use $h_t$, the conditional standard deviation, as an estimate for the exchange coupon's standard deviation at time $t$.
 
 \subsection{Estimation} \label{chapter_estimation}
 
-    We estimate a GARCH model for both measures of the exchange coupon. After the fitting of the model, the residuals must behave like white noise. First, we inspect this behavior visually with the residuals graphs, which are shown in Figure \ref{fig:ocres} for the OC1 measure, and in Figure \ref{fig:dires} for the DI1 measure.
+    We estimate a GARCH model for both measures of the exchange coupon. After the fitting of the model, the residuals must behave like white noise. First, we inspect this behaviour visually with the residuals graphs, which are shown in Figure \ref{fig:ocres} for the OC1 measure, and in Figure \ref{fig:dires} for the DI1 measure.
 
     \subfile{graphstext/ocres.txt}
 
@@ -385,7 +299,7 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
     \subfile{tables/reswhite.txt}
 
-    The results shown in Table \ref{tab:reswhite} support the hypothesis that the residuals behave as white noise. The Ljung-Box tests cannot reject the null hypothesis that the residuals are independently distributed.
+    The results shown in Table \ref{tab:reswhite} support the hypothesis that the residuals behave like white noise. The Ljung-Box tests cannot reject the null hypothesis that the residuals are independently distributed.
 
 \subsection{Conditional Standard Deviation}
 
@@ -397,7 +311,7 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
     \subfile{tables/descsd.txt}
 
-    We consider abnormal volatility every value outside the 95\% confidence interval, and we use both a parametric and a non parametric analysis to filter for abnormal volatility. In the former, we assume a two-parameter distribution for the population, in the latter we do not make this assumption.
+    We consider abnormal volatility every value outside the 95\% confidence interval, and we use both a parametric and a non-parametric analysis to filter for abnormal volatility. In the former, we assume a two-parameter distribution for the population, in the latter we do not make this assumption.
 
 \subsection{Parametric}
 
@@ -419,7 +333,7 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
         LowerLimit_t = \bar{X} - 1.96 * \sigma
     \end{equation}
 
-    We test the null hypothesis that the conditional standard deviation samples come from a normal distributed population with the Shapiro-Wilk test, which results are shown in Table \ref{tab:csdshapiro}.
+    We test the null hypothesis that the conditional standard deviation samples come from a normally distributed population with the Shapiro-Wilk test, which results are shown in Table \ref{tab:csdshapiro}.
 
     \subfile{tables/csdshapiro.txt}
 
@@ -433,17 +347,17 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
     \subfile{graphstext/dilimpar.txt}
 
-    Table \ref{tab:ocparout} and Table \ref{tab:diparout} show the details of each day with abnormal volatility, that is, the days in which the conditional standard deviation was outside the limits of the 95\% confidence interval, for the OC1 exchange coupon and for the DI1 exchange coupon respectively.
+    Table \ref{tab:ocparout} and Table \ref{tab:diparout} show the details of each day with abnormal volatility, that is, the days in which the conditional standard deviation was outside the limits of the 95\% confidence interval, for the OC1 exchange coupon and the DI1 exchange coupon respectively.
 
     \subfile{tables/ocparout.txt}
 
     \subfile{tables/diparout.txt}
 
-    As we see in the tables above, the results are very similar for both measures of the exchange coupon. There were 15 days of abnormal volatility for the OC1 exchange coupon, while there were 18 days for the DI1. 10 days were common to both measures.
+    As we see in the tables above, the results coincide for both measures. There were 15 days of abnormal volatility.
 
 \subsection{Non Parametric}
 
-    While in the parametric analysis we assumed a normal distribution for the population, in the non-parametric analysis we do not make this assumption. We calculated the mean and standard deviation for each day with a 63 days window (22 days before and 22 days after), which corresponds to three months of data. The definition of the 63 days window was made based on the frequency of CoPoM meetings (one for every one and a half month), in which the goal for the Selic is defined, affecting directly both the Selic and the DI. The window is twice the period between meetings, therefore a quarter of year.
+    While in the parametric analysis we assumed a normal distribution for the population, in the non-parametric analysis we do not make this assumption. We calculated the mean and standard deviation for each day with a 63 days window (22 days before and 22 days after), which corresponds to three months of data. The definition of the 63 days window was made based on the frequency of CoPoM meetings (one for every one and a half month), in which the goal for the Selic is defined, affecting directly both the Selic and the DI. The window is twice the period between meetings, therefore a quarter of the year.
 
     We define the limits of the non-parametric analysis in Equations \ref{eqn:upnp} and \ref{eqn:lonp}.
 
@@ -471,127 +385,103 @@ I want also to thank Prof. Dr. Nelson Seixas do Santos for his support and patie
 
     \subfile{graphstext/dilimnon.txt}
 
-    Table \ref{tab:ocnonout} and Table \ref{tab:dinonout} show the details of each day with abnormal volatility, that is, the days in which the conditional standard deviation was outside the limits of the 95\% confidence interval, for the OC1 exchange coupon and for the DI1 exchange coupon respectively.
+    Table \ref{tab:ocnonout} and Table \ref{tab:dinonout} show the details of each day with abnormal volatility, that is, the days in which the conditional standard deviation was outside the limits of the 95\% confidence interval, for the OC1 exchange coupon and the DI1 exchange coupon respectively.
 
     \subfile{tables/ocnonout.txt}
 
     \subfile{tables/dinonout.txt}
 
-    As we see in the tables above, the results , just as in the parametric analysis, are very similar for both measures of the exchange coupon. The OC1 shows 25 days of abnormal volatility, and the DI1 shows 29. 18 days are commom to the two measures.
+    As we see in the tables above, the results, just as in the parametric analysis, coincide for both measures. There were 27 days of abnormal volatility
 
 \chapter{Results and Discussion} \label{chapter_results_discussion}
 
-    After having filtered the exchange coupon for abnormal volatility, and the news for national political events, we match the two samples to find what political events happened to occur in the days of abnormal volatility. With this information we can analyze the impact of political news in the exchange coupon. The results differ for the OC1 and DI1 measures, therefore we will show, for both parametric an non parametric analysis, first the news from the days of abnormal volatility the measures share, than the specific news for each measure.
+    After having filtered the exchange coupon for abnormal volatility, and the news for national political events, we match the two samples to find what political events happened to occur in the days of abnormal volatility. With this information, we can analyze the impact of political news in the exchange coupon. The results coincide for the OC1 and DI1 measures, therefore we will show the results without specifying a specific measure..
 
 \section{Parametric}
 
-The news for each common day of abnormal volatility for the OC1 and DI1 measures are shown in Table \ref{tab:parcom}. The news specific to the OC1 measure are shown in Table \ref{tab:paroc}, and the news specific to the DI1 measure are shown in Table \ref{tab:pardi}. After each table, we will briefly describe the political event which brought abnormal volatility to the exchange coupon.
+    The news for each day of abnormal volatility, for both the OC1 and DI1 measures, are shown in Table \ref{tab:par}. After the table, we briefly describe the political events which brought abnormal volatility to the exchange coupon.
 
-    \subfile{tables/parcom.txt}
+    \subfile{tables/par.txt}
     
-    At May, 2017, the corruption scandal of President Michel Temer broke out. It did with the disclosure by the Supreme Court of a recording of a conversation between Mr Temer and the businessman Joesley Batista - owner of JBS, which was, and still is by the time this is written, the largest meat processing company in the world -, who delivered the recording to the authorities as part of a plea bargain. The date when the recording was revealed was commonly dubbed as 'Joesley Day', as it was a day of high volatility for both the stock and dollar markets. In fact, the conditional standard deviation for the OC1 exchange coupon was of 0.033 (for scale, the maximum and minimum values of the 95\% confidence interval were of 0.011 and 0.005 respectively).
+    At May 2017, the corruption scandal of President Michel Temer broke out. The scandal begun with the disclosure by the Supreme Court of a recording of a conversation between Mr Temer and the businessman Joesley Batista - owner of JBS, which was, and still is by the time this is written, the largest meat processing company in the world -, who delivered the recording to the authorities as part of a plea bargain. The date when the recording was revealed was commonly dubbed as 'Joesley Day', as it was a day of high volatility for both stock and dollar markets. In fact, the conditional standard deviation for both exchange coupons was of 0.026 (for scale, the maximum and minimum values of the 95\% confidence interval were of 0.011 and 0.005 respectively).
 
-    At July, 2018, both Jair Bolsonaro, from Liberal Social Party (PSL), and Guilherme Boulos, from Socialism and Liberty Party (PSOL), were confirmed as candidates for the presidential elections that would be held in October. At October 2018, the presidential elections were held. A vote intent survey released less than a week before the elections' first round  showed a result of, in the case of a second round between Jair Bolsonaro (PSL) and Fernanando Haddad (Worker's Party (PT)), of 43\% of votes for the first and 42\% for the latter, therefore a technical draw. The date when this survey was released, and the date when the first round was held, were the only days when the 2018 elections affected both measures of the exchange coupon.
-    
-    At January, 2019, Bolsonaro indicated he would try to pass a new Pension Reform rather than working on the approval of the one from the previous president, Mr Temer.
-    
-    \subfile{tables/paroc.txt}
-    
-    Most news specific to the OC1 exchange coupon were of minor significance - unable of affecting the coupon. Nevertheless, for this specific measure, the Elections brought abnormal volatility for one day more than it did for both measures.
-    
-    \subfile{tables/pardi.txt}
-    
-    As with the DI1 measure, most news specific to the DI1 exchange coupon were of minor significance. Still, more news affected the DI1 than the OC1, as, besides having, one day more of abnormal volatility related to the Elections (as the OC1), the corruption scandal of President Temer brought abnormal volatility for three days more.
+    At July 2018, both Jair Bolsonaro, from Liberal Social Party (PSL), and Guilherme Boulos, from Socialism and Liberty Party (PSOL), were confirmed as candidates for the presidential elections that would be held in October. A vote intent survey released less than a week before the elections' first-round  showed a result of, in the case of a second-round between Jair Bolsonaro (PSL) and Fernando Haddad (Worker's Party (PT)), 43\% of votes for the first and 42\% for the latter, therefore a technical draw. Both the announcement of Mr. Bolsonaro as candidate and the elections' first round affected the coupon. At January 2019, Bolsonaro indicated he would try to pass a new Pension Reform rather than working on the approval of the one from the previous president, Mr Temer.
     
 \subsection{Results of the Parametric Analysis}
     
-    In the parametric analysis, we considered that mainly matters related to changes in the presidency affected the exchange coupons, followed by matters about the Pension Reform. Both the arise of the possibility of a impeachment of President Temer caused by a corruption scandal, and the presidential elections with two opposing leading candidates, brought abnormal volatility. The annoucement of a new Pension Reform also had this effect. These periods are shown in Table \ref{tab:respar}.
+    In the parametric analysis, we considered that mainly matters related to changes in the presidency affected the exchange coupons, followed by matters about the Pension Reform. Both the arise of the possibility of an impeachment of President Temer caused by a corruption scandal, and the presidential elections with two opposing leading candidates brought abnormal volatility. The announcement of a new Pension Reform also had this effect. These periods are shown in Table \ref{tab:respar}.
 
     \begin{table}[H]
         \caption{Periods of Abnormal Volatility Related to Political News, by Parametric Analysis}
         \label{tab:respar}
         \centering
-        \begin{tabular}{ | c | c | c | }
+        \begin{tabular}{ | c | c | }
             \hline
-            Period & Coupon & News Topic \\
+            Date & News Topic \\
             \hline \hline
-            May, 2019 & Both & President Temer's corruption scandal \\
+            May, 2017 & President Temer's corruption scandal \\
             \hline
-            July, 2018 & Both & Announcement of Mr Bolsonaro's candidacy \\
+            July, 2018 & Announcement of Mr Bolsonaro's candidacy \\
             \hline
-            October, 2018 & Both & First round of Presidential Elections \\
+            October, 2018 & First round of Presidential Elections \\
             \hline
-            January, 2019 & Both & Announcement of new Pension Reform \\
+            January, 2019 & Announcement of new Pension Reform \\
             \hline
         \end{tabular}
     \end{table}
 
 \section{Non Parametric}
 
-    The news for each common day of abnormal volatility for the OC1 and DI1 measures, the news are shown in Table \ref{tab:noncom}. The news specific to the OC1 measure are shown in Table \ref{tab:nonoc}, and the news specific to the DI1 measure are shown in Table \ref{tab:nondi}. After each table, we will briefly describe the political event which brought abnormal volatility to the exchange coupon.
+    The news for each day of abnormal volatility for both the OC1 and DI1 measures are shown in Table \ref{tab:noncom}. After the table, we will briefly describe the political events which brought abnormal volatility to the exchange coupon.
    
-   \subfile{tables/noncom.txt}
+   \subfile{tables/non.txt}
    
-   At March, 2017, there was news about the voting of the Labour Reform. At April, the corruption scandal of President Temer broke out, as mentioned in the previous section. Abnormal volatility returned at August, when the Brazilian Bar Association (OAB) triggered the Supreme Court to make the Chamber of Representatives' President analyze the impeachment requests he had received (there were 25 at the time). The impeachment matter correlated with abnormal volatility for the last time at October, when the Chamber of Representatives voted for the corruption denunciation against President Temer not to be sent to the Supreme Court, where it would be judged.
+   At March 2017, the Chamber of Deputies' president, Mr Maia, announced the voting of the Labour Reform. At April, the corruption scandal of President Temer broke out, as mentioned in the previous section. Abnormal volatility returned at August when the Brazilian Bar Association (OAB) triggered the Supreme Court to make the Chamber of Representatives' President analyze the impeachment requests he had received (there were 25 at the time). The impeachment matter correlated with abnormal volatility for the last time at October, when the Chamber of Representatives voted for the corruption denunciation against President Temer not to be sent to the Supreme Court, where it would be judged.
     
-    At July, 2018, both Jair Bolsonaro, from Liberal Social Party (PSL), and Guilherme Boulos, from Socialism and Liberty Party (PSOL), were confirmed as candidates for the presidential elections that would occur in October. As in the parametric analysis, the days surrounding the first round of the presidential elections (held at October 8) were of abnormal volatility. The fourth day of 2019 was the first day of Bolsonaro's presidency to show abnormal volatility - at the time, Bolsonaro indicated he would try to pass a new Pension Reform rather than working on the approval of the reform from the previous president, Mr Temer. 
-    
-    \subfile{tables/nonoc.txt}
-    
-    Most news specific to the OC1 exchange coupon seem of minor significance - unable of affecting the coupon. The only event that we consider had an impact was the election for the Chamber of Deputies' presidency, at February, 2019, when Rodrigo Maia (DEM) was reelected.
-    
-    \subfile{tables/nondi.txt}
-    
-    As with the OC1 measure, most news specific to the DI1 exchange coupon seem of minor significance. Nevertheless, there were more days in which we consider political news affected the coupon. 
-    The corruption scandal involving President Temer brought abnormal volatility for two days more, therefore the period of high volatility was more extensive. The presidential elections had the same effect, extending the high volatility by two days.
+    At July 2018, both Jair Bolsonaro, from Liberal Social Party (PSL), and Guilherme Boulos, from Socialism and Liberty Party (PSOL), were confirmed as candidates for the presidential elections that would occur in October. As in the parametric analysis, the days surrounding the first round of the presidential elections (held at October 8) were of abnormal volatility. The fourth day of 2019 was the first day of Bolsonaro's presidency to show abnormal volatility - at the time, Bolsonaro indicated he would try to pass a new Pension Reform rather than working on the approval of the reform from the previous president, Mr Temer. 
 
-\subsection{Results of the Non Parametric Analysis}
+\subsection{Results of the Non-Parametric Analysis}
 
-    The results from the non parametric analysis add to the results of the parametric analysis, as they show that not only matters related to changes in the presidency and the Pension Reform affected the exchange coupon, but matters related to the presidency of the Chamber of Deputies and the Labour reform also did. The announcement of the voting of the Labour Reform had effect at March 2017. Even in the matters related to the presidency, more political events affected the exchange coupon: the possibility of impeachment of president Michel Temer impacted the exchange coupon not only in May 2017 (as in the parametric analysis), but in August and October as well. The 2018 presidential elections had effect on the exchange coupon just like in the parametric analysis, with the announcement of Jair Bolsonaro as candidate (July 2018) and the first round of the elections (October 2018). The announcement of a new Pension Reform at January 2019 also had the same effect as in the parametric analysis. The elections for the presidency of the Chamber of Deputies, that took place in February 2019, also brought abnormal volatility. These periods are shown in Table \ref{tab:resnon}.
+    The results from the non-parametric analysis add to the results of the parametric analysis, as they show that not only matters related to changes in the republic's presidency and the Pension Reform affected the exchange coupon, but matters related to the Labour Reform also did. The announcement of the voting of the Labour Reform affected in March 2017. Even in the matters related to the republic's presidency, more political events affected the exchange coupon: the possibility of impeachment of President Temer impacted the exchange coupon not only on May 2017 (as in the parametric analysis) but in August and October as well. The 2018 presidential elections affected the exchange coupon just like in the parametric analysis, with the announcement of Jair Bolsonaro as a candidate (July 2018) and the first round of the elections (October 2018). As in the parametric analysism the announcement of a new Pension Reform in January 2019 also affected the exchange coupon. These periods are shown in Table \ref{tab:resnon}.
 
     \begin{table}[H]
         \caption{Periods of Abnormal Volatility related to Political News, by Non Parametric Analysis}
         \label{tab:resnon}
         \centering
-        \begin{tabular}{ | c | c | c | }
+        \begin{tabular}{ | c | c | }
             \hline
-            Period & Coupon & News Topic \\
+            Date & News Topic \\
             \hline \hline
-            March, 2017 & Both & Voting of the Labour Reform \\
+            March, 2017 & Voting of the Labour Reform \\
             \hline
-            May, 2017 & Both & President Temer's corruption scandal \\
+            May, 2017 & President Temer's corruption scandal \\
             \hline
-            August, 2017 & Both & OAB's triggering of the Supreme Court \\
+            August, 2017 & OAB's triggering of the Supreme Court \\
             \hline
-            October, 2017 & Both & Rejection of the denunciation against President Temer \\
+            October, 2017 & Rejection of the denunciation against President Temer \\
             \hline
-            July, 2018 & Both & Announcement of Mr Bolsonaro's candidacy \\
+            July, 2018 & Announcement of Mr Bolsonaro's candidacy \\
             \hline
-            October, 2018 & Both & First Round of Presidential elections \\
+            October, 2018 & First Round of Presidential elections \\
             \hline
-            January, 2019 & Both & Announcement of a new Pension Reform \\
-            \hline
-            February, 2019 & DI1 & Election for Chamber of Deputies' presidency \\
+            January, 2019 & Announcement of a new Pension Reform \\
             \hline
         \end{tabular}
     \end{table}
 
 \chapter{Conclusion} \label{chapter_conclusion}
 
-    In order to test for semi-strong form efficiency, we analyzed the impact of political news on the country's exchange coupon. We cross referenced the days with abnormal returns for the exchange coupon with the days with political news. Ir order to achieve that, we filtered the news collected via web scrapping for national political events, and applied a GARCH filter in the exchange coupon to find abnormal returns. We performed both a parametric and a non parametric analysis.
+    To test the market for semi-strong form efficiency, we analyzed the impact of political news on the exchange coupon. We cross-referenced the days with abnormal returns for the exchange coupon with the days with political news. Ir order to achieve that, we filtered the news collected via web scrapping for national political events and applied a GARCH filter in the exchange coupon to find abnormal returns. We performed both a parametric and non-parametric analysis.
 
-    The results differ from the two measures of the exchange coupon, although it does not significantly changes the results. Both the parametric and non parametric analysis show support for the semi-strong form efficient market hypothesis. From 2333 political news, only a small fraction had effect over the exchange coupon - 61 news for the OC1 in the parametric analysis (2.6\% of the total), and 124 news for the OC1 in the non parametric analysis (5.3\%). Nevertheless, if compared to other types of news that could impact the exchange coupon - such as macroeconomic and international - political news had considerable impact. For the OC1, in the parametric analysis, political news were accountable for 6 out of 15 days of abnormal volatility (40\%), and in the non parametric analysis they were accountable for 9 out of 25 days (36\%).
+    Both the parametric and non-parametric analysis show support to the semi-strong form efficient market hypothesis. From 2333 political news, only a small fraction affected the exchange coupon - 70 for the parametric analysis (3.0\% of the total), and 128 news for the non-parametric analysis (5.5\%). Nevertheless, if compared to other types of news that could impact the exchange coupon - such as macroeconomic and international - political news had considerable impact. For the parametric analysis, political news were accountable for 11 out of 15 days of abnormal volatility (73\%), and in the non-parametric analysis, they were accountable for 12 out of 25 days (48\%).
 
-    The parametric and non parametric analysis differ in their results, but both indicate that the exchange coupon was affected by political news about changes in the republic's presidency and about the Pension Reform. Changes in the presidency means both the 2018 elections, with its first round and the announcement of later-to-become president Jair Bolsonaro as candidate, and the corruption scandal with President Michel Temer at May 2017, which was followed by various impeachment requests. The Pension Reform had its effect with the announcement by President Bolsonaro of a new one, rather than working for the approval of the Reform proposed by Mr Temer.
+    The analysis indicates that the exchange coupon was affected by political news about changes in the republic's presidency and the Pension Reform. Changes in the presidency mean both the 2018 elections, with its first round and the announcement of later-to-become president Jair Bolsonaro as a candidate, and the corruption scandal with President Temer at May 2017, which was followed by various impeachment requests. The Pension Reform had its effect with the announcement by President Bolsonaro of a new one, rather than working for the approval of the Reform proposed by Mr Temer.
 
-    While the parametric analysis indicates that the relationship between political news and the exchange coupon is limited to the one mentioned above, the non parametric analysis indicates that this relationship goes further, as political news of less (but in no way small) significance also affected the exchange coupon. In the case of the corruption scandal with President Temer, abnormal volatility was brought also by the triggering of the Supreme Court, by the Brazilian Bar Association (OAB), to make the Chamber of Representatives' President analyze the impeachment requests he had received (August 2017), and by the voting by the Chamber of Deputies for the corruption denunciation not to be sent to the Supreme Court (October 2017). Other than the elections for the federal presidency, the elections for the Chamber of Deputies' presidency also were shown to affect the coupon at February, 2019 - actually, this was the only event which had effect over just one measure of the exchange coupon (OC1). In the non parametric analysis, not only the Pension Reform affected the exchange coupon but also the Labour Reform, when the Chamber of Deputies' president announced its voting at March 2017.
+    While the parametric analysis indicates that the relationship between political news and the exchange coupon is limited to the one mentioned above, the non-parametric analysis indicates that this relationship goes further, as political news of less (but in no way small) significance also affected the exchange coupon. In the case of the corruption scandal with President Temer, abnormal volatility was brought also by the triggering of the Supreme Court, by the Brazilian Bar Association (OAB), to make the Chamber of Representatives' President analyze the impeachment requests he had received (August 2017), and by the voting by the Chamber of Deputies for the corruption denunciation not to be sent to the Supreme Court (October 2017). In the non-parametric analysis, not only the Pension Reform affected the exchange coupon but also the Labour Reform, when the Chamber of Deputies' president announced its voting in March 2017.
 
-    These results follow \citet{smales2015} and \citet{marquessantos2016}, as they both show that political uncertainty, as with who will win the elections, causes market uncertainty. Nevertheless, in our analysis more events  had effect over the market. This difference in results may arise from differences between the foreign and national investors.
+    These results follow \citet{smales2015} and \citet{marquessantos2016}, as they both show that political uncertainty, as with who will win the elections, causes market uncertainty. Nevertheless, while our analysis shows that fixed income returns for foreign investors were affected by political events, \citet{marquessantos2016} shows returns of fixed income for the local investor were not. This contrast in results indicates a considerable difference in fixed income market dynamics for the two groups of investors.
 
-    As extension to the current research, the analysis could be made on an more extensive period (this could be achieved with the scrapping of websites), and on the return for the foreign investor of other securities from the Brazilian market.
-
-
-
+    As an extension to the current research, the analysis could be made on an more extensive period and news sample (this could be achieved with the scrapping of more websites), on the return for the foreign investor of other securities from the Brazilian market, and with more types of news (not only political).
     
 \chapter{Appendix - Codes} \label{chapter_appendix}
 
@@ -611,7 +501,7 @@ The news for each common day of abnormal volatility for the OC1 and DI1 measures
 
 \subsection{Importing of Time Series from BACEN-SGS}
 
-    \subfile{codes/importbacen.tex}
+    \subfile{codes/bacen.tex}
 
 \subsection{Useful Calculations on Time Series}
 
@@ -619,11 +509,11 @@ The news for each common day of abnormal volatility for the OC1 and DI1 measures
 
 \subsection{Output of Graphs}
 
-    \subfile{codes/graphs.tex}
+    \subfile{codes/graph.tex}
 
 \subsection{Output of Tables}
 
-    \subfile{codes/tables.tex}
+    \subfile{codes/table.tex}
 
 \bibliographystyle{abntex2-alf}
 \bibliography{ref_final} \label{chapter_bibliography}

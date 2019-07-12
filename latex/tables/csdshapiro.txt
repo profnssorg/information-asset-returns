@@ -6,9 +6,9 @@
 \hline
 Series & P-value \\
 \hline \hline
-OC1's CSD & 1.108e-42 \\
+OC1's CSD & 1.497e-39 \\
 \hline
-DI1's CSD & 3.589e-40 \\
+DI1's CSD & 1.405e-39 \\
 \hline
 \end{tabular}
 \end{table}

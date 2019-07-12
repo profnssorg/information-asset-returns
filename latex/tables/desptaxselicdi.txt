@@ -6,11 +6,11 @@
 \hline
 Series & Mean & Standard Deviation & Minimum Value & Maximum Value \\
 \hline \hline
-PTAX & 3.467 & 0.316 & 3.051 & 4.188 \\
+PTAX & 3.481 & 0.319 & 3.051 & 4.188 \\
 \hline
-Selic & 0.033 & 0.010 & 0.025 & 0.053 \\
+Selic & 0.031 & 0.009 & 0.025 & 0.052 \\
 \hline
-DI & 0.033 & 0.010 & 0.025 & 0.052 \\
+DI & 0.031 & 0.009 & 0.025 & 0.052 \\
 \hline
 \end{tabular}
     \end{table}

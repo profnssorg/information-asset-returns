@@ -6,9 +6,9 @@
 \hline
 Series & Mean & Standard Deviation & Minimum Value & Maximum Value \\
 \hline \hline
-OC1's CSD & 0.008 & 0.001 & 0.008 & 0.033 \\
+OC1's CSD & 0.008 & 0.001 & 0.007 & 0.026 \\
 \hline
-DI1's CSD & 0.008 & 0.001 & 0.007 & 0.027 \\
+DI1's CSD & 0.008 & 0.001 & 0.007 & 0.026 \\
 \hline
 \end{tabular}
     \end{table}
