@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Ljung-Box Test}
+\label{tab:reswhite}
+\centering
+\begin{tabular}{ | c | c | }
+\hline
+Series & P-value \\
+\hline \hline
+Residuals of OC1's GARCH & 8.873e-01 \\
+\hline
+Residuals of DI1's GARCH & 8.872e-01 \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,270 @@
+\begin{longtable}{ | c | c | c | c | }
+\caption{Political News Related to both OC1 and DI1, for Non Parametric Analysis}
+\label{tab:non}
+\hline \multicolumn{1}{|c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Ab. Vol.}} & \multicolumn{1}{c|}{\textbf{News Time}} & \multicolumn{1}{c|}{\textbf{Headline}} \\ \hline \hline
+\endfirsthead
+\multicolumn{4}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\hline \multicolumn{1}{|c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Ab. Vol.}} & \multicolumn{1}{c|}{\textbf{News Time}} & \multicolumn{1}{c|}{\textbf{Headline}} \\ \hline \hline
+\endhead
+\hline \hline \multicolumn{4}{| r |}{{Continued on next page}} \\ \hline
+\endfoot
+\hline \hline \multicolumn{4}{| r |}{End of table} \\ \hline
+\endlastfoot
+1 & 2016/12/16 & 12/15 18:27 & CCJ define relator de consu[...] \\
+\hline
+2 & 2016/12/16 & 12/15 18:27 & CCJ define relator de consu[...] \\
+\hline
+3 & 2016/12/16 & 12/15 19:55 & PSDB prorroga mandato de Aé[...] \\
+\hline
+4 & 2016/12/16 & 12/16 13:35 & Câmara envia a Fux recurso [...] \\
+\hline
+5 & 2016/12/16 & 12/16 17:32 & Janot reitera ao STF pedido[...] \\
+\hline
+6 & 2016/12/26 & 12/23 19:39 & Presidente do STJ nega libe[...] \\
+\hline
+7 & 2016/12/26 & 12/24 13:52 & Deputado do PDT lança pré-c[...] \\
+\hline
+8 & 2016/12/26 & 12/24 13:52 & Deputado do PDT lança pré-c[...] \\
+\hline
+9 & 2017/03/17 & 03/16 20:29 & Maia diz que reforma trabal[...] \\
+\hline
+10 & 2017/03/17 & 03/17 03:00 & Empreiteiras encolheram e p[...] \\
+\hline
+11 & 2017/03/17 & 03/17 12:39 & Presidente do STF diz que '[...] \\
+\hline
+12 & 2017/03/17 & 03/16 21:23 & Presidente do Senado domini[...] \\
+\hline
+13 & 2017/05/19 & 05/18 19:00 & Manifestações em diferentes[...] \\
+\hline
+14 & 2017/05/19 & 05/18 19:29 & Após denúncias, PTB na Câma[...] \\
+\hline
+15 & 2017/05/19 & 05/19 15:12 & Delator diz que ouviu de Te[...] \\
+\hline
+16 & 2017/05/19 & 05/19 14:28 & Dono da JBS diz que deu R\$[...] \\
+\hline
+17 & 2017/05/19 & 05/19 15:11 & JBS admite que comprou dóla[...] \\
+\hline
+18 & 2017/05/19 & 05/19 15:45 & Gravação de Joesley com Tem[...] \\
+\hline
+19 & 2017/05/22 & 05/19 19:14 & CVM investiga JBS por uso d[...] \\
+\hline
+20 & 2017/05/22 & 05/20 14:52 & Temer diz que segue na Pres[...] \\
+\hline
+21 & 2017/05/22 & 05/21 00:23 & OAB decide apresentar à Câm[...] \\
+\hline
+22 & 2017/05/22 & 05/22 16:20 & Câmara acumula 14 pedidos d[...] \\
+\hline
+23 & 2017/05/23 & 05/22 18:28 & Câmara deve discutir e vota[...] \\
+\hline
+24 & 2017/08/17 & 08/16 22:03 & Câmara inicia discussão, ma[...] \\
+\hline
+25 & 2017/08/17 & 08/16 22:48 & Aldo Rebelo pediu afastamen[...] \\
+\hline
+26 & 2017/08/17 & 08/16 20:44 & Câmara discute PEC que cria[...] \\
+\hline
+27 & 2017/08/17 & 08/16 19:40 & Câmara aprova tornar crime [...] \\
+\hline
+28 & 2017/08/17 & 08/17 10:35 & OAB aciona Supremo para que[...] \\
+\hline
+29 & 2017/08/17 & 08/17 10:35 & OAB aciona Supremo para que[...] \\
+\hline
+30 & 2017/10/25 & 10/24 18:44 & Presidente do Conselho de \[...] \\
+\hline
+31 & 2017/10/25 & 10/25 09:21 & Câmara inicia sessão para v[...] \\
+\hline
+32 & 2017/10/25 & 10/24 20:55 & Para Maia, Câmara precisa e[...] \\
+\hline
+33 & 2017/10/25 & 10/25 05:01 & Saiba como será a votação n[...] \\
+\hline
+34 & 2017/10/25 & 10/25 14:36 & G1 checa pronunciamentos da[...] \\
+\hline
+35 & 2017/10/25 & 10/25 10:11 & Veja frases da votação da s[...] \\
+\hline
+36 & 2017/10/25 & 10/25 11:53 & Câmara vota segunda denúnci[...] \\
+\hline
+37 & 2017/10/25 & 10/25 14:33 & Maia encerra sessão, e Câma[...] \\
+\hline
+38 & 2017/10/25 & 10/25 17:04 & Após 8 horas, Câmara atinge[...] \\
+\hline
+39 & 2017/12/01 & 12/01 09:17 & Presidente do PR usou apart[...] \\
+\hline
+40 & 2017/12/01 & 12/01 09:17 & Presidente do PR usou apart[...] \\
+\hline
+41 & 2017/12/08 & 12/07 20:01 & João Batista Brito Pereira [...] \\
+\hline
+42 & 2017/12/08 & 12/07 19:55 & Sérgio Moro manda desbloque[...] \\
+\hline
+43 & 2018/01/26 & 01/26 11:50 & Contrariando tendência hist[...] \\
+\hline
+44 & 2018/01/29 & 01/26 19:26 & Vice-presidente do TSE libe[...] \\
+\hline
+45 & 2018/01/29 & 01/29 16:00 & Comissão ligada à Presidênc[...] \\
+\hline
+46 & 2018/01/29 & 01/29 16:00 & Comissão ligada à Presidênc[...] \\
+\hline
+47 & 2018/06/11 & 06/10 11:13 & Empresas buscam proteção ap[...] \\
+\hline
+48 & 2018/06/11 & 06/11 13:46 & Presidente eleito do Paragu[...] \\
+\hline
+49 & 2018/06/11 & 06/11 17:38 & Deputado preso volta a trab[...] \\
+\hline
+50 & 2018/06/12 & 06/12 14:16 & Ministério da Fazenda diz q[...] \\
+\hline
+51 & 2018/06/12 & 06/12 14:35 & Presidente da Petrobras se [...] \\
+\hline
+52 & 2018/06/12 & 06/12 17:28 & Em audiência na Câmara, rep[...] \\
+\hline
+53 & 2018/06/13 & 06/13 07:00 & Laurita Vaz deve assumir pr[...] \\
+\hline
+54 & 2018/06/13 & 06/13 11:12 & Ampliação dos saques do PIS[...] \\
+\hline
+55 & 2018/06/13 & 06/13 17:54 & Senado retira de texto da C[...] \\
+\hline
+56 & 2018/06/13 & 06/13 17:37 & Judiciário precisa assumir [...] \\
+\hline
+57 & 2018/06/13 & 06/13 16:53 & Câmara aprova MP que criou [...] \\
+\hline
+58 & 2018/07/23 & 07/21 11:06 & PMN rejeita Valéria Monteir[...] \\
+\hline
+59 & 2018/07/23 & 07/20 20:57 & PSTU oficializa Vera Lúcia [...] \\
+\hline
+60 & 2018/07/23 & 07/23 05:00 & Temer viaja para o México n[...] \\
+\hline
+61 & 2018/07/23 & 07/22 12:47 & PSL oficializa candidatura [...] \\
+\hline
+62 & 2018/07/23 & 07/22 09:39 & Servidores têm bancada mais[...] \\
+\hline
+63 & 2018/07/23 & 07/21 16:37 & PSOL confirma Guilherme Bou[...] \\
+\hline
+64 & 2018/07/23 & 07/23 08:37 & Só em 2020 economia anulará[...] \\
+\hline
+65 & 2018/07/23 & 07/23 13:59 & Com Cármen Lúcia no Planalt[...] \\
+\hline
+66 & 2018/07/23 & 07/23 13:01 & Alckmin trabalha para acalm[...] \\
+\hline
+67 & 2018/10/04 & 10/03 18:55 & Pesquisa Ibope para preside[...] \\
+\hline
+68 & 2018/10/04 & 10/04 05:00 & Pesquisa Ibope de 3 de outu[...] \\
+\hline
+69 & 2018/10/04 & 10/04 06:00 & Pesquisa Ibope de 3 de outu[...] \\
+\hline
+70 & 2018/10/04 & 10/03 22:14 & Candidato à Presidência, Jo[...] \\
+\hline
+71 & 2018/10/04 & 10/04 14:27 & Pesquisas Ibope nos estados[...] \\
+\hline
+72 & 2018/10/05 & 10/04 18:42 & Pesquisa Datafolha em Perna[...] \\
+\hline
+73 & 2018/10/05 & 10/04 19:54 & Pesquisa Datafolha para pre[...] \\
+\hline
+74 & 2018/10/05 & 10/04 18:59 & Sem votar projetos há mais [...] \\
+\hline
+75 & 2018/10/05 & 10/05 09:23 & Candidatos a presidente usa[...] \\
+\hline
+76 & 2018/10/05 & 10/05 05:00 & Pesquisa Datafolha de 4 de [...] \\
+\hline
+77 & 2018/10/05 & 10/05 05:00 & Pesquisa Datafolha de 4 de [...] \\
+\hline
+78 & 2018/10/05 & 10/05 02:16 & Saiba o que disseram os can[...] \\
+\hline
+79 & 2018/10/05 & 10/05 16:55 & Veja as propostas das equip[...] \\
+\hline
+80 & 2018/10/05 & 10/05 15:57 & Justiça manda soltar direto[...] \\
+\hline
+81 & 2018/10/09 & 10/09 05:00 & Número cai, mas quase metad[...] \\
+\hline
+82 & 2018/10/09 & 10/08 19:43 & Levy Fidelix, presidente do[...] \\
+\hline
+83 & 2018/10/09 & 10/08 19:43 & Levy Fidelix, presidente do[...] \\
+\hline
+84 & 2018/10/09 & 10/09 11:12 & Novo declara que não apoiar[...] \\
+\hline
+85 & 2018/10/09 & 10/09 16:17 & CNJ afasta presidente do TR[...] \\
+\hline
+86 & 2018/10/10 & 10/09 19:05 & De 513 deputados eleitos na[...] \\
+\hline
+87 & 2018/10/10 & 10/09 22:39 & Três deputados reeleitos vã[...] \\
+\hline
+88 & 2018/10/10 & 10/10 16:25 & Bolsonaro dá sinais contrad[...] \\
+\hline
+89 & 2018/10/10 & 10/10 16:25 & Bolsonaro dá sinais contrad[...] \\
+\hline
+90 & 2019/01/04 & 01/03 21:10 & PT e PSOL denunciam invasão[...] \\
+\hline
+91 & 2019/01/04 & 01/04 12:30 & Bolsonaro sinaliza reforma [...] \\
+\hline
+92 & 2019/01/07 & 01/04 18:18 & Câmara pode gastar mais de [...] \\
+\hline
+93 & 2019/01/07 & 01/05 18:36 & Reajuste do STF aumentou ga[...] \\
+\hline
+94 & 2019/01/07 & 01/06 21:45 & Bolsonaro dá posse nesta se[...] \\
+\hline
+95 & 2019/01/07 & 01/07 08:52 & Empresas querem medidas par[...] \\
+\hline
+96 & 2019/01/07 & 01/07 11:21 & Presidentes de BNDES, BB e [...] \\
+\hline
+97 & 2019/01/07 & 01/07 15:31 & Antes de dar posse a presid[...] \\
+\hline
+98 & 2019/01/07 & 01/07 13:18 & Presidente do Ibama se demi[...] \\
+\hline
+99 & 2019/01/07 & 01/07 11:26 & Guedes diz que mercado de c[...] \\
+\hline
+100 & 2019/01/07 & 01/07 16:15 & Partidos de centro e de esq[...] \\
+\hline
+101 & 2019/01/07 & 01/07 16:10 & Bolsonaro vai a Davos parti[...] \\
+\hline
+102 & 2019/01/08 & 01/07 18:05 & 'Não vai ter financiamento [...] \\
+\hline
+103 & 2019/01/08 & 01/07 19:04 & PSDB declara apoio à reelei[...] \\
+\hline
+104 & 2019/01/08 & 01/07 19:04 & PSDB declara apoio à reelei[...] \\
+\hline
+105 & 2019/01/08 & 01/08 13:06 & Filho de Mourão assume asse[...] \\
+\hline
+106 & 2019/01/08 & 01/07 18:51 & Novo presidente da Caixa di[...] \\
+\hline
+107 & 2019/01/08 & 01/07 18:51 & Novo presidente da Caixa di[...] \\
+\hline
+108 & 2019/01/08 & 01/08 11:34 & PR e Podemos anunciam apoio[...] \\
+\hline
+109 & 2019/01/08 & 01/08 11:34 & PR e Podemos anunciam apoio[...] \\
+\hline
+110 & 2019/01/08 & 01/08 15:15 & Toffoli analisa nesta seman[...] \\
+\hline
+111 & 2019/03/25 & 03/23 08:46 & No terceiro dia no Chile, B[...] \\
+\hline
+112 & 2019/03/25 & 03/24 12:08 & De volta do Chile, Bolsonar[...] \\
+\hline
+113 & 2019/03/25 & 03/23 09:40 & Maia diz que Bolsonaro deve[...] \\
+\hline
+114 & 2019/03/25 & 03/24 18:43 & Presidente que não entende [...] \\
+\hline
+115 & 2019/03/25 & 03/25 08:14 & Apesar do tom de Bolsonaro,[...] \\
+\hline
+116 & 2019/03/28 & 03/28 08:35 & Maia e Bolsonaro prolongam [...] \\
+\hline
+117 & 2019/03/28 & 03/27 20:31 & Câmara aprova texto que alt[...] \\
+\hline
+118 & 2019/03/28 & 03/28 12:03 & Presidente do PSL diz que o[...] \\
+\hline
+119 & 2019/03/28 & 03/28 17:00 & Delegado Marcelo Freitas é [...] \\
+\hline
+120 & 2019/03/28 & 03/28 14:52 & Câmara aprova projeto que e[...] \\
+\hline
+121 & 2019/03/28 & 03/28 13:13 & Presidente afastado da Vale[...] \\
+\hline
+122 & 2019/03/28 & 03/28 17:10 & Presidente da Embratur pede[...] \\
+\hline
+123 & 2019/04/01 & 03/30 13:19 & Presidente Bolsonaro embarc[...] \\
+\hline
+124 & 2019/04/01 & 03/29 21:08 & Rodrigo Maia anula convocaç[...] \\
+\hline
+125 & 2019/04/01 & 03/31 15:53 & A incerteza do voto, link: [...] \\
+\hline
+126 & 2019/04/01 & 04/01 17:36 & 'Decisão do presidente. Foi[...] \\
+\hline
+127 & 2019/04/02 & 04/02 09:06 & Porta-voz da Presidência di[...] \\
+\hline
+128 & 2019/04/02 & 04/02 08:40 & Bolsonaro minimiza crítica [...] \\
+\hline
+\end{longtable}

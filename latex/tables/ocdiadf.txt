@@ -1,0 +1,14 @@
+\begin{table}[H]
+\caption{Augmented Dickey-Fuller Test}
+\label{tab:ocdiadf}
+\centering
+\begin{tabular}{ | c | c | c | }
+\hline
+Series & Test Statistic & Critical Value at 5\% Level \\
+\hline \hline
+OC1 & -2.567e+01 & -2.866e+00 \\
+\hline
+DI1 & -2.568e+01 & -2.866e+00 \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,6 @@
+\begin{figure}[H]
+\caption{DI1's Conditional Standard Deviation}
+\label{fig:dicsd}
+\centering
+\includegraphics[width=\textwidth]{graphs/dicsd.png}
+\end{figure}
